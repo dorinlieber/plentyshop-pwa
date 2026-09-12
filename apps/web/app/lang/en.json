@@ -1404,5 +1404,9 @@
         "title": "Services"
       }
     }
+  },
+  "freeShipping": {
+    "remaining": "Only {amount} left for free shipping",
+    "qualified": "You qualify for free shipping 🎉"
   }
 }

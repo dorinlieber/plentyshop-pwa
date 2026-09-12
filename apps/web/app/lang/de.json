@@ -1404,5 +1404,9 @@
         "title": "Services"
       }
     }
+  },
+  "freeShipping": {
+    "remaining": "Nur noch {amount} bis zum kostenlosen Versand",
+    "qualified": "Juhu! Du erhältst kostenlosen Versand 🎉"
   }
 }
