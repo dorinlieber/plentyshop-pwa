@@ -1,15 +1,15 @@
 <!--
   FreeShippingBar.vue  —  "Nur noch X € bis zum kostenlosen Versand" für den plentyShop PWA
   ------------------------------------------------------------------------------------------
-  Nachbau des LTS-Warenkorb-Balkens (<free-shipping :germany="60">) als echte Vue-Komponente.
+  Nachbau des LTS-Warenkorb-Balkens (<free-shipping :germany="29.99">) als echte Vue-Komponente.
   Passt zum plentyShop PWA (Nuxt 4 + Vue 3 + Tailwind/Storefront UI, @plentymarkets/shop-api).
 
-  Regel Dorins Kindermode: versandkostenfrei nur Deutschland; Grenze aktuell 60 €,
-  im Test ab Mo 14.09. = 29,99 €. Basis = Warenwert (itemSum, brutto).
+  Regel Dorins Kindermode: versandkostenfrei nur Deutschland ab 29,99 € (seit 14.09.2026, von Dorin
+  am 24.10.2026 als gültige Grenze bestätigt). Basis = Warenwert (itemSum, brutto).
 
   Verwendung (z. B. auf der Warenkorb-Seite oder im Warenkorb-Drawer):
-    <FreeShippingBar :threshold="60" />        // aktuell
-    <FreeShippingBar :threshold="29.99" />     // Versand-Test
+    <FreeShippingBar />                        // Standard 29,99 €
+    <FreeShippingBar :threshold="60" />        // abweichende Grenze
   Ort im Repo (Git-Integration): apps/web/app/components/FreeShippingBar/FreeShippingBar.vue
   i18n-Schlüssel unten in de.json / en.json ergänzen.
 -->
@@ -48,10 +48,10 @@ import { cartGetters } from '@plentymarkets/shop-api';
 
 const props = withDefaults(
   defineProps<{
-    /** Versandkostenfrei-Grenze in € (Warenwert). Default 60; für den Test 29.99 setzen. */
+    /** Versandkostenfrei-Grenze in € (Warenwert). Default 29.99. */
     threshold?: number;
   }>(),
-  { threshold: 60 },
+  { threshold: 29.99 },
 );
 
 const { t } = useI18n();
