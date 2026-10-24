@@ -25,6 +25,11 @@ import VariationPropertyText from '~/components/VariationPropertyText/VariationP
 import VariationPropertyHtml from '~/components/VariationPropertyHtml/VariationPropertyHtml.vue';
 import VariationPropertyDate from '~/components/VariationPropertyDate/VariationPropertyDate.vue';
 import VariationPropertyFile from '../VariationPropertyFile/VariationPropertyFile.vue';
+import VariationPropertySelection from '~/components/VariationPropertySelection/VariationPropertySelection.vue';
+
+// Interne Eigenschaftsgruppen (Marktplatz-Texte, Keywords, Badge-Steuerung), nie für Kunden anzeigen.
+// 27 Bullet Points, 6 Amazon Titel + Feld 3 (u. a. Limango-Titel), 3 Keywords, 30 Webshop Aktionen
+const HIDDEN_PROPERTY_GROUP_IDS = new Set([27, 6, 3, 30]);
 
 const props = defineProps<VariationPropertiesProps>();
 const propertyHasNameOrValue = (variationProperty: VariationProperty) => {
@@ -37,7 +42,11 @@ const propertyHasNameOrValue = (variationProperty: VariationProperty) => {
 const { getNumberSetting } = useSiteSettings('itemCanonicalId');
 const itemCanonicalId = computed(() => getNumberSetting(-1));
 
-const variationPropertyGroups = computed(() => productGetters.getPropertyGroups(props.product ?? ({} as Product)));
+const variationPropertyGroups = computed(() =>
+  productGetters
+    .getPropertyGroups(props.product ?? ({} as Product))
+    .filter((group) => !HIDDEN_PROPERTY_GROUP_IDS.has(Number(group.id))),
+);
 
 const showProperty = (property: VariationProperty) => {
   return propertyHasNameOrValue(property) && property.id !== itemCanonicalId.value;
@@ -51,5 +60,7 @@ const componentsMapper: ComponentsMapper = {
   string: VariationPropertyText,
   html: VariationPropertyHtml,
   date: VariationPropertyDate,
+  selection: VariationPropertySelection,
+  multiSelection: VariationPropertySelection,
 };
 </script>

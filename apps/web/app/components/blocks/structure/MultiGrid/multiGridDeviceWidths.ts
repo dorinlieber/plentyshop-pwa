@@ -23,7 +23,8 @@ export const useMultiGridDeviceWidths = (config: MaybeRef<MultiGridColumnConfig>
 
   const widths = computed(() => widthsForDevice(toValue(config), effectiveDevice.value));
 
-  const mobileFullWidthColumn = computed(() => viewport.isLessThan('md'));
+  // Eigene Handy-Aufteilung (columnWidthsMobile) respektieren, sonst wie bisher volle Breite
+  const mobileFullWidthColumn = computed(() => viewport.isLessThan('md') && !toValue(config).columnWidthsMobile);
 
   const setWidths = (newWidths: number[]) => {
     const cfg = toValue(config);
