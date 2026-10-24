@@ -5,7 +5,7 @@
   Passt zum plentyShop PWA (Nuxt 4 + Vue 3 + Tailwind/Storefront UI, @plentymarkets/shop-api).
 
   Regel Dorins Kindermode: versandkostenfrei nur Deutschland; Grenze aktuell 60 €,
-  im Test ab Mo 14.09. = 29,99 €. Basis = Warenwert (Item-Zwischensumme, brutto).
+  im Test ab Mo 14.09. = 29,99 €. Basis = Warenwert (itemSum, brutto).
 
   Verwendung (z. B. auf der Warenkorb-Seite oder im Warenkorb-Drawer):
     <FreeShippingBar :threshold="60" />        // aktuell
@@ -58,8 +58,8 @@ const { t } = useI18n();
 const { data: cart, cartIsEmpty } = useCart();
 const { format } = usePriceFormatter();
 
-/** Warenwert (Item-Zwischensumme, brutto) — das ist die Basis für die Versandfrei-Grenze. */
-const goodsValue = computed(() => cartGetters.getTotals(cart.value)?.subTotal ?? 0);
+/** Warenwert (itemSum, brutto) — das ist die Basis für die Versandfrei-Grenze. */
+const goodsValue = computed(() => cartGetters.getTotals(cart.value).subtotal);
 
 const remaining = computed(() => Math.max(props.threshold - goodsValue.value, 0));
 const qualifies = computed(() => goodsValue.value >= props.threshold);
