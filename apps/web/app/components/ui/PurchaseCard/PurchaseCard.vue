@@ -22,6 +22,10 @@
               <h1 class="font-bold typography-headline-4 break-word" data-testid="product-name">
                 {{ productGetters.getName(product) }}
               </h1>
+              <p class="mb-2 typography-text-sm text-neutral-600" data-testid="product-number-brand">
+                <span>{{ t('dorins.itemNumber') }}: {{ productGetters.getItemId(product) }}</span>
+                <span v-if="brandName"> · {{ t('dorins.brand') }}: {{ brandName }}</span>
+              </p>
             </template>
             <template v-if="key === 'variationNumber' && configuration?.fields.variationNumber">
               <p
@@ -121,6 +125,13 @@
 
             <template v-if="key === 'attributes' && configuration?.fields.attributes">
               <ProductAttributes :product="product" />
+              <NuxtLink
+                :to="localePath('/informationen/groesseninformation')"
+                class="inline-block mt-1 mb-2 typography-text-sm underline"
+                data-testid="size-chart-link"
+              >
+                {{ t('dorins.sizeChart') }}
+              </NuxtLink>
             </template>
 
             <template v-if="key === 'itemBundle'">
@@ -333,6 +344,12 @@ const { reviewArea } = useProductReviews(Number(productGetters.getId(props?.prod
 const { getBooleanSetting: getNotifyMeSetting } = useSiteSettings('showNotifyMe');
 const showNotifyMe = computed(() => getNotifyMeSetting());
 const localePath = useLocalePath();
+
+// Marke wie im LTS unter dem Artikelnamen (Herstellername für Kunden, sonst interner Name)
+const brandName = computed(() => {
+  const manufacturer = productGetters.getManufacturer(props.product) as { externalName?: string; name?: string } | undefined;
+  return manufacturer?.externalName || manufacturer?.name || '';
+});
 const router = useRouter();
 const { resolvePathTrailingSlash } = useUrlTrailingSlash();
 

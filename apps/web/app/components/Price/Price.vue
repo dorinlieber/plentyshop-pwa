@@ -1,7 +1,7 @@
 <template>
   <div class="text-sm py-1">
     <span
-      class="mr-2 text-secondary-500 font-bold"
+      class="mr-2 text-primary-500 font-bold"
       :class="props.size === 'sm' ? 'typography-text-sm @sm:typography-text-lg' : 'text-2xl'"
       :data-testid="props.testId"
     >

@@ -1408,5 +1408,10 @@
   "freeShipping": {
     "remaining": "Nur noch {amount} bis zum kostenlosen Versand",
     "qualified": "Juhu! Du erhältst kostenlosen Versand 🎉"
+  },
+  "dorins": {
+    "itemNumber": "Artikelnummer",
+    "brand": "Marke",
+    "sizeChart": "Größentabelle"
   }
 }

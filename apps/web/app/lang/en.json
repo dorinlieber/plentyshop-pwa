@@ -1408,5 +1408,10 @@
   "freeShipping": {
     "remaining": "Only {amount} left for free shipping",
     "qualified": "You qualify for free shipping 🎉"
+  },
+  "dorins": {
+    "itemNumber": "Item number",
+    "brand": "Brand",
+    "sizeChart": "Size chart"
   }
 }
