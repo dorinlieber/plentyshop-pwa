@@ -17,6 +17,7 @@
         :class="{ 'pointer-events-none opacity-50': loading }"
       >
         <SfLoaderCircular v-if="loading" class="absolute top-[130px] right-0 left-0 m-auto z-loader" size="2xl" />
+        <FreeShippingBar class="mb-4" />
         <OrderSummary :cart="cart">
           <Coupon v-if="viewport.isGreaterOrEquals('lg')" class="mb-5" />
           <UiButton
@@ -62,9 +63,9 @@ definePageMeta({ pageType: 'static' });
 const NuxtLink = resolveComponent('NuxtLink');
 const viewport = useViewport();
 const localePath = useLocalizedPath();
-const { isAuthorized } = useCustomer();
 const { data: cart, cartIsEmpty, loading } = useCart();
-const goToCheckout = () => (isAuthorized.value ? localePath(paths.checkout) : localePath(paths.guestLogin));
+// Direkt in den einseitigen Checkout, ohne Gast/Login-Zwischenseite (E-Mail + Login stehen dort inline)
+const goToCheckout = () => localePath(paths.checkout);
 
 const icon = 'page';
 setPageMeta(t('common.labels.cart'), icon);

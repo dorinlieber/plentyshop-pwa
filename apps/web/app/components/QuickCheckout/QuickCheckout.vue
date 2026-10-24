@@ -90,6 +90,8 @@
           </div>
         </div>
 
+        <FreeShippingBar class="mb-4" />
+
         <UiButton
           data-testid="quick-checkout-cart-button"
           size="lg"
@@ -139,7 +141,6 @@ const { isAvailable: isPaypalAvailable, loadConfig } = usePayPal();
 const { addModernImageExtension } = useModernImage();
 const { isOpen, timer, startTimer, endTimer, closeQuickCheckout, hasTimer, quantity } = useQuickCheckout();
 const cartItemsCount = computed(() => cart.value?.items?.reduce((price, { quantity }) => price + quantity, 0) ?? 0);
-const { isAuthorized } = useCustomer();
 
 onMounted(() => {
   startTimer();
@@ -163,7 +164,8 @@ const imageAlt = computed(() => {
   return image ? productImageGetters.getImageAlternate(image) : '';
 });
 
-const goToCheckout = () => (isAuthorized.value ? goToPage(paths.checkout) : goToPage(paths.guestLogin));
+// Direkt in den einseitigen Checkout, ohne Gast/Login-Zwischenseite (E-Mail + Login stehen dort inline)
+const goToCheckout = () => goToPage(paths.checkout);
 
 const goToPage = (path: string) => {
   closeQuickCheckout();
