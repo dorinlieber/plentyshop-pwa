@@ -147,6 +147,16 @@
               {{ t('dorins.rrp') }}: <span class="line-through">{{ format(crossedPrice) }}</span>
             </span>
           </div>
+          <!-- Dorins: Lieferzeit unter dem Preis wie im bisherigen Shop -->
+          <p
+            v-if="availabilityName"
+            class="flex items-center gap-1 typography-text-xs"
+            :style="{ color: '#5cb85c' }"
+            data-testid="product-card-availability"
+          >
+            <SfIconLocalShipping size="xs" />
+            {{ availabilityName }}
+          </p>
         </template>
         <template v-if="key === 'addToCart' && configuration?.fields?.addToCart">
           <UiButton
@@ -183,7 +193,7 @@
 
 <script setup lang="ts">
 import { productGetters, productImageGetters } from '@plentymarkets/shop-api';
-import { SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
+import { SfIconLocalShipping, SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
 import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import type { ItemGridContent } from '~/components/blocks/ItemGrid/types';
 import type { BasketItemOrderParamsProperty, Product, DoAddItemParams } from '@plentymarkets/shop-api';
@@ -218,6 +228,7 @@ const props = withDefaults(defineProps<ProductCardProps>(), {
 });
 
 const product = computed(() => props.product);
+const availabilityName = computed(() => productGetters.getAvailabilityName(product.value));
 
 const configuration = computed(() => props.configuration || ({} as ItemGridContent));
 

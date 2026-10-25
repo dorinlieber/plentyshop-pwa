@@ -1419,6 +1419,7 @@
     "rrp": "RRP",
     "account": "My account",
     "wishlist": "Wishlist",
-    "cart": "Cart"
+    "cart": "Cart",
+    "itemCount": "{n} item | {n} items"
   }
 }

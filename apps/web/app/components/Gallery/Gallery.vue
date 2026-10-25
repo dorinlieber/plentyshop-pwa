@@ -29,7 +29,7 @@
     </div>
 
     <div
-      v-show="configuration.thumbnails.showThumbnails"
+      v-show="configuration.thumbnails.showThumbnails && !showImageGrid"
       :class="['@md:relative', thumbContainerClass, isSide ? '@md:self-stretch' : '@md:w-full']"
     >
       <div class="hidden @md:block @md:relative @md:h-full @md:overflow-hidden">
@@ -99,6 +99,28 @@
         />
       </div>
     </div>
+
+    <!-- Dorins: Vorschaubilder „unten“ zeigt der Rechner als Raster unter dem Hauptbild (wie im bisherigen Shop) -->
+    <div
+      v-if="showImageGrid"
+      class="grid grid-cols-2 gap-2 mt-2"
+      data-testid="gallery-grid"
+    >
+      <button
+        v-for="(image, index) in images.slice(1)"
+        :key="`grid-${index}`"
+        type="button"
+        class="block bg-white"
+        @click="showImage(index + 1)"
+      >
+        <NuxtImg
+          :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
+          :src="productImageGetters.getImageUrl(image)"
+          class="w-full aspect-square object-contain"
+          loading="lazy"
+        />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -140,6 +162,9 @@ const galleryDirClass = computed(() => (isSide.value ? 'flex-col md:flex-row' : 
 const galleryGapClass = computed(() => (isSide.value ? '@md:gap-4' : '@md:gap-2'));
 const thumbContainerClass = computed(() => [isLeft.value ? '@md:order-first' : '@md:order-last']);
 const hasMoreImages = computed(() => images.value.length > 1);
+const showImageGrid = computed(
+  () => configuration.value.thumbnails.showThumbnails && type.value === 'bottom' && showNav.value && hasMoreImages.value,
+);
 
 const thumbsDirection = computed(() => (isSide.value ? 'vertical' : 'horizontal'));
 const thumbsSlidesPerView = computed(() => (isSide.value ? 'auto' : Math.min(images.value.length, 6)));
@@ -200,6 +225,11 @@ const slideTo = (index: number) => {
   activeIndex.value = index;
   if (mainSwiper.value?.params.loop) mainSwiper.value.slideToLoop(index);
   else mainSwiper.value?.slideTo(index);
+};
+
+const showImage = (index: number) => {
+  slideTo(index);
+  mainBox.value?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 };
 
 const atStart = computed(() => activeIndex.value === 0);

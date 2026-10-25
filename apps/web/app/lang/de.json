@@ -1419,6 +1419,7 @@
     "rrp": "UVP",
     "account": "Mein Konto",
     "wishlist": "Merkliste",
-    "cart": "Warenkorb"
+    "cart": "Warenkorb",
+    "itemCount": "{n} Artikel | {n} Artikel"
   }
 }

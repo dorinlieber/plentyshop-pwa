@@ -620,3 +620,11 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
   font-size: 1.125rem;
   font-weight: 700;
 }
+
+/* Bildraster unter dem Hauptbild (Fork-Galerie ohne Vorschauleiste): Höhenbegrenzung der Galerie aufheben */
+section:has(> [data-testid='gallery'] [data-testid='gallery-grid']) {
+  max-height: none !important;
+}
+[data-testid='gallery-grid'] button {
+  background: #fff;
+}

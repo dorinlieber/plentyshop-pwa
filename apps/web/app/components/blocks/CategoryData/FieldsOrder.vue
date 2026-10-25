@@ -8,6 +8,8 @@
         data-testid="category-name"
       >
         {{ texts.name }}
+        <!-- Dorins: Artikelanzahl im Titel wie im bisherigen Shop („Jeans | 130 Artikel“) -->
+        <span v-if="totalProducts" class="dorins-category-count">| {{ t('dorins.itemCount', totalProducts) }}</span>
       </h1>
 
       <div
@@ -46,6 +48,10 @@ const props = defineProps<{
   fieldsOrder: CategoryDataFieldKey[];
   texts: CategoryData;
 }>();
+
+const { t } = useI18n();
+const { data: productsCatalog } = useProducts();
+const totalProducts = computed(() => productsCatalog.value.pagination?.totals ?? 0);
 
 const renderOrder = computed<CategoryDataFieldKey[]>(() =>
   props.fieldsOrder?.length
