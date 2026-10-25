@@ -1412,6 +1412,7 @@
   "dorins": {
     "itemNumber": "Artikelnummer",
     "brand": "Marke",
-    "sizeChart": "Größentabelle"
+    "sizeChart": "Größentabelle",
+    "rrp": "UVP"
   }
 }

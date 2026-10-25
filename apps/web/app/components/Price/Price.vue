@@ -1,7 +1,9 @@
 <template>
   <div class="text-sm py-1">
     <span
-      class="mr-2 text-primary-500 font-bold"
+      class="mr-2 font-bold"
+      :class="isReduced ? '' : 'text-primary-500'"
+      :style="isReduced ? { color: '#ff6060' } : undefined"
       :class="props.size === 'sm' ? 'typography-text-sm @sm:typography-text-lg' : 'text-2xl'"
       :data-testid="props.testId"
     >
@@ -10,9 +12,9 @@
     </span>
     <span
       v-if="props.crossedPrice && differentPrices && props.crossedPrice > props.price"
-      class="text-base font-normal text-neutral-500 line-through"
+      class="text-base font-normal text-neutral-500"
     >
-      {{ format(props.crossedPrice) }}
+      {{ t('dorins.rrp') }}: <span class="line-through">{{ format(props.crossedPrice) }}</span>
     </span>
   </div>
 </template>
@@ -27,6 +29,8 @@ const props = withDefaults(defineProps<PriceProps>(), {
 });
 
 const { format } = usePriceFormatter();
+
+const isReduced = computed(() => !!props.crossedPrice && props.crossedPrice > props.price);
 
 const differentPrices = computed(() => {
   return props.crossedPrice

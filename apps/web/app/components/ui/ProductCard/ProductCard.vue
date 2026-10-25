@@ -131,16 +131,20 @@
             <BasePriceInLine :base-price="basePrice" :unit-content="unitContent" :unit-name="unitName" />
           </div>
           <div class="flex flex-col-reverse items-start @md:flex-row @md:items-center mt-auto">
-            <span class="block pb-2 font-bold typography-text-sm" data-testid="product-card-vertical-price">
+            <span
+              class="block pb-2 font-bold typography-text-sm"
+              :style="isReduced ? { color: '#ff6060' } : undefined"
+              data-testid="product-card-vertical-price"
+            >
               <span v-if="showFromText" class="mr-1">{{ t('account.ordersAndReturns.orderDetails.priceFrom') }}</span>
               <span>{{ format(price) }}</span>
               <span>{{ t('common.labels.asterisk') }}</span>
             </span>
             <span
               v-if="crossedPrice && differentPrices(price, crossedPrice) && crossedPrice > price"
-              class="typography-text-sm text-neutral-500 line-through @md:ml-3 @md:pb-2"
+              class="typography-text-sm text-neutral-500 @md:ml-3 @md:pb-2"
             >
-              {{ format(crossedPrice) }}
+              {{ t('dorins.rrp') }}: <span class="line-through">{{ format(crossedPrice) }}</span>
             </span>
           </div>
         </template>
@@ -408,6 +412,9 @@ const addWithLoader = async (productId: number, quickCheckout = true) => {
     loading.value = false;
   }
 };
+// Reduziert = durchgestrichener Preis (UVP) liegt über dem Verkaufspreis, dann Preis rot wie im bisherigen Shop
+const isReduced = computed(() => !!crossedPrice.value && crossedPrice.value > price.value);
+
 const differentPrices = (price: number, crossedPrice: number) => {
   return crossedPrice ? Math.round(price * 100) / 100 !== Math.round(crossedPrice * 100) / 100 : false;
 };

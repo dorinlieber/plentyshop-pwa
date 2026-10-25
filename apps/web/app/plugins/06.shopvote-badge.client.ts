@@ -13,6 +13,20 @@ declare global {
   }
 }
 
+// Am Handy über die untere Navigationsleiste (62 px) heben, sonst verdeckt das Siegel sie.
+// Shopvote setzt den Abstand inline mit !important, deshalb per Skript statt per CSS.
+const liftAboveMobileNavigation = (attempt = 0) => {
+  const badge = document.getElementById('sv-rbadge-box');
+  if (!badge) {
+    if (attempt < 20) setTimeout(() => liftAboveMobileNavigation(attempt + 1), 250);
+    return;
+  }
+  const mobile = window.matchMedia('(max-width: 767px)');
+  const apply = () => badge.style.setProperty('bottom', mobile.matches ? '70px' : '5px', 'important');
+  apply();
+  mobile.addEventListener('change', apply);
+};
+
 export default defineNuxtPlugin({
   name: 'shopvote-badge',
   parallel: true,
@@ -23,7 +37,10 @@ export default defineNuxtPlugin({
       const script = document.createElement('script');
       script.src = SHOPVOTE_SCRIPT;
       script.defer = true;
-      script.onload = () => window.createRBadge?.(SHOPVOTE_SHOP_ID, SHOPVOTE_BADGE_TYPE, 'https');
+      script.onload = () => {
+        window.createRBadge?.(SHOPVOTE_SHOP_ID, SHOPVOTE_BADGE_TYPE, 'https');
+        liftAboveMobileNavigation();
+      };
       document.body.appendChild(script);
     });
   },

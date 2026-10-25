@@ -1412,6 +1412,7 @@
   "dorins": {
     "itemNumber": "Item number",
     "brand": "Brand",
-    "sizeChart": "Size chart"
+    "sizeChart": "Size chart",
+    "rrp": "RRP"
   }
 }
