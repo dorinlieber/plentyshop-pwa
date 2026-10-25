@@ -278,6 +278,18 @@ if (!addAddress && address) {
   }
 }
 
+// Dorins: neue Lieferadresse startet mit Deutschland wie im bisherigen Shop (Versand fast nur nach DE)
+const GERMANY_COUNTRY_ID = 1;
+watch(
+  shippingCountries,
+  (countries) => {
+    if (!country.value && countries?.some((option) => option.id === GERMANY_COUNTRY_ID)) {
+      country.value = String(GERMANY_COUNTRY_ID);
+    }
+  },
+  { immediate: true },
+);
+
 const setDefaultFormValues = () => {
   defaultFormValues.value = {
     firstName: firstName.value,

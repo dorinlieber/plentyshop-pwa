@@ -154,13 +154,13 @@
       "status": "Status"
     },
     "wishlist": {
-      "heading": "Wunschliste",
+      "heading": "Merkliste",
       "section": {
-        "myWishlist": "Meine Wunschliste"
+        "myWishlist": "Meine Merkliste"
       },
       "notifications": {
-        "add": "Der Artikel wurde der Wunschliste hinzugefügt.",
-        "delete": "Der Artikel wurde von der Wunschliste entfernt."
+        "add": "Der Artikel wurde der Merkliste hinzugefügt.",
+        "delete": "Der Artikel wurde von der Merkliste entfernt."
       }
     }
   },
@@ -183,9 +183,9 @@
     "login": {
       "createAccount": "Sie haben noch kein Konto?",
       "createAccountLater": "Keine Sorge. Sie können nach Ihrer Bestellung ein Konto erstellen",
-      "createAccountLinkLabel": "Jetzt anmelden!",
+      "createAccountLinkLabel": "Jetzt registrieren",
       "forgotPasswordLabel": "Passwort vergessen?",
-      "heading": "In ihr Konto einloggen",
+      "heading": "Anmelden",
       "headingSuccess": "Passwort erfolgreich zurücksetzen",
       "loginAndContinue": "Einloggen und fortfahren",
       "openLoginForm": "Login Form öffnen",
@@ -262,13 +262,13 @@
     "empty": "Ihr Warenkorb ist leer",
     "emptyImageAlt": "Bild eines leeren Warenkorbs",
     "emptyNotification": "Sie haben keine Artikel in Ihrem Warenkorb",
-    "emptyWishlist": "Ihre Wunschliste ist leer",
+    "emptyWishlist": "Ihre Merkliste ist leer",
     "itemAdded": "Artikel zum Warenkorb hinzugefügt",
     "itemCount": "(Artikel: {count})",
     "itemRemoved": "Artikel aus dem Warenkorb entfernt",
     "myCart": "Mein Warenkorb",
     "numberInCart": "{count} Artikel im Warenkorb",
-    "numberInWishlist": "{count} Artikel in der Wunschliste"
+    "numberInWishlist": "{count} Artikel in der Merkliste"
   },
   "category": {
     "sorting": {
@@ -353,9 +353,9 @@
   "common": {
     "actions": {
       "add": "Hinzufügen",
-      "addProductToWishlist": "{label} zur Wunschliste hinzufügen",
+      "addProductToWishlist": "{label} zur Merkliste hinzufügen",
       "addToCart": "In den Warenkorb",
-      "addToWishlist": "Zur Wunschliste hinzufügen",
+      "addToWishlist": "Zur Merkliste hinzufügen",
       "apply": "Anwenden",
       "back": "Zurück",
       "browseProducts": "Produkte durchstöbern",
@@ -375,9 +375,9 @@
       "readLess": "Weniger lesen",
       "readMore": "Mehr lesen",
       "reloadPage": "Neu laden",
-      "removeFromWishlist": "Von Wunschliste entfernen",
+      "removeFromWishlist": "Von Merkliste entfernen",
       "removeItemFromBasket": "Artikel aus dem Warenkorb entfernen",
-      "removeProductFromWishlist": "{label} von der Wunschliste entfernen",
+      "removeProductFromWishlist": "{label} von der Merkliste entfernen",
       "resetSearch": "Suche zurücksetzen",
       "saveAddress": "Adresse speichern",
       "save": "Speichern",
@@ -425,7 +425,7 @@
       "technicalData": "Technische Daten",
       "tomorrow": "Morgen",
       "total": "Gesamt",
-      "wishlist": "Wunschliste"
+      "wishlist": "Merkliste"
     },
     "messages": {
       "offline": "Es scheint, dass Sie derzeit offline sind, überprüfen Sie Ihre Internetverbindung"

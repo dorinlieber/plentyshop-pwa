@@ -820,3 +820,18 @@ body:has([data-testid='category-name']) [data-testid='item-count'] {
 [data-testid='purchase-card']:has([data-testid='dorins-item-actions']) div:has(> [data-testid='wishlist-trigger']) {
   display: none;
 }
+
+/* Seitenüberschriften (Warenkorb, Merkliste, Kasse) dünn wie im LTS */
+[data-testid='page-heading'] {
+  font-weight: 300;
+}
+/* Fuß auf Tablet-Breite: drei Spalten statt fünf gequetschter */
+@media (min-width: 768px) and (max-width: 1023px) {
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    row-gap: 2rem !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) > [data-testid='multi-grid-column'] {
+    grid-column: auto !important;
+  }
+}

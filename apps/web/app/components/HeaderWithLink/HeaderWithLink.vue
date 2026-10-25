@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between mt-8 mb-10 px-4 @md:px-0">
-    <h1 class="font-bold typography-headline-3 @md:typography-headline-2">{{ heading }}</h1>
+    <h1 class="font-bold typography-headline-3 @md:typography-headline-2" data-testid="page-heading">{{ heading }}</h1>
     <UiButton class="flex @md:hidden whitespace-nowrap" size="sm" variant="tertiary" @click="goToPath">
       <template #prefix>
         <SfIconArrowBack />
