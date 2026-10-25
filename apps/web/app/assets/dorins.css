@@ -1337,7 +1337,7 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
     border-radius: 25px;
   }
   /* Brotkrumen gibt es am Handy im LTS nicht, dafür die Kategorie-Leiste */
-  [data-testid='breadcrumbs'] {
+  body:has([data-testid='dorins-category-pills']) [data-testid='breadcrumbs'] {
     display: none;
   }
 }
