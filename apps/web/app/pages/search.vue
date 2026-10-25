@@ -54,6 +54,10 @@ const { getFacetsFromURL } = useCategoryFilter();
 
 const searchInfo = computed(() => (productsCatalog.value as DorinsSearchResult | undefined)?.searchInfo);
 
+// Eigener Seitentitel wie im bisherigen Shop („Suchergebnisse für …“); robots kommt aus den Editor-Einstellungen
+const { t } = useI18n();
+useHead(() => ({ title: t('search.searchResults', { phrase: route.query.term }) }));
+
 const handleQueryUpdate = async () => {
   const params = { ...getFacetsFromURL(), autoSize: route.query.allSizes !== '1' };
   await getSearch(params);
