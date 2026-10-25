@@ -1,4 +1,5 @@
 import type { ApiError, ItemSearchParams, ItemSearchResult } from '@plentymarkets/shop-api';
+import type { DorinsSearchSdk } from './types';
 /**
  * @description Composable for managing products search.
  * @returns UseSearchReturn
@@ -31,7 +32,11 @@ export const useSearch: UseSearchReturn = () => {
       if (!params.type) {
         params.type = 'search';
       }
-      const { data } = await useSdk().plentysystems.getSearch(params);
+      // Dorins search (middleware extension): typo correction + sizes from the query as size filter
+      const { data } =
+        params.type === 'search' && params.term
+          ? await (useSdk().plentysystems as unknown as DorinsSearchSdk).getSearchDorins(params)
+          : await useSdk().plentysystems.getSearch(params);
       state.value.productsPerPage = params.itemsPerPage || defaults.DEFAULT_ITEMS_PER_PAGE;
       if (data) data.pagination.perPageOptions = defaults.PER_PAGE_STEPS;
       state.value.data = data ?? state.value.data;

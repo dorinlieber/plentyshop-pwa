@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import * as path from 'path';
+import { dorinsSearchExtension } from './extensions/dorinsSearch';
 dotenv.config({
   path: path.resolve(__dirname, '../web/.env'),
 });
@@ -11,6 +12,7 @@ const config = {
   integrations: {
     plentysystems: {
       location: '@plentymarkets/shop-api/server',
+      extensions: (extensions: any[]) => [...extensions, dorinsSearchExtension],
       configuration: {
         api: {
           url: process.env.API_ENDPOINT,

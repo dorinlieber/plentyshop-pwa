@@ -1156,7 +1156,10 @@
     "emptyStateText": "We no longer have items in this category.",
     "emptyStateText2": "Have not found what you are looking for?",
     "numberOfProducts": "{count} items out of {total} items",
-    "searchResults": "Search results for \"{phrase}\""
+    "searchResults": "Search results for \"{phrase}\"",
+    "correctedTerm": "No results for \"{original}\". Showing results for \"{term}\".",
+    "sizeFilter": "Only items in size {sizes}.",
+    "allSizes": "Show all sizes"
   },
   "searchBar": {
     "searchSuggestions": "Search Suggestions",
