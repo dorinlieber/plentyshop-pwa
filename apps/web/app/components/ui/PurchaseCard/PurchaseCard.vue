@@ -22,10 +22,21 @@
               <h1 class="font-bold typography-headline-4 break-word" data-testid="product-name">
                 {{ productGetters.getName(product) }}
               </h1>
-              <p class="mb-2 typography-text-sm text-neutral-600" data-testid="product-number-brand">
-                <span>{{ t('dorins.itemNumber') }}: {{ productGetters.getItemId(product) }}</span>
-                <span v-if="brandName"> · {{ t('dorins.brand') }}: {{ brandName }}</span>
-              </p>
+              <div class="mb-2 flex items-start justify-between gap-4">
+                <p class="typography-text-sm text-neutral-600" data-testid="product-number-brand">
+                  <span>{{ t('dorins.itemNumber') }}: {{ productGetters.getItemId(product) }}</span>
+                  <span v-if="brandName"> · {{ t('dorins.brand') }}: {{ brandName }}</span>
+                </p>
+                <!-- Dorins: Markenlogo rechts daneben wie im bisherigen Shop (Logo aus den Herstellerdaten in plenty) -->
+                <img
+                  v-if="brandLogoUrl"
+                  :src="brandLogoUrl"
+                  :alt="`${brandName} Logo`"
+                  class="dorins-brand-logo"
+                  loading="lazy"
+                  data-testid="product-brand-logo"
+                />
+              </div>
             </template>
             <template v-if="key === 'variationNumber' && configuration?.fields.variationNumber">
               <p
@@ -56,9 +67,7 @@
                 :unit-name="productGetters.getUnitName(product)"
               />
             </template>
-            <template v-if="key === 'tags' && configuration?.fields.tags">
-              <UiBadges :product="product" :use-availability="false" :use-tags="true" class="mb-2" />
-            </template>
+            <!-- Dorins: Abzeichen (slim, Rabatt) stehen wie im bisherigen Shop auf dem Hauptbild (ImageGallery), nicht hier -->
             <template v-if="key === 'availability' && configuration?.fields.availability">
               <UiBadges :product="product" :use-availability="true" :use-tags="false" class="mb-2" />
             </template>
@@ -209,6 +218,16 @@
                     </template>
                   </i18n-t>
                 </div>
+                <!-- Dorins: Merken, Frage per Mail, Telefon wie im bisherigen Shop -->
+                <div class="dorins-item-actions" data-testid="dorins-item-actions">
+                  <button type="button" :disabled="wishlistLoading" @click="toggleWishlist">
+                    <SfIconFavoriteFilled v-if="isWishlistItem(productGetters.getVariationId(product))" size="sm" />
+                    <SfIconFavorite v-else size="sm" />
+                    {{ t('dorins.rememberItem') }}
+                  </button>
+                  <a :href="questionMailto"><SfIconEmail size="sm" />{{ t('dorins.askQuestion') }}</a>
+                  <a :href="SHOP_PHONE_HREF"><SfIconCall size="sm" />{{ SHOP_PHONE }}</a>
+                </div>
                 <template v-if="showPayPalButtons">
                   <PayPalExpressButton
                     class="mt-4"
@@ -250,7 +269,17 @@
 
 <script lang="ts" setup>
 import { productGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
-import { SfCounter, SfRating, SfIconShoppingCart, SfLoaderCircular, SfTooltip } from '@storefront-ui/vue';
+import {
+  SfCounter,
+  SfRating,
+  SfIconCall,
+  SfIconEmail,
+  SfIconFavorite,
+  SfIconFavoriteFilled,
+  SfIconShoppingCart,
+  SfLoaderCircular,
+  SfTooltip,
+} from '@storefront-ui/vue';
 import type { PriceCardPadding, PriceCardTextBlockItem, PurchaseCardProps } from '~/components/ui/PurchaseCard/types';
 import type { PayPalAddToCartCallback } from '#paypal/types';
 const isTextBlock = (item: unknown): item is PriceCardTextBlockItem =>
@@ -337,7 +366,7 @@ const {
 const { clear, send } = useNotification();
 const { addToCart, loading } = useCart();
 const quantitySelectorValue = ref(productGetters.getMinimumOrderQuantity(props?.product));
-const { isWishlistItem } = useWishlist();
+const { isWishlistItem, interactWithWishlist, loading: wishlistLoading } = useWishlist();
 const { openQuickCheckout } = useQuickCheckout();
 const { crossedPrice } = useProductPrice(props?.product);
 const { reviewArea } = useProductReviews(Number(productGetters.getId(props?.product)));
@@ -350,6 +379,25 @@ const brandName = computed(() => {
   const manufacturer = productGetters.getManufacturer(props.product) as { externalName?: string; name?: string } | undefined;
   return manufacturer?.externalName || manufacturer?.name || '';
 });
+const runtimeConfig = useRuntimeConfig();
+const brandLogoUrl = computed(() => {
+  const manufacturer = productGetters.getManufacturer(props.product) as { logo?: string } | undefined;
+  const logo = manufacturer?.logo?.trim();
+  if (!logo) return '';
+  if (/^https?:\/\//.test(logo)) return encodeURI(logo);
+  return encodeURI(`${runtimeConfig.public.domain}${logo.startsWith('/') ? '' : '/'}${logo}`);
+});
+
+const SHOP_PHONE = '0351 28708090';
+const SHOP_PHONE_HREF = 'tel:+4935128708090';
+const SHOP_EMAIL = 'kontakt@dorins-kindermode.de';
+const questionMailto = computed(() => {
+  const subject = `${t('dorins.askQuestion')}: ${productGetters.getName(props.product)} (${productGetters.getItemId(props.product)})`;
+  return `mailto:${SHOP_EMAIL}?subject=${encodeURIComponent(subject)}`;
+});
+const toggleWishlist = () =>
+  interactWithWishlist(productGetters.getVariationId(props.product), quantitySelectorValue.value);
+
 const router = useRouter();
 const { resolvePathTrailingSlash } = useUrlTrailingSlash();
 

@@ -791,3 +791,32 @@ body:has([data-testid='category-name']) [data-testid='item-count'] {
 [data-testid='category-data']:has(.dorins-subcategories--gross) [data-testid='category-name'] {
   display: none;
 }
+
+/* Artikelseite: Markenlogo, Zeile Merken/Fragen/Telefon */
+.dorins-brand-logo {
+  max-width: 120px;
+  max-height: 40px;
+  object-fit: contain;
+}
+.dorins-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+}
+.dorins-item-actions > * {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #000;
+  text-decoration: none;
+}
+.dorins-item-actions > *:hover {
+  text-decoration: underline;
+}
+/* „Zur Wunschliste hinzufügen“ entfällt, die Zeile darunter hat „Artikel merken“ */
+[data-testid='purchase-card']:has([data-testid='dorins-item-actions']) div:has(> [data-testid='wishlist-trigger']) {
+  display: none;
+}

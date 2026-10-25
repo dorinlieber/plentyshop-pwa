@@ -1420,6 +1420,8 @@
     "account": "My account",
     "wishlist": "Wishlist",
     "cart": "Cart",
-    "itemCount": "{n} item | {n} items"
+    "itemCount": "{n} item | {n} items",
+    "rememberItem": "Save item",
+    "askQuestion": "Question about this item"
   }
 }

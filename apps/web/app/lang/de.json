@@ -1420,6 +1420,8 @@
     "account": "Mein Konto",
     "wishlist": "Merkliste",
     "cart": "Warenkorb",
-    "itemCount": "{n} Artikel | {n} Artikel"
+    "itemCount": "{n} Artikel | {n} Artikel",
+    "rememberItem": "Artikel merken",
+    "askQuestion": "Fragen zum Artikel"
   }
 }
