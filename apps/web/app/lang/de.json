@@ -1432,6 +1432,7 @@
     "manufacturer": "Hersteller",
     "titleWithBrand": "{title} von {brand}",
     "saleBadge": "% Sparangebot",
-    "upToDiscount": "bis zu -{percent}%"
+    "upToDiscount": "bis zu -{percent}%",
+    "categories": "Kategorien"
   }
 }

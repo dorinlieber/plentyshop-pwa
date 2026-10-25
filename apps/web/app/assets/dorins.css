@@ -236,21 +236,21 @@ body,
     grid-area: 1 / 1;
   }
   [data-testid='header-container'] > div:has([data-testid='category-button']) {
-    z-index: 1;
+    z-index: 30;
     pointer-events: none;
   }
   /* nur die Kette bis zur Menüliste auf volle Zeilenhöhe, nicht das aufklappende Mega-Menü */
   [data-testid='header-container'] > div:has([data-testid='category-button']) *:not(li, li *) {
     height: 100%;
   }
-  [data-testid='header-container'] > div:has([data-testid='category-button']) ul {
+  [data-testid='header-container'] > div:has([data-testid='category-button']) nav > ul {
     justify-content: flex-start;
     align-items: center;
     border: 0;
     background: transparent !important;
     padding-left: 230px !important;
   }
-  [data-testid='header-container'] > div:has([data-testid='category-button']) ul > li {
+  [data-testid='header-container'] > div:has([data-testid='category-button']) nav > ul > li {
     pointer-events: auto;
     height: auto;
   }
@@ -289,7 +289,7 @@ body,
     font-size: 17px;
     padding: 0.25rem 0.4rem;
   }
-  [data-testid='header-container'] > div:has([data-testid='category-button']) ul {
+  [data-testid='header-container'] > div:has([data-testid='category-button']) nav > ul {
     padding-left: 205px !important;
   }
   [data-testid='navbar-top-desktop'] > div:nth-child(2) {
@@ -1424,4 +1424,91 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   body:has(.dorins-mobile-title) [data-testid='purchase-card'] [data-testid='product-name'] {
     display: none;
   }
+}
+
+/* Mega-Menü am Rechner kompakt wie im LTS: viele schmale Spalten, fette Überschriften, kleine Einträge */
+@media (min-width: 1024px) {
+  nav ul > li > div[class*='shadow-lg'] {
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)) !important;
+    gap: 1.5rem 1.25rem !important;
+    padding: 20px 24px !important;
+    border-radius: 0 0 6px 6px;
+  }
+  nav ul > li > div[class*='shadow-lg'] a {
+    padding: 2px 0 !important;
+    min-height: 0 !important;
+    font-size: 0.75rem !important;
+    line-height: 1.35 !important;
+    font-weight: 400 !important;
+    background: transparent !important;
+  }
+  nav ul > li > div[class*='shadow-lg'] a:hover {
+    text-decoration: underline;
+  }
+  nav ul > li > div[class*='shadow-lg'] > div > a,
+  nav ul > li > div[class*='shadow-lg'] > ul > li > a {
+    font-size: 0.8125rem !important;
+    font-weight: 700 !important;
+  }
+  nav ul > li > div[class*='shadow-lg'] > div > ul {
+    margin: 0.4rem 0 0 !important;
+  }
+}
+/* Menüpunkt beim Darüberfahren rosa Schrift statt Hintergrund (LTS) */
+@media (min-width: 1024px) {
+  [data-testid='category-button']:hover,
+  [data-testid='category-button'][aria-expanded='true'] {
+    background: transparent !important;
+    color: #c482b0 !important;
+  }
+}
+
+/* Handy-Menü wie im LTS: grau, Überschrift rosa, Trennlinien, rosa Pfeile, schwarzer Block unten */
+.dorins-drawer,
+.dorins-drawer nav {
+  background: #f3f3f3 !important;
+}
+.dorins-drawer-title {
+  flex: 1;
+  text-align: center;
+  color: #c482b0;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.dorins-drawer nav > ul:first-of-type {
+  margin: 0;
+  border-top: 1px solid #ddd;
+}
+.dorins-drawer nav > ul:first-of-type > li {
+  border-bottom: 1px solid #ddd;
+}
+.dorins-drawer nav > ul:first-of-type a,
+.dorins-drawer nav > ul:first-of-type p {
+  font-size: 1rem;
+  color: #333;
+}
+.dorins-drawer nav > ul:first-of-type svg {
+  color: #c482b0 !important;
+}
+.dorins-drawer-links {
+  background: #000;
+  padding: 0.75rem 0;
+}
+.dorins-drawer-links a {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.25rem;
+  text-decoration: none;
+}
+.dorins-drawer nav > ul:first-of-type > li > * {
+  min-height: 58px;
+}
+.dorins-drawer nav > ul:first-of-type > li > div,
+.dorins-drawer nav > ul:first-of-type > li > a,
+.dorins-drawer nav > ul:first-of-type > li > button {
+  display: flex;
+  align-items: center;
+  background: transparent !important;
 }

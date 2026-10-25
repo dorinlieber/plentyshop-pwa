@@ -119,11 +119,12 @@
         ref="drawerReference"
         v-model="isOpen"
         placement="left"
-        class="right-12 max-w-96 bg-white overflow-y-auto z-drawer"
+        class="right-12 max-w-96 bg-white overflow-y-auto z-drawer dorins-drawer"
       >
         <nav>
           <div class="flex items-center justify-between p-4">
-            <p class="typography-text-base font-medium">{{ t('common.actions.browseProducts') }}</p>
+            <!-- Dorins: Überschrift „Kategorien“ wie im bisherigen Shop -->
+            <p class="dorins-drawer-title">{{ t('dorins.categories') }}</p>
             <UiButton
               variant="tertiary"
               square
@@ -146,7 +147,7 @@
               >
                 <div class="flex items-center">
                   <SfIconArrowBack aria-hidden="true" class="text-neutral-500" />
-                  <p class="ml-5 font-medium">{{ categoryTreeGetters.getName(activeMenu) }}</p>
+                  <p class="ml-5 font-medium">{{ menuLabel(activeMenu) }}</p>
                 </div>
               </SfListItem>
             </li>
@@ -160,8 +161,7 @@
                   @click="close()"
                 >
                   <div class="flex items-center">
-                    <p class="text-left">{{ categoryTreeGetters.getName(node) }}</p>
-                    <SfCounter class="ml-2">{{ categoryTreeGetters.getCount(node) }}</SfCounter>
+                    <p class="text-left">{{ menuLabel(node) }}</p>
                   </div>
                 </SfListItem>
               </li>
@@ -173,9 +173,8 @@
                     @click="close()"
                   >
                     <div class="flex items-center">
-                      <p class="text-left typography-text-lg">{{ categoryTreeGetters.getName(node) }}</p>
-                      <SfCounter class="ml-2">{{ categoryTreeGetters.getCount(node) }}</SfCounter>
-                    </div>
+                      <p class="text-left typography-text-lg">{{ menuLabel(node) }}</p>
+                      </div>
                   </NuxtLink>
                   <button
                     type="button"
@@ -189,6 +188,12 @@
               </li>
             </template>
           </ul>
+          <!-- Dorins: Warenkorb, Konto, Merkliste als schwarzer Block unter den Kategorien wie im bisherigen Shop -->
+          <ul class="dorins-drawer-links">
+            <li><NuxtLink :to="localePath(paths.cart)" @click="close()">{{ t('dorins.cart') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath(paths.account)" @click="close()">{{ t('dorins.account') }}</NuxtLink></li>
+            <li><NuxtLink :to="localePath(paths.wishlist)" @click="close()">{{ t('dorins.wishlist') }}</NuxtLink></li>
+          </ul>
         </nav>
       </SfDrawer>
     </template>
@@ -201,7 +206,6 @@ import {
   SfDrawer,
   SfListItem,
   SfIconChevronRight,
-  SfCounter,
   SfIconArrowBack,
   useTrapFocus,
   useDropdown,

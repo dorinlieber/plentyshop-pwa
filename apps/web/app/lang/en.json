@@ -1432,6 +1432,7 @@
     "manufacturer": "Manufacturer",
     "titleWithBrand": "{title} by {brand}",
     "saleBadge": "% Sale",
-    "upToDiscount": "up to -{percent}%"
+    "upToDiscount": "up to -{percent}%",
+    "categories": "Categories"
   }
 }
