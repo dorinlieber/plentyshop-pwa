@@ -1553,3 +1553,36 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
     gap: 0.75rem;
   }
 }
+
+/* Startseiten-Slider wie im LTS: innerhalb der Inhaltsbreite, weiße runde Pfeile, Punkte unter dem Bild */
+@media (min-width: 1024px) {
+  [data-testid='block-wrapper']:has(.dorins-banner) {
+    padding: 0 1rem;
+  }
+}
+.swiper:has(.dorins-banner) {
+  padding-bottom: 28px;
+}
+.swiper:has(.dorins-banner) .swiper-pagination {
+  bottom: 4px !important;
+}
+.swiper:has(.dorins-banner) ~ .swiper-button-prev,
+.swiper:has(.dorins-banner) ~ .swiper-button-next {
+  width: 42px;
+  height: 42px;
+  margin-top: -35px;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
+}
+.swiper:has(.dorins-banner) ~ .swiper-button-prev::after,
+.swiper:has(.dorins-banner) ~ .swiper-button-next::after {
+  font-size: 15px;
+  font-weight: 700;
+}
+.swiper:has(.dorins-banner) ~ .swiper-button-prev {
+  left: 2rem;
+}
+.swiper:has(.dorins-banner) ~ .swiper-button-next {
+  right: 2rem;
+}
