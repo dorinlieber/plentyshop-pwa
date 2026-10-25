@@ -4,6 +4,13 @@ import type { UseSearchSuggestionsReturn, UseSearchSuggestionsState } from './ty
 const CATEGORY_LIMIT = 5;
 const SUGGESTIONS_LIMIT = 5;
 const ITEMS_LIMIT = 4;
+// sizes like "74" or "128/134" break plenty's autocomplete, it is queried without them
+const SIZE_TOKEN = /^\d{2,3}(\/\d{2,3})?$/;
+
+const withoutSizes = (text: string) => {
+  const rest = text.split(/\s+/).filter((token) => token && !SIZE_TOKEN.test(token));
+  return rest.length > 0 ? rest.join(' ') : text;
+};
 
 export const useSearchSuggestions: UseSearchSuggestionsReturn = () => {
   const state = useState<UseSearchSuggestionsState>('useSearchSuggestions', () => ({
@@ -29,7 +36,7 @@ export const useSearchSuggestions: UseSearchSuggestionsReturn = () => {
     state.value.loading = true;
     try {
       const { data } = await useSdk().plentysystems.getItemSearchAutocomplete({
-        query: term,
+        query: withoutSizes(term),
         types: ['suggestion', 'category'],
       });
 

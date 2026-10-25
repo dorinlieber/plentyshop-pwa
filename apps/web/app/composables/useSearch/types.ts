@@ -38,3 +38,18 @@ export interface UseSearchSuggestions {
 }
 
 export type UseSearchSuggestionsReturn = () => UseSearchSuggestions;
+
+/** Added by the middleware extension `getSearchDorins` (typo correction, size filter from the query). */
+export interface DorinsSearchInfo {
+  originalTerm: string;
+  term: string;
+  corrected: boolean;
+  sizes: string[];
+  sizeFacetValueIds: string[];
+}
+
+export type DorinsSearchResult = ItemSearchResult & { searchInfo?: DorinsSearchInfo };
+
+export interface DorinsSearchSdk {
+  getSearchDorins: (params: ItemSearchParams & { autoSize?: boolean }) => Promise<{ data: DorinsSearchResult }>;
+}
