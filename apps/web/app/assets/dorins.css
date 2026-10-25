@@ -1190,8 +1190,7 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 /* ---------- Feinabgleich nach Seitenvergleich (25.10.2026) ---------- */
 /* Abzeichen: „bis zu -X%“ rechts oben, links „% Sparangebot“ und Merkmal untereinander */
 [data-testid='product-card'] [data-testid='badges'],
-[data-testid='gallery'] ~ [data-testid='badges'],
-section > [data-testid='badges'] {
+[data-testid='badges']:has(+ [data-testid='gallery']) {
   left: 0;
   right: 0;
 }
@@ -1201,8 +1200,8 @@ section > [data-testid='badges'] {
   right: 0;
   margin: 0;
 }
-section > [data-testid='badges'] .dorins-badge-discount {
-  right: 0.5rem;
+[data-testid='badges']:has(+ [data-testid='gallery']) .dorins-badge-discount {
+  right: 1rem;
 }
 
 /* Artikelkarten: Name und Preis größer wie im LTS */
@@ -1408,4 +1407,21 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 }
 [data-testid='navbar-top-desktop'] form input {
   background: transparent !important;
+}
+
+/* Handy: Artikeltitel über dem Bild wie im LTS (Kaufbox-Titel nur am Rechner) */
+.dorins-mobile-title {
+  display: none;
+}
+@media (max-width: 767px) {
+  .dorins-mobile-title {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.3;
+    padding: 0 1rem 0.75rem;
+  }
+  body:has(.dorins-mobile-title) [data-testid='purchase-card'] [data-testid='product-name'] {
+    display: none;
+  }
 }

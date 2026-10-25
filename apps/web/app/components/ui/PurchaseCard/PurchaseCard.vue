@@ -272,7 +272,7 @@
 </template>
 
 <script lang="ts" setup>
-import { productGetters, productPropertyGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
+import { productGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
 import {
   SfCounter,
   SfRating,
@@ -378,21 +378,8 @@ const { getBooleanSetting: getNotifyMeSetting } = useSiteSettings('showNotifyMe'
 const showNotifyMe = computed(() => getNotifyMeSetting());
 const localePath = useLocalePath();
 
-// Marke wie im LTS unter dem Artikelnamen (Herstellername für Kunden, sonst interner Name)
-const brandName = computed(() => {
-  const manufacturer = productGetters.getManufacturer(props.product) as { externalName?: string; name?: string } | undefined;
-  return manufacturer?.externalName || manufacturer?.name || '';
-});
-// Dorins: Titel wie im bisherigen Shop = Eigenschaft „Limango-Titel“ (34) + „von <Marke>“, sonst Artikelname
-const SHORT_TITLE_PROPERTY_ID = 34;
-const displayName = computed(() => {
-  const shortTitle = productPropertyGetters
-    .getProperty(SHORT_TITLE_PROPERTY_ID, productGetters.getPropertyGroups(props.product))
-    ?.values as { value?: string } | undefined;
-  const title = shortTitle?.value?.trim();
-  if (!title) return productGetters.getName(props.product);
-  return brandName.value ? t('dorins.titleWithBrand', { title, brand: brandName.value }) : title;
-});
+// Marke und Titel wie im bisherigen Shop (gemeinsam mit dem Handy-Titel über dem Bild)
+const { brandName, displayName } = useDorinsProductTitle(() => props.product);
 
 const runtimeConfig = useRuntimeConfig();
 const brandLogoUrl = computed(() => {

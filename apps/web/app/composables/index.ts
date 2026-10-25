@@ -76,6 +76,7 @@ export * from './useProductRecommended';
 export * from './useProductReviewAverage';
 export * from './useProductReviews';
 export * from './useProducts';
+export * from './useDorinsProductTitle';
 export * from './useQuickCheckout';
 export * from './useResetProductPageModal';
 export * from './useReturnOrder';
