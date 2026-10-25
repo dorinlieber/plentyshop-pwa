@@ -7,17 +7,32 @@
         :style="{ backgroundColor: headerBackgroundColor }"
         data-testid="navbar-top-mobile"
       >
-        <div class="flex items-center flex-1 gap-2">
-          <UiButton
-            variant="tertiary"
-            square
-            :aria-label="t('common.navigation.openMenu')"
-            class="hover:!bg-header-400"
-            :style="{ color: iconColor }"
-            @click="openMegaMenu"
-          >
-            <SfIconMenu aria-hidden="true" />
-          </UiButton>
+        <!-- Dorins: Handy-Kopf wie im bisherigen Shop: links Menü + Konto, Logo mittig, rechts Merkliste + Warenkorb
+             (ersetzt die untere Navigationsleiste) -->
+        <div class="dorins-mobile-head">
+          <div class="dorins-mobile-head-side">
+            <UiButton
+              variant="tertiary"
+              square
+              :aria-label="t('common.navigation.openMenu')"
+              class="hover:!bg-header-400"
+              :style="{ color: iconColor }"
+              @click="openMegaMenu"
+            >
+              <SfIconMenu aria-hidden="true" />
+            </UiButton>
+            <UiButton
+              variant="tertiary"
+              square
+              class="hover:!bg-header-400"
+              :style="{ color: iconColor }"
+              :aria-label="t('dorins.account')"
+              data-testid="mobile-account"
+              @click="isAuthorized ? navigateTo(localePath(paths.account)) : navigateToLogin()"
+            >
+              <SfIconPerson />
+            </UiButton>
+          </div>
           <NuxtLink
             id="blockified-logo-mobile"
             data-testid="logo-link"
@@ -27,26 +42,38 @@
           >
             <UiLogo />
           </NuxtLink>
-        </div>
-        <div class="flex items-center gap-2">
-          <UiButton
-            v-if="isActionVisible('language')"
-            variant="tertiary"
-            class="relative hover:!bg-header-400 active:!bg-header-400 rounded-md"
-            square
-            data-testid="open-languageselect-button"
-            :style="{ color: iconColor }"
-            :aria-label="t('common.navigation.languageSelector')"
-            :disabled="(showConfigurationDrawer && isEditing) || (showConfigurationDrawer && disableActions)"
-            @click="toggleLanguageSelect()"
-          >
-            <SfIconLanguage />
-          </UiButton>
+          <div class="dorins-mobile-head-side dorins-mobile-head-side--right">
+            <UiButton
+              :tag="NuxtLink"
+              :to="localePath(paths.wishlist)"
+              variant="tertiary"
+              square
+              class="relative hover:!bg-header-400"
+              :style="{ color: iconColor }"
+              :aria-label="t('cart.numberInWishlist', { count: wishlistItemIds.length })"
+            >
+              <SfIconFavorite />
+              <SfBadge :content="wishlistItemIds.length" :max="99" placement="top-right" class="dorins-count" />
+            </UiButton>
+            <UiButton
+              :tag="NuxtLink"
+              :to="localePath(paths.cart)"
+              variant="tertiary"
+              square
+              class="relative hover:!bg-header-400"
+              :style="{ color: iconColor }"
+              :aria-label="t('cart.numberInCart', { count: cartItemsCount })"
+            >
+              <SfIconShoppingCart />
+              <SfBadge :content="cartItemsCount" :max="99" placement="top-right" class="dorins-count" />
+            </UiButton>
+          </div>
         </div>
         <!-- Dorins: Suchfeld am Handy direkt sichtbar wie im bisherigen Shop (statt Lupe + Suchfenster) -->
         <div class="w-full px-3 pb-3" data-testid="mobile-search-bar">
           <UiSearch />
         </div>
+        <DorinsCategoryPills class="w-full" />
       </div>
 
       <div
@@ -284,8 +311,9 @@
         </nav>
       </div>
     </header>
+    <!-- Dorins: keine untere Navigationsleiste, die Symbole stehen wie im bisherigen Shop oben -->
     <BlocksNavbarBottom
-      v-if="viewport.isLessThan('md')"
+      v-if="false"
       :background-color="headerBackgroundColor"
       :icon-color="iconColor"
       :action-order="content.actions.order"
