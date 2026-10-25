@@ -3,7 +3,7 @@
     <header class="relative w-full @md:sticky @md:shadow-md">
       <div
         v-if="viewport.isLessThan('md')"
-        class="flex items-center w-full"
+        class="flex flex-wrap items-center w-full"
         :style="{ backgroundColor: headerBackgroundColor }"
         data-testid="navbar-top-mobile"
       >
@@ -42,16 +42,10 @@
           >
             <SfIconLanguage />
           </UiButton>
-          <UiButton
-            variant="tertiary"
-            class="relative hover:!bg-header-400 active:!bg-header-400 rounded-md"
-            square
-            :style="{ color: iconColor }"
-            :aria-label="t('common.navigation.openSearchModal')"
-            @click="searchModalOpen"
-          >
-            <SfIconSearch />
-          </UiButton>
+        </div>
+        <!-- Dorins: Suchfeld am Handy direkt sichtbar wie im bisherigen Shop (statt Lupe + Suchfenster) -->
+        <div class="w-full px-3 pb-3" data-testid="mobile-search-bar">
+          <UiSearch />
         </div>
       </div>
 
