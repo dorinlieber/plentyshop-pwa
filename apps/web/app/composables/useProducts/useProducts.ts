@@ -1,4 +1,8 @@
 import type { FacetSearchCriteria, Product, Facet } from '@plentymarkets/shop-api';
+
+const RECOMMENDED_SORTING = 'default.recommended_sorting';
+const NEWEST_FIRST_SORTING = 'item.id_desc';
+
 /**
  * @description Composable for managing products.
  * @returns UseProductsReturn
@@ -39,8 +43,11 @@ export const useProducts: UseProductsReturn = (category = '') => {
 
     const identifier = category || params.categoryUrlPath || params.categoryId;
 
-    const { data } = await useAsyncData(`useProducts-${identifier}-${JSON.stringify(params)}`, () =>
-      useSdk().plentysystems.getFacet(params),
+    // Dorins: „Empfohlen“ wie im bisherigen Shop = neueste Artikel zuerst (plenty-Regel für Empfohlen sortiert anders)
+    const apiParams = params.sort === RECOMMENDED_SORTING ? { ...params, sort: NEWEST_FIRST_SORTING } : params;
+
+    const { data } = await useAsyncData(`useProducts-${identifier}-${JSON.stringify(apiParams)}`, () =>
+      useSdk().plentysystems.getFacet(apiParams),
     );
 
     state.value.productsPerPage = params.itemsPerPage || defaults.DEFAULT_ITEMS_PER_PAGE;

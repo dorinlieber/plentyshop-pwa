@@ -1,9 +1,10 @@
-const DEFAULT_ITEMS_PER_PAGE = 50;
+// Dorins: 24 je Seite und Stufen 24/48/96 wie im bisherigen Shop (4 Artikel je Reihe)
+const DEFAULT_ITEMS_PER_PAGE = 24;
 const DEFAULT_FEEDBACK_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE = 1;
 const DEFAULT_FEEDBACK_PAGE = 1;
 const DEFAULT_QUICK_CHECKOUT_TIMER = 10;
-const PER_PAGE_STEPS: number[] = [10, 20, 50, 100];
+const PER_PAGE_STEPS: number[] = [24, 48, 96];
 const ESSENTIAL_COOKIES_INDEX = 0;
 const REPLY_CHARACTER_LIMIT = 500;
 const PREVIEW_COOKIE: string = 'pwa';
