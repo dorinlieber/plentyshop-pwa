@@ -1416,6 +1416,9 @@
     "itemNumber": "Item number",
     "brand": "Brand",
     "sizeChart": "Size chart",
-    "rrp": "RRP"
+    "rrp": "RRP",
+    "account": "My account",
+    "wishlist": "Wishlist",
+    "cart": "Cart"
   }
 }

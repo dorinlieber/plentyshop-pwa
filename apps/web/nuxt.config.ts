@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   srcDir: 'app/',
   telemetry: false,
   devtools: { enabled: true },
-  css: ['~/assets/richtext.css'],
+  css: ['~/assets/richtext.css', '~/assets/dorins.css'],
   typescript: {
     typeCheck: false, // type checking runs via `npm run typecheck`, on build, and in CI (fitness-code-quality)
   },

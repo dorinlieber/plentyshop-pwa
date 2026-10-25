@@ -24,7 +24,7 @@
             @keydown.left="focusPreviousCategory(index)"
             @keydown.right="focusNextCategory(index)"
           >
-            <span>{{ categoryTreeGetters.getName(menuNode) }}</span>
+            <span>{{ menuLabel(menuNode) }}</span>
             <SfIconChevronRight
               aria-hidden="true"
               class="rotate-90 text-neutral-500 group-hover:text-neutral-700 group-active:text-neutral-900"
@@ -43,7 +43,7 @@
             @keydown.left="focusPreviousCategory(index)"
             @keydown.right="focusNextCategory(index)"
           >
-            <span>{{ categoryTreeGetters.getName(menuNode) }}</span>
+            <span>{{ menuLabel(menuNode) }}</span>
           </NuxtLink>
 
           <div
@@ -256,6 +256,11 @@ const TOUCH_DETECTION_THRESHOLD = 500;
 const categoryButtonClasses =
   'inline-flex items-center justify-center gap-2 font-medium text-base rounded-md py-2 px-4 group mr-2 nav-hover-bg active:!bg-neutral-300';
 let removeHook: () => void;
+
+// Dorins: kurze Menünamen in der Kopfzeile wie im bisherigen Shop (Kategorien heißen Jungenmode/Mädchenmode)
+const MENU_LABELS: Record<string, string> = { jungenmode: 'Jungen', maedchenmode: 'Mädchen' };
+const menuLabel = (node: CategoryTreeItem) =>
+  MENU_LABELS[categoryTreeGetters.getSlug(node)] ?? categoryTreeGetters.getName(node);
 
 const trapFocusOptions = {
   activeState: isOpen,

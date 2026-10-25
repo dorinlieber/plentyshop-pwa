@@ -103,7 +103,8 @@ const breakpointConfig = computed(() => {
 
 const depth = getBlockDepth(props.meta.uuid);
 const wrapperStyle = computed(() => {
-  if (depth > 0) {
+  // Dorins: im Raster gilt ein gesetztes Seitenverhältnis (Kacheln 5:6 wie im LTS) statt fester 24rem Höhe
+  if (depth > 0 && !props.content?.image?.aspectRatio) {
     return {
       position: 'relative' as const,
       height: '24rem',

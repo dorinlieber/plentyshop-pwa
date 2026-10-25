@@ -168,6 +168,7 @@
             variant="tertiary"
             square
             data-testid="wishlist-page-navigation"
+            :data-dorins-label="t('dorins.wishlist')"
           >
             <template #prefix>
               <SfIconFavorite />
@@ -192,6 +193,7 @@
             :style="{ color: iconColor, order: getActionOrder('cart') }"
             :to="localePath(paths.cart)"
             :aria-label="t('cart.numberInCart', { count: cartItemsCount })"
+            :data-dorins-label="t('dorins.cart')"
             variant="tertiary"
             square
           >
@@ -222,6 +224,7 @@
               :style="{ color: iconColor, order: getActionOrder('account') }"
               :class="{ 'bg-primary-700': isAccountDropdownOpen }"
               data-testid="account-dropdown-button"
+              :data-dorins-label="t('dorins.account')"
               @click="accountDropdownToggle()"
             >
               <template #prefix>
@@ -272,6 +275,7 @@
             class="group relative hover:!bg-header-400 active:!bg-header-400 mr-1 -ml-0.5 rounded-md"
             variant="tertiary"
             :aria-label="t('authentication.login.openLoginForm')"
+            :data-dorins-label="t('dorins.account')"
             square
             @click="navigateToLogin"
           >

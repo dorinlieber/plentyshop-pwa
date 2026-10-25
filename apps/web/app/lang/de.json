@@ -1416,6 +1416,9 @@
     "itemNumber": "Artikelnummer",
     "brand": "Marke",
     "sizeChart": "Größentabelle",
-    "rrp": "UVP"
+    "rrp": "UVP",
+    "account": "Mein Konto",
+    "wishlist": "Merkliste",
+    "cart": "Warenkorb"
   }
 }
