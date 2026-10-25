@@ -2,9 +2,11 @@
   <div class="text-sm py-1">
     <span
       class="mr-2 font-bold"
-      :class="isReduced ? '' : 'text-primary-500'"
+      :class="[
+        props.size === 'sm' ? 'typography-text-sm @sm:typography-text-lg' : 'text-2xl',
+        { 'text-primary-500': !isReduced },
+      ]"
       :style="isReduced ? { color: '#ff6060' } : undefined"
-      :class="props.size === 'sm' ? 'typography-text-sm @sm:typography-text-lg' : 'text-2xl'"
       :data-testid="props.testId"
     >
       <span>{{ format(props.price) }}</span>
