@@ -1,11 +1,13 @@
 <template>
-  <section class="grid-in-left-top @md:h-full @xl:max-h-[700px] relative">
+  <!-- Dorins: ohne Höhenbegrenzung, die Reiter stehen unter den Bildern -->
+  <section class="grid-in-left-top relative">
     <!-- Dorins: Abzeichen (slim, Rabatt) oben links auf dem Hauptbild wie im bisherigen Shop -->
     <UiBadges :product="currentProduct" :use-tags="true" class="absolute top-0 left-0 m-2 z-10" />
     <Gallery
       :images="addModernImageExtensionForGallery(productGetters.getGallery(currentProduct))"
       :configuration="content"
     />
+    <DorinsProductTabs :product="currentProduct" />
   </section>
 </template>
 

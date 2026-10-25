@@ -1422,6 +1422,14 @@
     "cart": "Warenkorb",
     "itemCount": "{n} Artikel | {n} Artikel",
     "rememberItem": "Artikel merken",
-    "askQuestion": "Fragen zum Artikel"
+    "askQuestion": "Fragen zum Artikel",
+    "tabDescription": "Beschreibung",
+    "tabDetails": "Produktdetails",
+    "tabMaterial": "Material & Pflege",
+    "tabManufacturer": "Hersteller",
+    "careInstructions": "Pflegehinweise",
+    "euResponsible": "EU Verantwortlicher",
+    "manufacturer": "Hersteller",
+    "titleWithBrand": "{title} von {brand}"
   }
 }

@@ -1422,6 +1422,14 @@
     "cart": "Cart",
     "itemCount": "{n} item | {n} items",
     "rememberItem": "Save item",
-    "askQuestion": "Question about this item"
+    "askQuestion": "Question about this item",
+    "tabDescription": "Description",
+    "tabDetails": "Product details",
+    "tabMaterial": "Material & care",
+    "tabManufacturer": "Manufacturer",
+    "careInstructions": "Care instructions",
+    "euResponsible": "EU responsible person",
+    "manufacturer": "Manufacturer",
+    "titleWithBrand": "{title} by {brand}"
   }
 }

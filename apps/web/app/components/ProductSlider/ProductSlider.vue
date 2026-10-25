@@ -13,6 +13,7 @@
         :should-load-image="shouldLoadImage(index)"
         :index="index"
         is-from-slider
+        :configuration="SLIDER_CARD_CONFIGURATION"
         class="w-48 max-w-48 shrink-0"
       />
     </SfScrollable>
@@ -39,6 +40,18 @@
 import { productGetters } from '@plentymarkets/shop-api';
 import { SfScrollable } from '@storefront-ui/vue';
 import type { ProductSliderProps } from '~/components/ProductSlider/types';
+import type { ItemGridContent } from '~/components/blocks/ItemGrid/types';
+
+// Dorins: Karten im Slider wie in den Kategorien (ohne Rahmen, Sterne, Knopf, Marke), wie im bisherigen Shop
+const SLIDER_CARD_CONFIGURATION = {
+  cardBorders: false,
+  contentAlignment: 'left',
+  fields: { title: true, rating: false, previewText: false, price: true, addToCart: false, manufacturer: false },
+  fieldsOrder: ['title', 'manufacturer', 'rating', 'previewText', 'price', 'addToCart'],
+  showWishlistButton: true,
+  showSecondImageOnHover: false,
+  addToCartStyle: 'primary',
+} as unknown as ItemGridContent;
 const { showNetPrices } = useCart();
 const localePath = useLocalizedPath();
 

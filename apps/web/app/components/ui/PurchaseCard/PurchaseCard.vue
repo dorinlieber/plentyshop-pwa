@@ -20,7 +20,7 @@
             </template>
             <template v-if="key === 'itemName' && configuration?.fields.itemName">
               <h1 class="font-bold typography-headline-4 break-word" data-testid="product-name">
-                {{ productGetters.getName(product) }}
+                {{ displayName }}
               </h1>
               <div class="mb-2 flex items-start justify-between gap-4">
                 <p class="typography-text-sm text-neutral-600" data-testid="product-number-brand">
@@ -268,7 +268,7 @@
 </template>
 
 <script lang="ts" setup>
-import { productGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
+import { productGetters, productPropertyGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
 import {
   SfCounter,
   SfRating,
@@ -379,6 +379,17 @@ const brandName = computed(() => {
   const manufacturer = productGetters.getManufacturer(props.product) as { externalName?: string; name?: string } | undefined;
   return manufacturer?.externalName || manufacturer?.name || '';
 });
+// Dorins: Titel wie im bisherigen Shop = Eigenschaft „Limango-Titel“ (34) + „von <Marke>“, sonst Artikelname
+const SHORT_TITLE_PROPERTY_ID = 34;
+const displayName = computed(() => {
+  const shortTitle = productPropertyGetters
+    .getProperty(SHORT_TITLE_PROPERTY_ID, productGetters.getPropertyGroups(props.product))
+    ?.values as { value?: string } | undefined;
+  const title = shortTitle?.value?.trim();
+  if (!title) return productGetters.getName(props.product);
+  return brandName.value ? t('dorins.titleWithBrand', { title, brand: brandName.value }) : title;
+});
+
 const runtimeConfig = useRuntimeConfig();
 const brandLogoUrl = computed(() => {
   const manufacturer = productGetters.getManufacturer(props.product) as { logo?: string } | undefined;

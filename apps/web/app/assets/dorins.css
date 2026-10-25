@@ -835,3 +835,354 @@ body:has([data-testid='category-name']) [data-testid='item-count'] {
     grid-column: auto !important;
   }
 }
+
+/* ---------- Artikelseite: Reiter unter den Bildern wie im LTS ---------- */
+.dorins-tabs {
+  margin-top: 1.5rem;
+}
+.dorins-tabs-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dorins-tabs-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 42px;
+  border: 1px solid #ddd;
+  border-radius: 21px;
+  background: #fff;
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0 1.25rem;
+}
+.dorins-tabs-label::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  background: no-repeat center url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m4.999 6 1.125-1.1 3.875-3.8L8.874 0 4.999 3.8 1.124 0-.001 1.1l3.875 3.8z'/%3E%3C/svg%3E");
+  transition: transform 0.3s;
+}
+.dorins-tabs-label--active {
+  border-color: #000;
+}
+.dorins-tabs-label--active::after {
+  transform: rotate(180deg);
+}
+.dorins-tabs-panel {
+  padding: 20px 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.dorins-tabs-panel h1,
+.dorins-tabs-panel h2,
+.dorins-tabs-panel h3,
+.dorins-tabs-panel h4,
+.dorins-tabs-panel h5 {
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin: 0;
+  padding-bottom: 15px;
+}
+.dorins-tabs-panel p {
+  margin: 0 0 0.75rem;
+}
+.dorins-tabs-panel strong {
+  font-weight: 700;
+}
+.dorins-tabs-panel ul {
+  list-style: disc outside;
+  padding-left: 16px;
+}
+.dorins-tabs-panel li {
+  margin: 0.2rem 0;
+}
+.dorins-tabs-panel .dorins-gpsr ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+/* Pflegehinweise mit den Symbolen aus dem LTS-Template */
+.dorins-care {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+.dorins-care h2 {
+  font-size: 1.125rem;
+  font-weight: 300;
+  padding-bottom: 15px;
+}
+.dorins-care-item {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 5px 0;
+  font-size: 0.8125rem;
+}
+.dorins-care-item i {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-right: 10px;
+  background-image: url('https://cdn03.plentyone.com/0g0quyrt02bw/plugin/11/dorinskindermodepdt/documents/careicons.png');
+  background-size: 368px 341px;
+}
+@media (min-resolution: 1.5dppx) {
+  .dorins-care-item i {
+    background-image: url('https://cdn03.plentyone.com/0g0quyrt02bw/plugin/11/dorinskindermodepdt/documents/careicons-2x.png');
+  }
+}
+
+/* Inhalte der Reiter nicht doppelt zeigen: Eigenschaften in der Kaufbox, Text-Blöcke unten, Herstellerlink */
+body:has([data-testid='dorins-product-tabs']) [data-testid='purchase-card'] .variation-properties,
+body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has([data-testid='item-text-block']),
+body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has([data-testid='technical-data-block']),
+body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has([data-testid='legal-information']) {
+  display: none;
+}
+.dorins-care .icon-1 {
+  background-position:-324px -42px;
+  height:31px;
+  width:44px
+}
+.dorins-care .icon-2 {
+  background-position:-162px -267px;
+  height:34px;
+  width:44px
+}
+.dorins-care .icon-3 {
+  background-position:-108px -312px;
+  height:26px;
+  width:44px
+}
+.dorins-care .icon-4 {
+  background-position:-162px -219px;
+  height:37px;
+  width:44px
+}
+.dorins-care .icon-5 {
+  background-position:-216px -219px;
+  height:37px;
+  width:44px
+}
+.dorins-care .icon-6 {
+  background-position:-270px -106px;
+  height:40px;
+  width:44px
+}
+.dorins-care .icon-7 {
+  background-position:-162px -165px;
+  height:44px;
+  width:44px
+}
+.dorins-care .icon-8 {
+  background-position:-270px -53px;
+  height:43px;
+  width:44px
+}
+.dorins-care .icon-9 {
+  background-position:0 0;
+  height:47px;
+  width:44px
+}
+.dorins-care .icon-10 {
+  background-position:-270px -267px;
+  height:32px;
+  width:44px
+}
+.dorins-care .icon-11 {
+  background-position:-270px -219px;
+  height:35px;
+  width:44px
+}
+.dorins-care .icon-12 {
+  background-position:-270px -156px;
+  height:38px;
+  width:44px
+}
+.dorins-care .icon-13 {
+  background-position:-324px 0;
+  height:32px;
+  width:44px
+}
+.dorins-care .icon-14 {
+  background-position:0 -267px;
+  height:35px;
+  width:44px
+}
+.dorins-care .icon-15 {
+  background-position:-324px -83px;
+  height:31px;
+  width:44px
+}
+.dorins-care .icon-16 {
+  background-position:-54px -267px;
+  height:35px;
+  width:44px
+}
+.dorins-care .icon-17 {
+  background-position:-324px -124px;
+  height:31px;
+  width:44px
+}
+.dorins-care .icon-18 {
+  background-position:-108px -267px;
+  height:35px;
+  width:44px
+}
+.dorins-care .icon-19 {
+  background-position:0 -57px;
+  height:44px;
+  width:44px
+}
+.dorins-care .icon-20 {
+  background-position:-54px -57px
+}
+.dorins-care .icon-21 {
+  background-position:-108px -57px
+}
+.dorins-care .icon-22 {
+  background-position:-216px -267px;
+  height:34px;
+  width:44px
+}
+.dorins-care .icon-23 {
+  background-position:-324px -165px
+}
+.dorins-care .icon-24 {
+  background-position:-324px -204px
+}
+.dorins-care .icon-25 {
+  background-position:-54px -312px;
+  height:28px;
+  width:44px
+}
+.dorins-care .icon-26 {
+  background-position:-324px -243px
+}
+.dorins-care .icon-27 {
+  background-position:0 -312px
+}
+.dorins-care .icon-28 {
+  background-position:-162px 0
+}
+.dorins-care .icon-29 {
+  background-position:-162px -54px
+}
+.dorins-care .icon-30 {
+  background-position:0 -111px
+}
+.dorins-care .icon-31 {
+  background-position:-54px -111px
+}
+.dorins-care .icon-32 {
+  background-position:-108px -111px
+}
+.dorins-care .icon-33 {
+  background-position:-162px -111px
+}
+.dorins-care .icon-34 {
+  background-position:-216px 0
+}
+.dorins-care .icon-35 {
+  background-position:-216px -54px
+}
+.dorins-care .icon-36 {
+  background-position:-216px -108px
+}
+.dorins-care .icon-37 {
+  background-position:0 -165px
+}
+.dorins-care .icon-38 {
+  background-position:0 -219px;
+  height:38px;
+  width:44px
+}
+.dorins-care .icon-39 {
+  background-position:-54px -165px;
+  height:44px;
+  width:44px
+}
+.dorins-care .icon-40 {
+  background-position:-216px -165px;
+  height:43px;
+  width:44px
+}
+.dorins-care .icon-41 {
+  background-position:-54px 0;
+  height:46px;
+  width:44px
+}
+.dorins-care .icon-42 {
+  background-position:-108px -165px;
+  height:44px;
+  width:44px
+}
+.dorins-care .icon-43 {
+  background-position:-270px 0;
+  height:43px;
+  width:44px
+}
+.dorins-care .icon-44 {
+  background-position:-108px 0;
+  height:46px;
+  width:44px
+}
+.dorins-care .icon-45 {
+  background-position:-54px -219px
+}
+.dorins-care .icon-46 {
+  background-position:-108px -219px
+}
+
+/* Empfehlungs-Slider: breitere Karten wie im LTS, Überschrift dünn und linksbündig */
+@media (min-width: 1024px) {
+  [data-testid='product-slider'] [data-testid='product-card'] {
+    width: 260px !important;
+    max-width: 260px !important;
+  }
+}
+[data-testid='product-slider'] [data-testid='product-card'] .size-48 {
+  width: 100%;
+  height: auto;
+}
+.rte-prose .dorins-slider-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+/* Hauptbild ohne Höhenbegrenzung, wenn darunter das Bilder-Raster steht (wie LTS: quadratisch, volle Spaltenbreite) */
+[data-testid='gallery']:has([data-testid='gallery-grid']) [data-testid='gallery-images'] {
+  max-height: none;
+}
+[data-testid='gallery-grid'] button,
+[data-testid='gallery']:has([data-testid='gallery-grid']) [data-testid='gallery-images'] {
+  background: #f7f7f7;
+}
+[data-testid='gallery-grid'] img {
+  mix-blend-mode: multiply;
+}
+
+/* Handy: Reiter erst nach der Kaufbox (wie LTS). Die Hüllen um die Reiter lösen sich auf, damit sie im
+   gestapelten Raster eigenständig nach unten sortiert werden können */
+@media (max-width: 767px) {
+  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']),
+  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']) *:has([data-testid='dorins-product-tabs']) {
+    display: contents;
+  }
+  [data-testid='multi-grid-structure']:has([data-testid='dorins-product-tabs']) > [data-testid='multi-grid-column'] {
+    order: 2;
+  }
+  /* Raster hat 12 Spalten: aufgelöste Teile (Abzeichen, Galerie, Reiter) über die volle Breite legen */
+  [data-testid='multi-grid-structure']:has([data-testid='dorins-product-tabs']) > * ,
+  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']) *:has([data-testid='dorins-product-tabs']) > * {
+    grid-column: 1 / -1;
+  }
+  [data-testid='multi-grid-structure'] [data-testid='dorins-product-tabs'] {
+    order: 3;
+    padding: 0 1rem;
+  }
+}
