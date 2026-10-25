@@ -1586,3 +1586,60 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 .swiper:has(.dorins-banner) ~ .swiper-button-next {
   right: 2rem;
 }
+
+/* Handy-Artikelseite wie LTS: Nummer/Marke nach der Aktionszeile, Reiter als Akkordeon untereinander */
+@media (max-width: 767px) {
+  [data-testid='purchase-card'] section {
+    display: flex;
+    flex-direction: column;
+  }
+  [data-testid='purchase-card'] section > div:has(> [data-testid='product-number-brand']) {
+    order: 50;
+    margin-top: 1.25rem;
+  }
+  .dorins-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+  .dorins-tabs-labels {
+    display: contents;
+  }
+  .dorins-tabs-label {
+    order: 3;
+    justify-content: space-between;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    min-height: 52px;
+    padding: 0 0.25rem;
+    font-weight: 700;
+  }
+  .dorins-tabs-label:first-child {
+    border-top: 1px solid #000;
+  }
+  .dorins-tabs-label--active {
+    order: 1;
+    border-color: #ddd;
+  }
+  .dorins-tabs-panel {
+    order: 2;
+  }
+  .dorins-care {
+    order: 4;
+  }
+}
+@media (max-width: 767px) {
+  #attribute-box {
+    gap: 0.4rem;
+  }
+  #attribute-box > div,
+  #attribute-box > div div {
+    min-width: 2.75rem;
+    height: 2.75rem;
+  }
+  #attribute-box > div div {
+    padding: 0 0.3rem;
+    font-size: 0.75rem;
+  }
+}
