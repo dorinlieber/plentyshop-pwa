@@ -1186,3 +1186,108 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
     padding: 0 1rem;
   }
 }
+
+/* ---------- Feinabgleich nach Seitenvergleich (25.10.2026) ---------- */
+/* Abzeichen: „bis zu -X%“ rechts oben, links „% Sparangebot“ und Merkmal untereinander */
+[data-testid='product-card'] [data-testid='badges'],
+[data-testid='gallery'] ~ [data-testid='badges'],
+section > [data-testid='badges'] {
+  left: 0;
+  right: 0;
+}
+[data-testid='badges'] .dorins-badge-discount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+section > [data-testid='badges'] .dorins-badge-discount {
+  right: 0.5rem;
+}
+
+/* Artikelkarten: Name und Preis größer wie im LTS */
+[data-testid='productcard-name'] {
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+[data-testid='product-card-vertical-price'] {
+  font-size: 1rem;
+}
+
+/* Kaufbox: Preis groß, Lieferzeit als grüner Text mit LKW statt Pille, Größentabelle neben „Größe“ */
+[data-testid='purchase-card'] [data-testid='product-number-brand'] {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+[data-testid='purchase-card'] .text-2xl {
+  font-size: 1.875rem;
+  line-height: 1.2;
+}
+[data-testid='purchase-card'] [data-testid='badges'] li {
+  background: none !important;
+  color: #5cb85c !important;
+  padding-left: 1.6rem !important;
+  font-size: 0.875rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235cb85c' stroke-width='1.6'%3E%3Cpath d='M2 6h11v9H2zM13 9h4l3 3v3h-7z'/%3E%3Ccircle cx='6' cy='17' r='1.8'/%3E%3Ccircle cx='17' cy='17' r='1.8'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0 50% !important;
+  background-size: 1.2rem !important;
+}
+[data-testid='attributes-with-size-chart'] [data-testid='size-chart-link'] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+/* SEO-Text unter den Artikeln (Kategorie-Beschreibung) wie im LTS: kleine fette Überschriften, Häkchen ohne Punkte */
+[data-testid='category-description-1'] {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+[data-testid='category-description-1'] h1,
+[data-testid='category-description-1'] h2,
+[data-testid='category-description-1'] h3,
+[data-testid='category-description-1'] h4 {
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  margin: 1rem 0 0.4rem !important;
+}
+[data-testid='category-description-1'] ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+[data-testid='category-description-1'] a {
+  color: #c482b0 !important;
+}
+
+/* Jungen-/Mädchenmode: im LTS nur Kacheln und Text, keine Artikelliste */
+body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-testid='category-sort-filter']),
+body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-testid='item-count'], [data-testid='product-card']) {
+  display: none;
+}
+
+/* Handy: Kategorietitel klein wie im LTS */
+@media (max-width: 767px) {
+  [data-testid='category-name'] {
+    font-size: 1.25rem;
+  }
+}
+/* Kaufbox-Abstände wie LTS (Titel, Nummer/Marke, Auswahl luftiger) */
+[data-testid='purchase-card'] [data-testid='product-name'] {
+  margin-bottom: 1.5rem;
+}
+[data-testid='purchase-card'] [data-testid='product-number-brand'] {
+  margin-bottom: 1.5rem;
+}
+[data-testid='attributes-with-size-chart'] {
+  margin-bottom: 0.75rem;
+}
+/* Abzeichen links untereinander (Sparangebot über Merkmal) wie im LTS */
+[data-testid='badges'] > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

@@ -28,7 +28,8 @@ export const useProductRecommended: UseProductRecommendedReturn = (categoryId: s
 
     const common = {
       itemsPerPage: 20,
-      sort: 'sorting.price.avg_asc',
+      // Dorins: neueste Artikel zuerst wie „Unsere Topartikel“ und „mehr aus dieser Kollektion“ im bisherigen Shop
+      sort: 'item.id_desc',
       type: params.type,
     };
 

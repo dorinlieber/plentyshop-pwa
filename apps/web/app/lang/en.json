@@ -1430,6 +1430,8 @@
     "careInstructions": "Care instructions",
     "euResponsible": "EU responsible person",
     "manufacturer": "Manufacturer",
-    "titleWithBrand": "{title} by {brand}"
+    "titleWithBrand": "{title} by {brand}",
+    "saleBadge": "% Sale",
+    "upToDiscount": "up to -{percent}%"
   }
 }

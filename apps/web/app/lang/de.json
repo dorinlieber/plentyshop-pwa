@@ -1430,6 +1430,8 @@
     "careInstructions": "Pflegehinweise",
     "euResponsible": "EU Verantwortlicher",
     "manufacturer": "Hersteller",
-    "titleWithBrand": "{title} von {brand}"
+    "titleWithBrand": "{title} von {brand}",
+    "saleBadge": "% Sparangebot",
+    "upToDiscount": "bis zu -{percent}%"
   }
 }

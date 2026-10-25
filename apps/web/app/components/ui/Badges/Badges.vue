@@ -1,11 +1,21 @@
 <template>
   <div v-if="haveBadges" data-testid="badges" class="z-overlap">
     <ul>
-      <!-- Dorins: Merkmal (z. B. slim, weit) aus Eigenschaft „Aktionen“ und Rabatt, wie im bisherigen Shop; nicht in der Verfügbarkeits-Anzeige, sonst doppelt -->
+      <!-- Dorins: wie im bisherigen Shop links „% Sparangebot“ und das Merkmal (Eigenschaft „Aktionen“, z. B. slim),
+           rechts „bis zu -X%“; nicht in der Verfügbarkeits-Anzeige, sonst doppelt -->
+      <SfListItem
+        v-if="!useAvailability && discountPercent > 0"
+        size="sm"
+        class="text-xs font-semibold select-none rounded-sm !w-fit !cursor-default !px-2 mr-2 mb-1 text-white"
+        :style="{ backgroundColor: SALE_COLOR }"
+        data-testid="badge-sale"
+      >
+        {{ t('dorins.saleBadge') }}
+      </SfListItem>
       <SfListItem
         v-if="!useAvailability && aktionBadge"
         size="sm"
-        class="text-xs font-semibold select-none rounded-md !w-fit !cursor-default !px-2 mr-2 mb-2 text-white"
+        class="text-xs font-semibold select-none rounded-sm !w-fit !cursor-default !px-2 mr-2 mb-1 text-white"
         :style="{ backgroundColor: aktionBadge.color }"
         data-testid="badge-aktion"
       >
@@ -14,11 +24,11 @@
       <SfListItem
         v-if="!useAvailability && discountPercent > 0"
         size="sm"
-        class="text-xs font-semibold select-none rounded-md !w-fit !cursor-default !px-2 mr-2 mb-2 bg-white border"
+        class="dorins-badge-discount text-xs font-semibold select-none rounded-sm !w-fit !cursor-default !px-2 mb-1 bg-white border"
         :style="{ color: SALE_COLOR, borderColor: SALE_COLOR }"
         data-testid="badge-discount"
       >
-        % -{{ discountPercent }} %
+        {{ t('dorins.upToDiscount', { percent: discountPercent }) }}
       </SfListItem>
       <template v-if="useTags && productTags.length > 0">
         <SfListItem

@@ -23,9 +23,10 @@
                 {{ displayName }}
               </h1>
               <div class="mb-2 flex items-start justify-between gap-4">
-                <p class="typography-text-sm text-neutral-600" data-testid="product-number-brand">
-                  <span>{{ t('dorins.itemNumber') }}: {{ productGetters.getItemId(product) }}</span>
-                  <span v-if="brandName"> · {{ t('dorins.brand') }}: {{ brandName }}</span>
+                <!-- Dorins: zwei Zeilen mit fetter Bezeichnung wie im bisherigen Shop -->
+                <p class="typography-text-sm" data-testid="product-number-brand">
+                  <span class="block"><strong>{{ t('dorins.itemNumber') }}:</strong> {{ productGetters.getItemId(product) }}</span>
+                  <span v-if="brandName" class="block"><strong>{{ t('dorins.brand') }}:</strong> {{ brandName }}</span>
                 </p>
                 <!-- Dorins: Markenlogo rechts daneben wie im bisherigen Shop (Logo aus den Herstellerdaten in plenty) -->
                 <img
@@ -133,14 +134,17 @@
             </template>
 
             <template v-if="key === 'attributes' && configuration?.fields.attributes">
-              <ProductAttributes :product="product" />
-              <NuxtLink
-                :to="localePath('/informationen/groesseninformation')"
-                class="inline-block mt-1 mb-2 typography-text-sm underline"
-                data-testid="size-chart-link"
-              >
-                {{ t('dorins.sizeChart') }}
-              </NuxtLink>
+              <!-- Dorins: Größentabelle rechts neben „Größe“ wie im bisherigen Shop (Position per dorins.css) -->
+              <div class="relative" data-testid="attributes-with-size-chart">
+                <ProductAttributes :product="product" />
+                <NuxtLink
+                  :to="localePath('/informationen/groesseninformation')"
+                  class="inline-block mt-1 mb-2 typography-text-sm underline"
+                  data-testid="size-chart-link"
+                >
+                  {{ t('dorins.sizeChart') }}
+                </NuxtLink>
+              </div>
             </template>
 
             <template v-if="key === 'itemBundle'">
