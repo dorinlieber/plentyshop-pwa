@@ -228,7 +228,11 @@ const props = withDefaults(defineProps<ProductCardProps>(), {
 });
 
 const product = computed(() => props.product);
-const availabilityName = computed(() => productGetters.getAvailabilityName(product.value));
+// „Bitte Variante wählen!“ ist kein Lieferzeit-Text (Hauptvariante ohne eigene Verfügbarkeit), dann nichts zeigen
+const availabilityName = computed(() => {
+  const name = productGetters.getAvailabilityName(product.value);
+  return /variante/i.test(name) ? '' : name;
+});
 
 const configuration = computed(() => props.configuration || ({} as ItemGridContent));
 

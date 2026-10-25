@@ -101,26 +101,29 @@
     </div>
 
     <!-- Dorins: Vorschaubilder „unten“ zeigt der Rechner als Raster unter dem Hauptbild (wie im bisherigen Shop) -->
-    <div
-      v-if="showImageGrid"
-      class="grid grid-cols-2 gap-2 mt-2"
-      data-testid="gallery-grid"
-    >
-      <button
-        v-for="(image, index) in images.slice(1)"
-        :key="`grid-${index}`"
-        type="button"
-        class="block bg-white"
-        @click="showImage(index + 1)"
+    <!-- Bildschirmbreite kennt nur der Browser, deshalb erst dort rendern (sonst Hydration-Abweichung) -->
+    <ClientOnly>
+      <div
+        v-if="showImageGrid"
+        class="grid grid-cols-2 gap-2 mt-2"
+        data-testid="gallery-grid"
       >
-        <NuxtImg
-          :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
-          :src="productImageGetters.getImageUrl(image)"
-          class="w-full aspect-square object-contain"
-          loading="lazy"
-        />
-      </button>
-    </div>
+        <button
+          v-for="(image, index) in images.slice(1)"
+          :key="`grid-${index}`"
+          type="button"
+          class="block bg-white"
+          @click="showImage(index + 1)"
+        >
+          <NuxtImg
+            :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
+            :src="productImageGetters.getImageUrl(image)"
+            class="w-full aspect-square object-contain"
+            loading="lazy"
+          />
+        </button>
+      </div>
+    </ClientOnly>
   </div>
 </template>
 

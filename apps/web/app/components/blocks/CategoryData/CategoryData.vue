@@ -1,5 +1,6 @@
 <template>
   <div :style="inlineStyle" data-testid="category-data">
+    <DorinsCategoryBanner v-if="props.content.fields.name" />
     <template
       v-if="props.content.displayCategoryImage === 'off' || (!imageUrl && props.content.displayCategoryImage !== 'off')"
     >
@@ -88,6 +89,7 @@
         </div>
       </div>
     </template>
+    <DorinsSubcategories v-if="props.content.fields.name" />
   </div>
 </template>
 

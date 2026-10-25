@@ -403,6 +403,23 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     align-items: center;
     gap: 10px;
     height: auto;
+    position: relative;
+    padding-right: 330px;
+  }
+  /* Sortierung und Anzahl fest oben rechts, auch wenn die Filter umbrechen */
+  [data-testid='category-sort-filter'] aside > .grid > [data-testid='category-sorting'] {
+    position: absolute;
+    top: 0;
+    right: 140px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > [data-testid='category-items-per-page'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  /* Pfeil nach unten wie im LTS */
+  [data-testid='category-sort-filter'] details > summary svg {
+    transform: rotate(-90deg);
   }
   [data-testid='category-sort-filter'] aside > .grid::before {
     content: 'Filtern nach:';
@@ -627,4 +644,150 @@ section:has(> [data-testid='gallery'] [data-testid='gallery-grid']) {
 }
 [data-testid='gallery-grid'] button {
   background: #fff;
+}
+
+/* Unterkategorie-Kacheln unter dem Kategorietitel (Fork-Komponente DorinsSubcategories) */
+.dorins-subcategories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 1.5rem 0 0.5rem;
+}
+.dorins-subcategory {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+.dorins-subcategory-image {
+  display: block;
+  aspect-ratio: 1;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+.dorins-subcategory-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dorins-subcategory-name {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+@media (min-width: 1024px) {
+  .dorins-subcategories {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Kategorie: Anzahl steht schon im Titel („Jeans | 130 Artikel“), Zeile über den Artikeln ausblenden */
+body:has([data-testid='category-name']) [data-testid='item-count'] {
+  display: none;
+}
+
+/* Fuß: am Rechner linksbündig wie im LTS (Spalten schmal, Lücke in der Mitte), darunter zentriert */
+.dorins-footer-col {
+  max-width: 16rem;
+}
+.rte-prose .dorins-footer-check {
+  padding-left: 1.25rem;
+  text-indent: -1.25rem;
+}
+@media (max-width: 1023px) {
+  .dorins-footer-col {
+    max-width: none;
+    text-align: center;
+  }
+  .rte-prose .dorins-footer-check {
+    padding-left: 0;
+    text-indent: 0;
+  }
+}
+
+/* Kopfbanner über dem Kategorietitel (Fork-Komponente DorinsCategoryBanner) */
+.dorins-category-banner {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.dorins-category-banner img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1440 / 281;
+  object-fit: cover;
+}
+.dorins-category-banner-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.875rem;
+}
+@media (min-width: 1024px) {
+  .dorins-category-banner-title {
+    font-size: 3.75rem;
+  }
+}
+/* große Fotokacheln auf Jungen-/Mädchenmode wie LTS „sub-cats lvl1“: Name als weiße Pille im Bild */
+.dorins-subcategories--gross {
+  grid-template-columns: repeat(2, 1fr);
+}
+.dorins-subcategories--gross .dorins-subcategory {
+  position: relative;
+}
+.dorins-subcategories--gross .dorins-subcategory:nth-child(3n + 1) {
+  grid-column: 1 / -1;
+}
+.dorins-subcategories--gross .dorins-subcategory-image {
+  aspect-ratio: 5 / 6;
+}
+.dorins-subcategories--gross .dorins-subcategory-name {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  margin: 0;
+  background: #fff;
+  border-radius: 25px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.dorins-subcategories--gross .dorins-subcategory:hover .dorins-subcategory-name {
+  background: #000;
+  color: #fff;
+}
+@media (min-width: 1024px) {
+  .dorins-subcategories--gross {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+    gap: 20px;
+  }
+  .dorins-subcategories--gross .dorins-subcategory:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+  .dorins-subcategories--gross .dorins-subcategory:nth-child(1) {
+    grid-column: 2 / span 2;
+    grid-row: span 2;
+  }
+  .dorins-subcategories--gross .dorins-subcategory:nth-child(2) {
+    grid-column: 1 / span 2;
+    grid-row: span 2;
+  }
+  .dorins-subcategories--gross .dorins-subcategory:nth-child(-n + 2) .dorins-subcategory-image {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+  .dorins-subcategories--gross .dorins-subcategory-name {
+    bottom: 1.5rem;
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+/* Jungen-/Mädchenmode: Banner trägt den Namen, Titelzeile darunter entfällt wie im LTS */
+[data-testid='category-data']:has(.dorins-subcategories--gross) [data-testid='category-name'] {
+  display: none;
 }
