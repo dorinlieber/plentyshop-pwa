@@ -26,7 +26,7 @@ const getHTMLTexts = () => {
 };
 
 const icon = 'page';
-setPageMeta(t('legal.cancellationRights'), icon);
+setPageMeta(t('legal.cancellationRights'), icon, true);
 
 await getRobots();
 setRobotForStaticPage('CancellationRights');

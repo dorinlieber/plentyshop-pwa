@@ -311,7 +311,7 @@ const runtimeConfig = useRuntimeConfig();
 const passwordMinLength = runtimeConfig.public.passwordMinLength;
 const passwordMaxLength = runtimeConfig.public.passwordMaxLength;
 definePageMeta({ layout: false, middleware: ['guest-guard'] });
-usePageMeta().setPageMeta(t('authentication.signup.submitLabel'), 'page');
+usePageMeta().setPageMeta(t('authentication.signup.submitLabel'), 'page', true);
 useHead({
   meta: [{ name: 'robots', content: 'noindex, nofollow' }],
 });

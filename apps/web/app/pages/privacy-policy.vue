@@ -19,7 +19,7 @@ definePageMeta({
 const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
-setPageMeta(t('CookieBar.keys.PrivacyPolicy'), icon);
+setPageMeta(t('CookieBar.keys.PrivacyPolicy'), icon, true);
 
 await getLegalTexts({
   type: 'PrivacyPolicy',

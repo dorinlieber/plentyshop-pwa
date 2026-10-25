@@ -68,5 +68,5 @@ const { data: cart, cartIsEmpty, loading } = useCart();
 const goToCheckout = () => localePath(paths.checkout);
 
 const icon = 'page';
-setPageMeta(t('common.labels.cart'), icon);
+setPageMeta(t('common.labels.cart'), icon, true);
 </script>

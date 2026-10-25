@@ -19,7 +19,7 @@ definePageMeta({
 const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
-setPageMeta(t('authentication.login.submitLabel'), icon);
+setPageMeta(t('authentication.login.submitLabel'), icon, true);
 useHead({
   meta: [{ name: 'robots', content: 'noindex, nofollow' }],
 });

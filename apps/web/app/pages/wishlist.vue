@@ -20,7 +20,7 @@ const { setPageMeta } = usePageMeta();
 
 const localePath = useLocalizedPath();
 const icon = 'page';
-setPageMeta(t('account.wishlist.heading'), icon);
+setPageMeta(t('account.wishlist.heading'), icon, true);
 
 const breadcrumbs = computed(() => [
   { name: t('common.labels.home'), link: localePath(paths.home) },

@@ -176,7 +176,7 @@ const { getRobots, setRobotForStaticPage } = useRobots();
 const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
-setPageMeta(t('contact.label'), icon);
+setPageMeta(t('contact.label'), icon, true);
 
 const contactShopEmail = getContactShopEmail() ?? '';
 const turnstileSiteKey = getSetting() ?? '';

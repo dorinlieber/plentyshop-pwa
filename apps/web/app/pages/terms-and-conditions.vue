@@ -18,7 +18,7 @@ definePageMeta({
 const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
-setPageMeta(t('legal.termsAndConditions'), icon);
+setPageMeta(t('legal.termsAndConditions'), icon, true);
 
 await getLegalTexts({
   type: 'TermsConditions',

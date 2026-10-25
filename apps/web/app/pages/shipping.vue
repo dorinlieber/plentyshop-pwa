@@ -56,7 +56,7 @@ if (categoryId.value > 0) {
   await fetchCategoryTemplate(categoryId.value);
 }
 
-setPageMeta(t('orderConfirmation.shipping'), 'page');
+setPageMeta(t('orderConfirmation.shipping'), 'page', true);
 
 const hasEditorContent = computed(() => pageBlocks.value.length > 0);
 

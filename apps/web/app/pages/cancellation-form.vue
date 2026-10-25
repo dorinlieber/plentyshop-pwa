@@ -160,7 +160,7 @@ const { getRobots, setRobotForStaticPage } = useRobots();
 const { setPageMeta } = usePageMeta();
 const localePath = useLocalizedPath();
 
-setPageMeta(t('legal.cancellationForm'), 'page');
+setPageMeta(t('legal.cancellationForm'), 'page', true);
 
 await getLegalTexts({ type: 'WithdrawalForm' });
 

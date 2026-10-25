@@ -14,7 +14,7 @@ const { getRobots, setRobotForStaticPage } = useRobots();
 const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
-setPageMeta(t('legal.legalDisclosure'), icon);
+setPageMeta(t('legal.legalDisclosure'), icon, true);
 
 definePageMeta({
   pageType: 'static',

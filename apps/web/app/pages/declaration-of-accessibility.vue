@@ -14,7 +14,7 @@ const { setPageMeta } = usePageMeta();
 const { getRobots, setRobotForStaticPage } = useRobots();
 
 const icon = 'page';
-setPageMeta(t('legal.declarationOfAccessibility'), icon);
+setPageMeta(t('legal.declarationOfAccessibility'), icon, true);
 
 definePageMeta({
   pageType: 'static',
