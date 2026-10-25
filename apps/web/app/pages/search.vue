@@ -13,9 +13,11 @@
           </NuxtLink>
         </p>
       </div>
+      <!-- Dorins: Suchergebnisse im Aufbau des bisherigen Shops (Titel „1097 Artikel gefunden“, Filterleiste oben) -->
       <CategoryPageContent
         v-if="productsCatalog"
-        :title="t('search.searchResults', { phrase: route.query.term })"
+        class="dorins-search-filters"
+        :title="t('dorins.searchFound', productsCatalog.pagination.totals)"
         :total-products="productsCatalog.pagination.totals"
         :products="productsCatalog.products"
         :items-per-page="Number(productsPerPage)"

@@ -1433,6 +1433,7 @@
     "titleWithBrand": "{title} by {brand}",
     "saleBadge": "% Sale",
     "upToDiscount": "up to -{percent}%",
-    "categories": "Categories"
+    "categories": "Categories",
+    "searchFound": "{n} item found | {n} items found"
   }
 }

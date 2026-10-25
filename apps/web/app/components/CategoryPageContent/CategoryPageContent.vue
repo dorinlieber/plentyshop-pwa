@@ -36,6 +36,7 @@
           >
             <UiProductCard
               :product="product"
+              :configuration="dorinsCardConfiguration"
               :name="productGetters.getName(product) ?? ''"
               :rating-count="productGetters.getTotalReviews(product)"
               :rating="productGetters.getAverageRating(product, 'half')"
