@@ -76,6 +76,7 @@ const getImageUrl = () => {
     case '4xl': {
       return banner.value.image?.wideScreen ?? '';
     }
+    case 'xl': // Dorins: eigener Umschaltpunkt 1200 px (Tablet-Kopf) gilt hier wie lg
     case 'lg': {
       return banner.value.image?.desktop ?? '';
     }

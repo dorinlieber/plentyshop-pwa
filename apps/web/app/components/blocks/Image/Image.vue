@@ -98,7 +98,9 @@ const breakpointConfig = computed(() => {
     },
   };
 
-  return (configs[viewport.breakpoint.value] ?? configs['fallback']) as BreakpointEntry;
+  // Dorins: eigener Umschaltpunkt xl (1200 px, Tablet-Kopf) nutzt die Rechner-Bilder wie lg
+  const key = viewport.breakpoint.value === 'xl' ? 'lg' : viewport.breakpoint.value;
+  return (configs[key] ?? configs['fallback']) as BreakpointEntry;
 });
 
 const depth = getBlockDepth(props.meta.uuid);

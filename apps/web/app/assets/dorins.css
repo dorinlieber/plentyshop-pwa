@@ -2231,3 +2231,108 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
     padding-bottom: 0;
   }
 }
+
+/* ---------- Startseite nach den LTS-Regeln (aus dem LTS-CSS gelesen, 26.10.2026) ---------- */
+/* Kacheln „Für wen“: ab 992 px Pille 40 px hoch, 250 px breit, ab 1600 px alle sechs in einer Reihe */
+@media (min-width: 992px) {
+  .rte-prose .dorins-pill--tile {
+    min-height: 40px;
+    min-width: 250px;
+    border-radius: 20px;
+    justify-content: center;
+  }
+}
+@media (min-width: 1600px) {
+  [data-testid='multi-grid-structure']:has(.dorins-pill--tile) > * {
+    grid-column: span 2 / span 2 !important;
+  }
+  .rte-prose .dorins-pill--tile {
+    min-width: 0;
+    width: calc(100% - 50px);
+    white-space: normal;
+    margin-bottom: 20px;
+  }
+}
+/* Banner „Unsere Highlights“: Kopfzeile 24/36 px, Überschrift Bely 70/120 px, Knopf 24 px */
+.rte-prose .dorins-banner-kicker {
+  font-size: 24px;
+  letter-spacing: 0;
+}
+@media (min-width: 581px) {
+  .rte-prose .dorins-banner-title {
+    font-size: 70px;
+  }
+}
+@media (min-width: 1200px) {
+  .dorins-banner .dorins-pill {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1350px) {
+  .rte-prose .dorins-banner-kicker {
+    font-size: 36px;
+  }
+  .rte-prose .dorins-banner-title {
+    font-size: 120px;
+    letter-spacing: -2px;
+  }
+}
+@media (max-width: 580px) {
+  .rte-prose .dorins-banner-kicker {
+    font-size: 18px;
+  }
+  .rte-prose .dorins-banner-title {
+    font-size: 36px;
+  }
+}
+/* Vorteile: Symbole 40/60 px, Text dünn 18/20 px */
+@media (min-width: 992px) {
+  .rte-prose .dorins-usp-icon {
+    height: 60px;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) p:not(:has(img)) {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+  }
+}
+@media (min-width: 1200px) {
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) p:not(:has(img)) {
+    font-size: 20px;
+  }
+}
+/* SEO-Text der Startseite wie die Kategorietexte im LTS: 18 px dünn, Überschriften 18 px fett */
+.rte-prose .dorins-seo h1,
+.rte-prose .dorins-seo h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
+.rte-prose .dorins-seo p {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 300;
+}
+.rte-prose .dorins-seo strong {
+  font-weight: 700;
+}
+/* Kacheln „Für wen“ wie LTS („big“) bis 1920 px breit, übrige Inhalte bleiben bei ~1580 px */
+[data-testid='block-wrapper']:has(.dorins-pill--tile) {
+  max-width: 1920px !important;
+}
+@media (min-width: 1600px) {
+  main [data-testid='block-wrapper']:not(:has(.dorins-pill--tile)) {
+    max-width: 1580px;
+  }
+}
+/* Banner-Text breiter, damit die große Überschrift wie im LTS nur zwei, drei Zeilen braucht */
+@media (min-width: 992px) {
+  div:has(> div > .rte-prose > .dorins-banner) {
+    max-width: 60% !important;
+  }
+}
+@media (min-width: 1350px) and (max-width: 1599px) {
+  .rte-prose .dorins-banner-title {
+    font-size: 100px;
+  }
+}

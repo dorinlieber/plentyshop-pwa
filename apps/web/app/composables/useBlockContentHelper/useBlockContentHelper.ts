@@ -32,7 +32,8 @@ export const useBlockContentHelper = () => {
         return '768px';
       }
 
-      case 'lg': {
+      case 'xl': // Dorins: eigener Umschaltpunkt 1200 px (Tablet-Kopf) gilt hier wie lg
+    case 'lg': {
         return '576px';
       }
       case 'md': {
