@@ -89,9 +89,11 @@ watch(
   },
 );
 
+// Dorins: ohne eigenen Meta-Titel den Kategorienamen nehmen wie im bisherigen Shop, nicht den allgemeinen Shop-Titel
 const headTitle = computed(() =>
   productsCatalog.value?.category
-    ? ((categoryGetters.getMetaTitle(productsCatalog.value.category) || process.env.METATITLE) ?? '')
+    ? ((categoryGetters.getMetaTitle(productsCatalog.value.category) || categoryName.value || process.env.METATITLE) ??
+      '')
     : (process.env.METATITLE ?? ''),
 );
 
