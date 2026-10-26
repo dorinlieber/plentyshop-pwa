@@ -72,12 +72,16 @@
       </template>
     </CategorySidebar>
 
-    <UiButton variant="tertiary" class="@md:hidden whitespace-nowrap !px-0" @click="open">
-      <template #prefix>
-        <SfIconTune />
-      </template>
-      {{ t('common.labels.listSettings') }}
-    </UiButton>
+    <!-- Dorins: am Handy die Sortierung direkt sichtbar wie im bisherigen Shop, Filter weiter über „Listeneinstellungen“ -->
+    <div class="@md:hidden flex items-center justify-between gap-3 dorins-mobile-list-controls">
+      <UiButton variant="tertiary" class="whitespace-nowrap !px-0" @click="open">
+        <template #prefix>
+          <SfIconTune />
+        </template>
+        {{ t('common.labels.listSettings') }}
+      </UiButton>
+      <CategorySorting v-if="props.content?.fields.sortBy" class="dorins-mobile-sort" />
+    </div>
   </div>
 
   <template v-else>

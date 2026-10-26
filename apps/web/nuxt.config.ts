@@ -139,7 +139,7 @@ export default defineNuxtConfig({
     '/content/versand': { redirect: { to: '/shipping', statusCode: 301 } },
     '/infos/versandkosten': { redirect: { to: '/shipping', statusCode: 301 } },
     '/infos/zahlungsarten': { redirect: { to: '/shipping', statusCode: 301 } },
-    '/infos/bankdaten': { redirect: { to: '/shipping', statusCode: 301 } },
+    '/infos/bankdaten': { redirect: { to: '/', statusCode: 301 } },
     '/infos/hilfe': { redirect: { to: '/informationen/fragen-und-antworten', statusCode: 301 } },
     '/infos/404': { redirect: { to: '/', statusCode: 301 } },
     '/infos/artikel-nicht-gefunden': { redirect: { to: '/', statusCode: 301 } },

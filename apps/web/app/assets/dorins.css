@@ -1956,3 +1956,23 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
   height: 70px;
   width: auto;
 }
+
+/* Handy: Sortierung als Pille neben „Listeneinstellungen“ wie im LTS („Empfohlen“) */
+.dorins-mobile-sort {
+  width: auto !important;
+  max-width: 55%;
+}
+.dorins-mobile-sort > div:first-child:not(:last-child) {
+  display: none;
+}
+.dorins-mobile-sort > div:last-child {
+  padding: 0;
+}
+.dorins-mobile-sort select {
+  border: 1px solid #000;
+  border-radius: 20px;
+  min-height: 36px;
+  font-size: 0.8125rem;
+  padding-left: 0.9rem;
+  box-shadow: none;
+}
