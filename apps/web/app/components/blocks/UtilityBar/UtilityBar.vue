@@ -2,15 +2,16 @@
   <div :style="headerPaletteStyle">
     <header class="relative w-full @md:sticky @md:shadow-md">
       <div
-        v-if="viewport.isLessThan('md')"
+        v-if="viewport.isLessThan('xl')"
         class="flex flex-wrap items-center w-full"
         :style="{ backgroundColor: headerBackgroundColor }"
         data-testid="navbar-top-mobile"
       >
         <!-- Dorins: Handy-Kopf wie im bisherigen Shop: links Menü + Konto, Logo mittig, rechts Merkliste + Warenkorb
              (ersetzt die untere Navigationsleiste) -->
-        <div class="dorins-mobile-head">
-          <div class="dorins-mobile-head-side">
+        <!-- Tablet (768-1199 px): Logo, Hauptkategorien als Reiter, Symbole rechts, kein Menüknopf -->
+        <div :class="['dorins-mobile-head', { 'dorins-tablet-head': isTabletHead }]">
+          <div v-if="!isTabletHead" class="dorins-mobile-head-side">
             <UiButton
               variant="tertiary"
               square
@@ -42,7 +43,19 @@
           >
             <UiLogo />
           </NuxtLink>
+          <DorinsTabletTabs v-if="isTabletHead" />
           <div class="dorins-mobile-head-side dorins-mobile-head-side--right">
+            <UiButton
+              v-if="isTabletHead"
+              variant="tertiary"
+              square
+              class="hover:!bg-header-400"
+              :style="{ color: iconColor }"
+              :aria-label="t('dorins.account')"
+              @click="isAuthorized ? navigateTo(localePath(paths.account)) : navigateToLogin()"
+            >
+              <SfIconPerson />
+            </UiButton>
             <UiButton
               :tag="NuxtLink"
               :to="localePath(paths.wishlist)"
@@ -437,6 +450,7 @@ const { open: searchModalOpen, isOpen: isSearchModalOpen, close: searchModalClos
 const { toggle: toggleLanguageSelect, isOpen: isLanguageSelectOpen } = useLocalization();
 const { user, isAuthorized, logout } = useCustomer();
 const viewport = useViewport();
+const isTabletHead = computed(() => viewport.isGreaterOrEquals('md') && viewport.isLessThan('xl'));
 const runtimeConfig = useRuntimeConfig();
 const showConfigurationDrawer = runtimeConfig.public.showConfigurationDrawer;
 const { isEditing, disableActions } = useEditor();

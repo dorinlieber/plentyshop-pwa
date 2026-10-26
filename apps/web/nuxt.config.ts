@@ -217,12 +217,14 @@ export default defineNuxtConfig({
       sm: 640,
       md: 768,
       lg: 1024,
+      // Dorins: ab hier Rechner-Kopfzeile, darunter Tablet-/Handy-Kopf wie im bisherigen Shop
+      xl: 1200,
       '4xl': 1920,
     },
     defaultBreakpoints: {
       mobile: 'sm',
       tablet: 'md',
-      desktop: 'lg',
+      desktop: 'xl',
       wideScreen: '4xl',
     },
     fallbackBreakpoint: 'lg',

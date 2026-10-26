@@ -224,8 +224,8 @@ body,
   }
 }
 
-/* ---------- Kopfzeile: eine Zeile wie im LTS (Logo, Menü, Suche, Symbole mit Beschriftung) ---------- */
-@media (min-width: 1024px) {
+/* ---------- Kopfzeile: eine Zeile wie im LTS (Logo, Menü, Suche, Symbole mit Beschriftung), ab 1200 px ---------- */
+@media (min-width: 1200px) {
   /* Menü-Block und Logo-Zeile liegen übereinander in derselben Rasterzelle */
   [data-testid='header-container'] {
     display: grid;
@@ -283,8 +283,8 @@ body,
   }
 }
 
-/* schmale Rechner (1024-1279 px): Menü kleiner, Suche schmaler, damit nichts überlappt */
-@media (min-width: 1024px) and (max-width: 1279px) {
+/* schmale Rechner (1200-1279 px): Menü kleiner, Suche schmaler, damit nichts überlappt */
+@media (min-width: 1200px) and (max-width: 1279px) {
   [data-testid='category-button'] {
     font-size: 17px;
     padding: 0.25rem 0.4rem;
@@ -1318,7 +1318,8 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   min-height: 16px;
   border-radius: 9999px;
 }
-@media (max-width: 767px) {
+/* Handy und Tablet (bis 1199 px wie im LTS) */
+@media (max-width: 1199px) {
   /* rosa Leiste ganz oben */
   [data-testid='header-container'] {
     display: flex;
@@ -1335,7 +1336,9 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   [data-testid='mobile-search-bar'] > * {
     border-radius: 25px;
   }
-  /* Brotkrumen gibt es am Handy im LTS nicht, dafür die Kategorie-Leiste */
+}
+@media (max-width: 767px) {
+  /* Brotkrumen gibt es am Handy im LTS nicht, dafür die Kategorie-Leiste (am Tablet stehen sie darunter) */
   body:has([data-testid='dorins-category-pills']) [data-testid='breadcrumbs'] {
     display: none;
   }
@@ -1372,7 +1375,7 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   background: #000;
   color: #fff;
 }
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   /* rosa Leiste einzeilig, Logo kleiner, Suche als graue Pille ohne Rahmen */
   [data-testid='header-container'] > div:not(:has([data-testid='navbar-top-mobile'], [data-testid='category-button'])) p {
     font-size: 0.8125rem;
@@ -1839,5 +1842,67 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
   /* leerer Brotkrumen-Rahmen über dem Kategorie-Banner */
   body:has([data-testid='dorins-category-pills']) [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']):not(:has(> :not([data-testid='breadcrumbs']))) {
     display: none;
+  }
+}
+
+/* ---------- Tablet-Kopf (768-1199 px) wie im LTS: Logo | Reiter | Symbole, darunter Suche und Kategorie-Leiste ---------- */
+.dorins-tablet-head {
+  grid-template-columns: auto 1fr auto;
+  padding: 0;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 1rem;
+}
+.dorins-tablet-head > a:first-child {
+  padding: 0.5rem 1.25rem;
+}
+.dorins-tablet-tabs {
+  display: flex;
+  align-self: stretch;
+}
+.dorins-tablet-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #e5e5e5;
+  font-family: europa, 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0 0.75rem;
+}
+.dorins-tablet-tab--sale {
+  color: #ff6060;
+}
+.dorins-tablet-tab--active {
+  text-decoration: underline;
+}
+.dorins-tablet-head .dorins-mobile-head-side--right {
+  align-self: stretch;
+}
+.dorins-tablet-head .dorins-mobile-head-side--right > * {
+  height: 100%;
+  width: 3.75rem;
+  border-left: 1px solid #e5e5e5;
+  border-radius: 0;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='mobile-search-bar'] {
+    padding: 0 1.25rem 1rem;
+  }
+  .dorins-pills {
+    padding: 0 1.25rem 0.75rem;
+  }
+}
+.dorins-tablet-head .dorins-count {
+  top: 14px !important;
+  right: 10px !important;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* LTS-Tablet-Kopf ohne Schatten */
+  header:has(.dorins-tablet-head) {
+    box-shadow: none !important;
   }
 }

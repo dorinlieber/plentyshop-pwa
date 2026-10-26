@@ -1,6 +1,6 @@
 <template>
   <div ref="referenceRef" :style="navigationRootStyle" class="relative w-full">
-    <nav v-if="viewport.isGreaterOrEquals('lg')" ref="floatingRef" @mouseleave="onMouseLeave">
+    <nav v-if="viewport.isGreaterOrEquals('xl')" ref="floatingRef" @mouseleave="onMouseLeave">
       <ul :class="navigationContainerClasses" :style="navigationContainerStyle" @focusout="onNavBlur">
         <li v-if="categoryTree.length === 0" class="h-10" />
 
@@ -436,7 +436,7 @@ const onMouseLeave = () => {
 };
 
 const onCategoryMouseEnter = (menuNode: CategoryTreeItem) => {
-  if (!viewport.isGreaterOrEquals('lg')) return;
+  if (!viewport.isGreaterOrEquals('xl')) return;
 
   if (menuNode.childCount > 0) {
     activeNode.value = [menuNode.id];
