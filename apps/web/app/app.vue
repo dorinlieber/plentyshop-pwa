@@ -158,9 +158,15 @@ const getCategoryOgTitle = () => {
   return getOgTitle() || getMetaTitle();
 };
 
+// Dorins: Vorschaubild beim Teilen wie im LTS = Kategoriebild, sonst die Shop-Vorgabe
+const getCategoryOgImage = () => {
+  const imagePath = isCategoryPage.value ? category.value?.details?.[0]?.imagePath : '';
+  return imagePath ? `${useRuntimeConfig().public.domain}/documents/${imagePath}` : getOgImage();
+};
+
 const title = ref(getCategoryMetaTitle());
 const ogTitle = ref(getCategoryOgTitle());
-const ogImage = ref(getOgImage());
+const ogImage = ref(getCategoryOgImage());
 const ogDescription = ref(getCategoryMetaDescription());
 const description = ref(getCategoryMetaDescription());
 const keywords = ref(getCategoryMetaKeywords());
@@ -195,7 +201,7 @@ const jsExternalAssets = computed(() =>
 watchEffect(() => {
   title.value = getCategoryMetaTitle();
   ogTitle.value = getCategoryOgTitle();
-  ogImage.value = getOgImage();
+  ogImage.value = getCategoryOgImage();
   ogDescription.value = getCategoryMetaDescription();
   description.value = getCategoryMetaDescription();
   keywords.value = getCategoryMetaKeywords();

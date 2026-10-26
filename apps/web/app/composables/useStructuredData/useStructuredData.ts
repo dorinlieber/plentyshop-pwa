@@ -68,11 +68,14 @@ export const useStructuredData: useStructuredDataReturn = () => {
     state.value.loading = true;
 
     const runtimeConfig = useRuntimeConfig();
+    // Dorins: echtes Shop-Logo und Firmenname statt der nicht vorhandenen Standarddatei logo.png (404)
+    const { getSetting: getHeaderLogo } = useSiteSettings('headerLogo');
     const structuredData: WithContext<SchemaOrganization> = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
+      name: runtimeConfig.public.storename,
       url: runtimeConfig.public.domain,
-      logo: runtimeConfig.public.domain + '/_nuxt-plenty/images/logo.png',
+      logo: getHeaderLogo() || runtimeConfig.public.domain + '/_nuxt-plenty/images/logo.png',
     };
     useHead({
       script: [

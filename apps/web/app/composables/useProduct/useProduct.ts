@@ -110,6 +110,13 @@ export const useProduct: UseProductReturn = (slug) => {
         },
       ],
     });
+
+    // Dorins: beim Teilen (WhatsApp, Facebook, Pinterest) Artikelname und Hauptbild wie im LTS statt Shop-Vorgabe
+    useSeoMeta({
+      ogTitle: productGetters.getTitle(state.value.data) || productGetters.getName(state.value.data),
+      ogImage: productGetters.getCoverImage(state.value.data)?.replace('/middle/', '/full/') || undefined,
+      ogType: 'product',
+    });
   };
 
   const { shouldUseFakeData } = useEditorState();
