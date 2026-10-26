@@ -226,7 +226,7 @@
         "wishlist": "Speichern Sie Ihre Artikel für später"
       },
       "emailAlreadyExists": "Diese E-Mail-Adresse ist bereits registriert.",
-      "heading": "Account erstellen",
+      "heading": "Registrieren Sie sich",
       "logInLinkLabel": "Stattdessen einloggen",
       "passwordValidation": {
         "characters": "Das Passwort muss zwischen {min} und {max} Zeichen lang sein.",
@@ -234,8 +234,8 @@
         "numbers": "Das Passwort muss mindestens eine Zahl enthalten.",
         "invalidPassword": "Mindestens 8 Zeichen lang und muss mindestens einen Buchstaben und eine Zahl enthalten."
       },
-      "subheading": "Jetzt registrieren, um großartige Vorteile zu genießen",
-      "submitLabel": "Account erstellen",
+      "subheading": "",
+      "submitLabel": "Registrieren",
       "success": "Ihr Konto wurde erfolgreich erstellt."
     }
   },

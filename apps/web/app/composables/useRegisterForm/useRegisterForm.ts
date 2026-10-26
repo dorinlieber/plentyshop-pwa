@@ -33,7 +33,8 @@ export const useRegisterForm = (): UseRegisterFormReturn => {
       apartment: '',
       city: '',
       zipCode: '',
-      country: '',
+      // Dorins: Land vorbelegt mit Deutschland (ID 1) wie im bisherigen Shop
+      country: '1',
       privacyPolicy: false,
       turnstile: '',
     },

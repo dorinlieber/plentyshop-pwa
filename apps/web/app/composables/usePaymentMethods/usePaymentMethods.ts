@@ -9,6 +9,12 @@ import type { UsePaymentMethodsReturn, UsePaymentMethodsState, FetchPaymentMetho
  * ```
  * TODO: Remove .selected attribute from PaymentProviders
  */
+// Dorins: Amazon Pay nicht anbieten, solange es im neuen Shop keinen Amazon-Bezahlablauf gibt. plenty liefert die
+// Zahlart mit (für den bisherigen Shop eingerichtet), ausgewählt entstünde aber ein Auftrag ohne Bezahlvorgang.
+const isUnsupportedPaymentMethod = (method: PaymentMethod) =>
+  /amazon/i.test(`${method.paymentKey ?? ''} ${method.key ?? ''} ${method.name ?? ''}`);
+const withoutUnsupported = (list: PaymentMethod[] = []) => list.filter((method) => !isUnsupportedPaymentMethod(method));
+
 export const usePaymentMethods: UsePaymentMethodsReturn = () => {
   const state = useState<UsePaymentMethodsState>('usePaymentMethods', () => ({
     data: {} as PaymentProviders,
@@ -21,7 +27,7 @@ export const usePaymentMethods: UsePaymentMethodsReturn = () => {
    * @param selectedId { number }
    */
   const setPaymentMethods = (list: PaymentMethod[], selectedId: number) => {
-    state.value.data.list = list;
+    state.value.data.list = withoutUnsupported(list);
     state.value.data.selected = selectedId;
     const { data: cart } = useCart();
     if (cart.value) {
@@ -42,7 +48,7 @@ export const usePaymentMethods: UsePaymentMethodsReturn = () => {
 
     try {
       const { data } = await useSdk().plentysystems.getPaymentProviders();
-      state.value.data = data ?? state.value.data;
+      state.value.data = data ? { ...data, list: withoutUnsupported(data.list) } : state.value.data;
     } catch (error) {
       useHandleError(error as ApiError);
     } finally {
