@@ -1217,12 +1217,23 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 }
 
 /* Artikelkarten: Name und Preis größer wie im LTS */
+/* Kartentexte nach LTS-Maßen (mit echter Schrift gemessen 26.10.): Handy 14 px, ab Tablet 18 px, Name dünn */
 [data-testid='productcard-name'] {
-  font-size: 0.875rem;
-  line-height: 1.35;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
 }
 [data-testid='product-card-vertical-price'] {
-  font-size: 1rem;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  [data-testid='productcard-name'] {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  [data-testid='product-card-vertical-price'] {
+    font-size: 18px;
+  }
 }
 
 /* Kaufbox: Preis groß, Lieferzeit als grüner Text mit LKW statt Pille, Größentabelle neben „Größe“ */
@@ -2179,5 +2190,44 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 @media (max-width: 1023px) {
   .dorins-seals {
     order: 3;
+  }
+}
+
+/* Filterleiste: Pillen-Text 14 px wie LTS */
+@media (min-width: 768px) {
+  :is([data-testid='category-sort-filter'], .dorins-search-filters) button,
+  :is([data-testid='category-sort-filter'], .dorins-search-filters) select {
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) {
+  /* Platz für Sortierung + Anzahl rechts (größere Schrift), Beschriftungen 13 px fett wie LTS */
+  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid {
+    padding-right: 400px;
+  }
+  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid::before,
+  [data-testid='category-sorting'] > div:first-child {
+    font-size: 13px !important;
+  }
+}
+/* Karten: Name hat Platz für zwei Zeilen, Preis darunter auf gleicher Höhe wie im LTS */
+@media (min-width: 768px) {
+  [data-testid='productcard-name'] {
+    min-height: 54px;
+    margin-bottom: 0.75rem;
+  }
+}
+.dorins-truck-icon {
+  width: 22px;
+  height: 11px;
+}
+@media (min-width: 768px) {
+  [data-testid='productcard-name'] {
+    display: block;
+  }
+  /* weniger Abstand zwischen Filterleiste und Artikeln */
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-sort-filter']) {
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }

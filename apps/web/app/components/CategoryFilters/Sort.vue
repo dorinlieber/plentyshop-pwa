@@ -50,11 +50,22 @@ const customizedFiltersProps = computed(() => {
   };
 });
 
+// Dorins: wie im bisherigen Shop unter Jungenmode keine Mädchen-Zielgruppen-Filter und umgekehrt
+const route = useRoute();
+const hiddenTargetGroup = computed(() => {
+  if (/\/jungenmode(\/|$)/.test(route.path)) return /mädchen|ladies/i;
+  if (/\/maedchenmode(\/|$)/.test(route.path)) return /jungen|jungs/i;
+  return null;
+});
+
 const baseFacets = computed(() => {
   if (!isCustomized.value) {
     return props.facets;
   }
-  return props.facets.filter((f) => facetGetters.getType(f) === 'dynamic');
+  const hidden = hiddenTargetGroup.value;
+  return props.facets.filter(
+    (f) => facetGetters.getType(f) === 'dynamic' && !(hidden && hidden.test(facetGetters.getName(f))),
+  );
 });
 
 const visibleFacets = computed(() => {

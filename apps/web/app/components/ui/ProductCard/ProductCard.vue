@@ -151,10 +151,10 @@
           <p
             v-if="availabilityName"
             class="flex items-center gap-1 typography-text-xs"
-            :style="{ color: '#5cb85c' }"
+            :style="{ color: '#7bc59a' }"
             data-testid="product-card-availability"
           >
-            <SfIconLocalShipping size="xs" />
+            <DorinsIcon name="truck" class="dorins-truck-icon" />
             {{ availabilityName }}
           </p>
         </template>
@@ -193,7 +193,7 @@
 
 <script setup lang="ts">
 import { productGetters, productImageGetters } from '@plentymarkets/shop-api';
-import { SfIconLocalShipping, SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
+import { SfIconShoppingCart, SfLoaderCircular, SfRating, SfCounter } from '@storefront-ui/vue';
 import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import type { ItemGridContent } from '~/components/blocks/ItemGrid/types';
 import type { BasketItemOrderParamsProperty, Product, DoAddItemParams } from '@plentymarkets/shop-api';
