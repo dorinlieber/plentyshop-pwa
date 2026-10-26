@@ -21,7 +21,8 @@ const { setInitialDataSSR } = useInitialSetup();
 
 const { getSetting: getFavicon } = useSiteSettings('favicon');
 const { getSetting: getOgTitle } = useSiteSettings('ogTitle');
-const { getSetting: getOgImage } = useSiteSettings('ogImage');
+// Dorins: die Einstellung heißt ogImg, mit 'ogImage' blieb das Vorschaubild immer leer
+const { getSetting: getOgImage } = useSiteSettings('ogImg');
 const { getSetting: getMetaDescription } = useSiteSettings('metaDescription');
 const { getSetting: getMetaKeywords } = useSiteSettings('metaKeywords');
 const { getSetting: getRobots } = useSiteSettings('robots');

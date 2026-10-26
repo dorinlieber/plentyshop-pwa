@@ -109,7 +109,8 @@ provide('previewContainer', previewContainerEl);
 
 const { getSetting: getFavicon } = useSiteSettings('favicon');
 const { getSetting: getOgTitle } = useSiteSettings('ogTitle');
-const { getSetting: getOgImage } = useSiteSettings('ogImage');
+// Dorins: die Einstellung heißt ogImg, mit 'ogImage' blieb das Vorschaubild immer leer
+const { getSetting: getOgImage } = useSiteSettings('ogImg');
 const { getSetting: getMetaTitle } = useSiteSettings('metaTitle');
 const { getSetting: getMetaDescription } = useSiteSettings('metaDescription');
 const { getSetting: getMetaKeywords } = useSiteSettings('metaKeywords');
