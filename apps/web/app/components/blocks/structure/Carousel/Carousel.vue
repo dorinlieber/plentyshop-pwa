@@ -3,7 +3,7 @@
     <Swiper
       :id="`carousel-${meta.uuid}`"
       :key="visibleContent.length"
-      :modules="enableModules ? [Pagination, Navigation] : []"
+      :modules="enableModules ? [Pagination, Navigation, Autoplay] : []"
       :slides-per-view="1"
       v-bind="carouselProps"
       :aria-roledescription="t('homepage.banner.ariaRoleDescriptionCarousel')"
@@ -11,6 +11,7 @@
       :loop="true"
       :pagination="paginationConfig"
       :navigation="navigationConfig"
+      :autoplay="autoplayConfig"
       class="!w-full !max-h-[85vh]"
       @swiper="onSwiperInit"
       @slide-change="onSlideChange"
@@ -73,7 +74,7 @@
 
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import type { CarouselStructureProps, SlideBlock } from './types';
 import type { Swiper as SwiperType } from 'swiper';
 
@@ -120,7 +121,16 @@ const getVisibleIndex = (actualIndex: number): number => {
   return visibleIndex;
 };
 
+// Dorins: Hinweisleiste im Kopf (nur AnnouncementBar-Folien) wechselt wie im LTS von selbst und ohne Pfeile
+const isAnnouncementBar = computed(
+  () => visibleContent.value.length > 1 && visibleContent.value.every((slide) => slide.name === 'AnnouncementBar'),
+);
+const autoplayConfig = computed(() =>
+  isAnnouncementBar.value ? { delay: 4000, disableOnInteraction: false } : false,
+);
+
 const handleArrows = () => {
+  if (isAnnouncementBar.value) return false;
   const viewport = useViewport();
   return !viewport.isLessThan('md');
 };

@@ -45,7 +45,7 @@
       <li
         v-for="(item, index) in breadcrumbs"
         :key="item.name"
-        class="peer hidden @sm:flex items-center peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium"
+        class="peer hidden @sm:flex items-center peer-[:nth-of-type(even)]:before:content-['›'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium"
       >
         <UiLink
           v-if="index < breadcrumbs.length - 1"
@@ -54,10 +54,10 @@
           variant="secondary"
           class="leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit"
         >
-          {{ item.name }}
+          {{ dorinsCrumbLabel(item.name, index) }}
         </UiLink>
         <span v-else>
-          {{ item.name }}
+          {{ dorinsCrumbLabel(item.name, index) }}
         </span>
       </li>
     </ol>
@@ -72,6 +72,9 @@ import type { WithContext, BreadcrumbList as SchemaBreadcrumbList, ListItem as S
 defineProps<BreadcrumbsProps>();
 
 const localePath = useLocalizedPath();
+// Dorins: Brotkrumen wie im bisherigen Shop („Home › Jungen › Hosen“), nur die Anzeige, Strukturdaten bleiben vollständig
+const DORINS_SHORT_NAMES: Record<string, string> = { Jungenmode: 'Jungen', Mädchenmode: 'Mädchen' };
+const dorinsCrumbLabel = (name: string, index: number) => (index === 0 ? 'Home' : (DORINS_SHORT_NAMES[name] ?? name));
 const dropdownOpened = ref(false);
 const close = () => {
   dropdownOpened.value = false;
