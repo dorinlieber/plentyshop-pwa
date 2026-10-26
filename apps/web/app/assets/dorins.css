@@ -1643,3 +1643,86 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
     font-size: 0.75rem;
   }
 }
+
+/* Handy-Startseite wie LTS: Kachel-Pillen zweizeilig (Name fett, Alter darunter), Überschriften kleiner, weniger Luft */
+@media (max-width: 767px) {
+  .rte-prose .dorins-pill--tile {
+    font-size: 0.75rem;
+    padding: 0.35rem 1rem;
+    border-radius: 18px;
+    text-align: center;
+    max-width: 88%;
+    margin-bottom: 0.6rem;
+  }
+  .rte-prose .dorins-pill--tile span {
+    display: block;
+  }
+  .dorins-section-title,
+  .rte-prose .dorins-section-title {
+    font-size: 1.25rem;
+  }
+  [data-testid='text-card']:has(> div > .rte-prose .dorins-section-title),
+  [data-testid='text-card']:has(.dorins-section-title) {
+    padding-top: 20px !important;
+    padding-bottom: 8px !important;
+  }
+}
+@media (max-width: 767px) {
+  [data-testid='multi-grid-structure']:has(.dorins-pill--tile) {
+    column-gap: 8px !important;
+    row-gap: 8px !important;
+    padding: 0 8px;
+  }
+}
+
+/* Fuß: aufklappbare Spalten (am Rechner immer offen), am Handy wie LTS mit ⊕/⊗ und eigener Reihenfolge */
+.dorins-acc-toggle {
+  display: none;
+}
+.rte-prose .dorins-acc-label {
+  display: block;
+}
+@media (max-width: 767px) {
+  .rte-prose .dorins-acc-label {
+    cursor: pointer;
+  }
+  .rte-prose .dorins-acc-label::after {
+    content: ' ⊕';
+    font-size: 1.1rem;
+  }
+  .dorins-acc-toggle:checked + .dorins-acc-label::after {
+    content: ' ⊗';
+  }
+  .dorins-acc-toggle:not(:checked) ~ .dorins-acc-body {
+    display: none;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) { order: 1; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) { order: 2; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) { order: 3; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--vorteile) { order: 4; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--beratung) { order: 5; }
+}
+
+/* Tabellen in Infoseiten (Größentabelle) wie LTS: Rahmen, Kopfzeile grau, Zebrastreifen, kleine Schrift */
+.rte-prose table,
+.no-preflight table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.75rem;
+}
+.rte-prose table td,
+.rte-prose table th,
+.no-preflight table td,
+.no-preflight table th {
+  border: 1px solid #ccc;
+  padding: 3px 4px;
+}
+.rte-prose table tr:first-child,
+.no-preflight table tr:first-child {
+  background: #e5e5e5;
+  font-weight: 700;
+}
+.rte-prose table tr:nth-child(even),
+.no-preflight table tr:nth-child(even) {
+  background: #f3f3f3;
+}

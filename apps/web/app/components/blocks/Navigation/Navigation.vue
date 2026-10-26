@@ -261,10 +261,8 @@ const categoryButtonClasses =
   'inline-flex items-center justify-center gap-2 font-medium text-base rounded-md py-2 px-4 group mr-2 nav-hover-bg active:!bg-neutral-300';
 let removeHook: () => void;
 
-// Dorins: kurze Menünamen in der Kopfzeile wie im bisherigen Shop (Kategorien heißen Jungenmode/Mädchenmode)
-const MENU_LABELS: Record<string, string> = { jungenmode: 'Jungen', maedchenmode: 'Mädchen' };
-const menuLabel = (node: CategoryTreeItem) =>
-  MENU_LABELS[categoryTreeGetters.getSlug(node)] ?? categoryTreeGetters.getName(node);
+// Dorins: kurze Menünamen wie im bisherigen Shop (utils/dorinsMenuLabel.ts)
+const menuLabel = dorinsMenuLabel;
 
 const trapFocusOptions = {
   activeState: isOpen,

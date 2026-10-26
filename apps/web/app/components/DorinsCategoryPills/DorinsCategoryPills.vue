@@ -50,16 +50,30 @@ const currentPath = computed(() => {
   return [];
 });
 
+const route = useRoute();
+const localeHome = computed(() => localePath('/'));
+
 const pills = computed(() => {
   const path = currentPath.value;
-  if (!path.length) return [];
+  if (!path.length) {
+    // Seiten ohne Artikelkategorie (Infoseiten, Konto, Warenkorb): Hauptkategorien wie im LTS, nicht auf der Startseite
+    if (route.path === localeHome.value) return [];
+    return (categoryTree.value ?? [])
+      .filter((node) => categoryTreeGetters.getName(node))
+      .map((node) => ({
+        id: node.id,
+        name: dorinsMenuLabel(node),
+        link: buildCategoryMenuLink(node, categoryTree.value ?? []),
+        active: false,
+      }));
+  }
   const current = path[path.length - 1]!;
   const siblings = path.length > 1 ? (path[path.length - 2]!.children ?? []) : (categoryTree.value ?? []);
   return siblings
     .filter((node) => categoryTreeGetters.getName(node))
     .map((node) => ({
       id: node.id,
-      name: categoryTreeGetters.getName(node),
+      name: dorinsMenuLabel(node),
       link: buildCategoryMenuLink(node, categoryTree.value ?? []),
       active: node.id === current.id,
     }))
