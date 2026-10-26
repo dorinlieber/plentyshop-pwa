@@ -43,6 +43,11 @@
       </div>
     </div>
 
+    <!-- Textilsiegel (z. B. OEKO-TEX, Wool Rich Blend) wie im LTS über den Pflegehinweisen -->
+    <div v-if="seals.length" class="dorins-seals" data-testid="dorins-seals">
+      <img v-for="seal in seals" :key="seal" :src="`${SEAL_BASE_URL}${seal}`" :alt="t('dorins.textileSeal')" loading="lazy" />
+    </div>
+
     <div v-if="careSymbols.length" class="dorins-care">
       <h2>{{ t('dorins.careInstructions') }}</h2>
       <span v-for="(symbol, index) in careSymbols" :key="index" class="dorins-care-item">
@@ -64,8 +69,11 @@ const { t } = useI18n();
 // Bullet Points (Gruppe 27) ohne Namen unter den Produktdetails; interne Gruppen und Jahreszeit (202) nie
 const MATERIAL_PROPERTY_ID = 69;
 const CARE_PROPERTY_ID = 245;
+// Eigenschaft 226 „Textilsiegel“: Dateinamen mit Komma (z. B. „WRB21.jpg,tex.jpg“), Bilder liegen im LTS-Webspace
+const SEAL_PROPERTY_ID = 226;
+const SEAL_BASE_URL = 'https://cdn03.plentyone.com/0g0quyrt02bw/frontend/_textilsiegel/';
 const BULLET_POINT_GROUP_ID = 27;
-const HIDDEN_PROPERTY_IDS = new Set([202, MATERIAL_PROPERTY_ID, CARE_PROPERTY_ID]);
+const HIDDEN_PROPERTY_IDS = new Set([202, MATERIAL_PROPERTY_ID, CARE_PROPERTY_ID, SEAL_PROPERTY_ID]);
 const HIDDEN_GROUP_IDS = new Set([3, 6, 30]);
 
 type PropertyValue = { value?: string; description?: string };
@@ -121,6 +129,15 @@ const careSymbols = computed(() => {
       label: entry.value ?? '',
       icon: /^icon-\d+$/.test(entry.description ?? '') ? entry.description : '',
     }));
+});
+
+const seals = computed(() => {
+  const property = allProperties.value.find((entry) => entry.id === SEAL_PROPERTY_ID);
+  if (!property) return [];
+  return textOf(property)
+    .split(',')
+    .map((file) => file.trim())
+    .filter((file) => /^[\w.-]+\.(jpe?g|png|svg|webp)$/i.test(file));
 });
 
 type ManufacturerData = {

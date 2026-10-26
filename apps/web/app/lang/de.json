@@ -1434,8 +1434,10 @@
     "saleBadge": "% Sparangebot",
     "upToDiscount": "bis zu -{percent}%",
     "categories": "Kategorien",
-    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden",
+    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden"
+,
     "pageLabel": "Seite:",
-    "pageOf": "{page} von {total}"
+    "pageOf": "{page} von {total}",
+    "textileSeal": "Textilsiegel"
   }
 }

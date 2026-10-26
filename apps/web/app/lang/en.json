@@ -1434,8 +1434,10 @@
     "saleBadge": "% Sale",
     "upToDiscount": "up to -{percent}%",
     "categories": "Categories",
-    "searchFound": "{n} item found | {n} items found",
+    "searchFound": "{n} item found | {n} items found"
+,
     "pageLabel": "Page:",
-    "pageOf": "{page} of {total}"
+    "pageOf": "{page} of {total}",
+    "textileSeal": "Textile seal"
   }
 }
