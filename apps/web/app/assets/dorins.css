@@ -677,8 +677,13 @@ section:has(> [data-testid='gallery'] [data-testid='gallery-grid']) {
 }
 @media (min-width: 1024px) {
   .dorins-subcategories {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .dorins-subcategories {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
@@ -1819,11 +1824,13 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
   margin: 1rem 0 0.5rem;
 }
 
-@media (max-width: 767px) {
-  /* Abzeichen am Handy: nur „%“ wie im LTS, damit es nicht in „bis zu -X%“ läuft */
+@media (max-width: 1023px) {
+  /* Abzeichen am Handy und kleinen Tablet: nur „%“ wie im LTS, damit es nicht in „bis zu -X%“ läuft */
   [data-testid='product-card'] .dorins-badge-sale-text {
     display: none;
   }
+}
+@media (max-width: 767px) {
   /* Unterkategorie-Kacheln am Handy zweispaltig und groß wie im LTS */
   .dorins-subcategories:not(.dorins-subcategories--gross) {
     grid-template-columns: repeat(2, 1fr);
@@ -1904,5 +1911,35 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
   /* LTS-Tablet-Kopf ohne Schatten */
   header:has(.dorins-tablet-head) {
     box-shadow: none !important;
+  }
+}
+
+/* ---------- Tablet-Inhalte wie im LTS (26.10.2026) ---------- */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Artikelliste dreispaltig wie im LTS */
+  [data-testid='category-grid'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Startseiten-Kacheln „Für wen möchtest Du einkaufen?“ zweispaltig und groß */
+  [data-testid='multi-grid-structure']:has(.dorins-pill--tile) > * {
+    grid-column: span 6 / span 6 !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Artikelseite: Reiter in einer Reihe, Größen kleiner, damit sie in eine Zeile passen */
+  .dorins-tabs-label {
+    padding: 0 0.85rem;
+    font-size: 0.8125rem;
+  }
+  #attribute-box > div {
+    min-width: 2.6rem;
+    height: 2.6rem;
+  }
+  #attribute-box > div div {
+    height: 2.6rem;
+    padding: 0 0.35rem;
+    font-size: 0.75rem;
   }
 }
