@@ -591,8 +591,9 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
 .rte-prose .dorins-pay--dhl {
   color: #d40511;
   font-style: italic;
+  font-weight: 900;
   font-size: 1.25rem;
-  background: #ffcc00;
+  background: #fff;
 }
 .rte-prose .dorins-pay--hermes {
   color: #0091cd;
@@ -2334,5 +2335,124 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 @media (min-width: 1350px) and (max-width: 1599px) {
   .rte-prose .dorins-banner-title {
     font-size: 100px;
+  }
+}
+
+/* ---------- Fuß am Rechner nach LTS-Maßen (26.10.2026, echte Schrift) ---------- */
+@media (min-width: 1024px) {
+  .rte-prose .dorins-footer-title {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 25px;
+    margin: 0 0 26px;
+  }
+  .dorins-footer-col p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 27px;
+    margin: 0;
+  }
+  .dorins-footer-col p strong {
+    font-weight: 700;
+  }
+  .rte-prose .dorins-footer-button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.5px;
+    padding: 8px 12px;
+  }
+}
+/* Spalten wie LTS: Beratung 20 px, Vorteile 275 px, Konto 725 px, Informationen 867 px, Marken 1068 px */
+@media (min-width: 1200px) {
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) {
+    grid-template-columns: 255px 450px 142px 201px minmax(0, 1fr) !important;
+    column-gap: 0 !important;
+    padding-left: 0 !important;
+    margin-left: -4px;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) > [data-testid='multi-grid-column'] {
+    grid-column: auto !important;
+  }
+  .dorins-footer-col {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Adresse enger, Vorteile schmal mit Abstand wie LTS */
+  .dorins-footer-col--beratung p {
+    line-height: 21px;
+    margin-bottom: 18px;
+  }
+  .dorins-footer-col--vorteile {
+    max-width: 200px;
+  }
+  .rte-prose .dorins-footer-col--vorteile .dorins-footer-check {
+    line-height: 21px;
+    margin-bottom: 25px;
+  }
+}
+/* Logo unten im Fuß wie LTS */
+.rte-prose .dorins-footer-logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin: 1.25rem auto 0;
+}
+
+/* ---------- Handy-Startseite nach LTS-CSS ---------- */
+/* Banner wie LTS: bis 575 px Hochformat 1:1,8 (Bild „klein“), bis 767 px quadratisch, Text unten */
+@media (max-width: 575px) {
+  .swiper:has(.dorins-banner) .swiper-slide img {
+    height: 180vw !important;
+    max-height: none !important;
+  }
+  .swiper:has(.dorins-banner) {
+    max-height: none !important;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .swiper:has(.dorins-banner) .swiper-slide img {
+    height: 100vw !important;
+  }
+}
+@media (max-width: 767px) {
+  .swiper:has(.dorins-banner) .swiper-slide .absolute.inset-0 {
+    justify-content: flex-end !important;
+    padding-bottom: 2.5rem;
+  }
+  .dorins-banner {
+    text-align: center;
+    padding-right: 0;
+  }
+  /* Kachel-Beschriftung 13 px wie LTS */
+  .rte-prose .dorins-pill--tile {
+    font-size: 13px;
+  }
+  /* Hinweisleiste einzeilig */
+  [data-testid='header-container'] .swiper p {
+    font-size: 12px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+/* Suchfeld am Handy und Tablet wie LTS: hell mit feinem Rahmen, Lupe rechts */
+@media (max-width: 1199px) {
+  [data-testid='mobile-search-bar'] form > span {
+    background: #f7f7f7 !important;
+    border: 1px solid #e5e5e5;
+    flex-direction: row-reverse;
+    padding: 0 1rem 0 1.1rem;
+  }
+}
+@media (max-width: 767px) {
+  [data-testid='header-container'] .swiper p {
+    font-size: 11px !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) p:not(:has(img)) {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.2;
   }
 }
