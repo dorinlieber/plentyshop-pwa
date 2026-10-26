@@ -10,7 +10,10 @@
         :style="{ backgroundColor: SALE_COLOR }"
         data-testid="badge-sale"
       >
-        {{ t('dorins.saleBadge') }}
+        <!-- am Handy nur „%“ wie im LTS, Text per CSS ausgeblendet -->
+        <span class="whitespace-nowrap"
+          >%<span class="dorins-badge-sale-text">&nbsp;{{ t('dorins.saleBadge').replace(/^%\s*/, '') }}</span></span
+        >
       </SfListItem>
       <SfListItem
         v-if="!useAvailability && aktionBadge"

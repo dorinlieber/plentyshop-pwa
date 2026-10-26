@@ -1726,3 +1726,118 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 .no-preflight table tr:nth-child(even) {
   background: #f3f3f3;
 }
+
+/* ---------- Feinabgleich 26.10.2026: Sale, Marken, Login ---------- */
+/* SEO-Text unter den Artikeln: im LTS 18 px, dünn, Zeilenhöhe 27 px, Überschriften 18 px fett */
+[data-testid='category-description-1'] {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+[data-testid='category-description-1'] h1,
+[data-testid='category-description-1'] h2,
+[data-testid='category-description-1'] h3,
+[data-testid='category-description-1'] h4 {
+  font-size: 1.125rem !important;
+  line-height: 1.1 !important;
+}
+[data-testid='category-description-1'] p {
+  margin-bottom: 14px;
+}
+[data-testid='category-description-1'] strong,
+[data-testid='category-description-1'] b {
+  font-weight: 700;
+}
+
+/* Seitenleiste wie im LTS: runde Kreise mit Rahmen, aktuelle Seite schwarz, Pfeile ohne Text */
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) {
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-top: 0;
+  margin-top: 1rem;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul {
+  gap: 10px;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul > li > div {
+  padding: 0;
+  border: 0 !important;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul button,
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > button {
+  width: 40px !important;
+  height: 40px;
+  min-width: 0;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000 !important;
+  font-size: 0.875rem;
+  justify-content: center;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul button[disabled][aria-hidden='true'] {
+  border-color: transparent;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul button[aria-current='true'] {
+  background: #000;
+  color: #fff !important;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > button > span:not(:has(svg)) {
+  display: none !important;
+}
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > button[disabled] {
+  opacity: 0.35;
+}
+.dorins-page-info {
+  text-align: center;
+  font-size: 0.875rem;
+  margin: 0.75rem 0 2rem;
+}
+
+/* Leerer Warenkorb / leere Merkliste: kleiner grauer Hinweis wie im LTS */
+[data-testid='empty-wishlist-text'],
+[data-testid='cart-page-content'] > h2 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #555;
+}
+/* Merkliste: Überschrift nicht am Rand kleben */
+[data-testid='wishlist-layout'] {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Login-Seite: Überschrift groß wie im LTS */
+.dorins-login-heading {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin: 1rem 0 0.5rem;
+}
+
+@media (max-width: 767px) {
+  /* Abzeichen am Handy: nur „%“ wie im LTS, damit es nicht in „bis zu -X%“ läuft */
+  [data-testid='product-card'] .dorins-badge-sale-text {
+    display: none;
+  }
+  /* Unterkategorie-Kacheln am Handy zweispaltig und groß wie im LTS */
+  .dorins-subcategories:not(.dorins-subcategories--gross) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dorins-subcategories:not(.dorins-subcategories--gross) .dorins-subcategory-name {
+    font-size: 0.875rem;
+  }
+  /* Kategorie-Kopf am Handy enger wie im LTS (Block-Abstände aus dem Editor sind für den Rechner gedacht) */
+  [data-testid='category-data']:has(.dorins-category-banner, .dorins-subcategories) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-data'], > * > [data-testid='category-sort-filter']) {
+    margin-bottom: 0;
+  }
+  /* leerer Brotkrumen-Rahmen über dem Kategorie-Banner */
+  body:has([data-testid='dorins-category-pills']) [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']):not(:has(> :not([data-testid='breadcrumbs']))) {
+    display: none;
+  }
+}

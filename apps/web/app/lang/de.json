@@ -259,10 +259,10 @@
     "methodChanged": "Die von Ihnen ausgewählte Zahlungsart ist nicht mehr verfügbar."
   },
   "cart": {
-    "empty": "Ihr Warenkorb ist leer",
+    "empty": "Sie haben noch keine Artikel im Warenkorb.",
     "emptyImageAlt": "Bild eines leeren Warenkorbs",
     "emptyNotification": "Sie haben keine Artikel in Ihrem Warenkorb",
-    "emptyWishlist": "Ihre Merkliste ist leer",
+    "emptyWishlist": "Sie haben noch keine Artikel auf der Merkliste.",
     "itemAdded": "Artikel zum Warenkorb hinzugefügt",
     "itemCount": "(Artikel: {count})",
     "itemRemoved": "Artikel aus dem Warenkorb entfernt",
@@ -1434,6 +1434,8 @@
     "saleBadge": "% Sparangebot",
     "upToDiscount": "bis zu -{percent}%",
     "categories": "Kategorien",
-    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden"
+    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden",
+    "pageLabel": "Seite:",
+    "pageOf": "{page} von {total}"
   }
 }

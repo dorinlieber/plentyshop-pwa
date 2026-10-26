@@ -65,6 +65,11 @@
         :max-visible-pages="maxVisiblePages"
         data-testid="pagination-bottom"
       />
+      <!-- Dorins: „Seite: 1 von 32“ unter der Seitenleiste wie im LTS -->
+      <p v-if="totalProducts > 0 && itemsPerPage > 0" class="dorins-page-info" data-testid="dorins-page-info">
+        <strong>{{ t('dorins.pageLabel') }}</strong>
+        {{ t('dorins.pageOf', { page: currentPage, total: Math.ceil(totalProducts / itemsPerPage) }) }}
+      </p>
     </template>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isForgotPassword">
-    <div class="text-lg font-medium ml-8" :class="{ 'text-center !ml-0': !isModal }">
+    <div class="text-lg font-medium ml-8" :class="{ 'text-center !ml-0 dorins-login-heading': !isModal }">
       {{ t('authentication.login.heading') }}
     </div>
     <div class="flex flex-col items-center justify-center my-1">
