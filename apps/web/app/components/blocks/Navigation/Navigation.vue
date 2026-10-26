@@ -10,7 +10,7 @@
             ref="triggerReference"
             :to="localePath(generateCategoryLink(menuNode))"
             data-testid="category-button"
-            :class="categoryButtonClasses"
+            :class="[categoryButtonClasses, { 'dorins-menu-active': isMenuActive(menuNode) }]"
             :style="categoryButtonStyle"
             tabindex="0"
             aria-haspopup="true"
@@ -37,7 +37,7 @@
             ref="triggerReference"
             :to="localePath(generateCategoryLink(menuNode))"
             data-testid="category-button"
-            :class="categoryButtonClasses"
+            :class="[categoryButtonClasses, { 'dorins-menu-active': isMenuActive(menuNode) }]"
             :style="categoryButtonStyle"
             tabindex="0"
             @keydown.left="focusPreviousCategory(index)"
@@ -263,6 +263,12 @@ let removeHook: () => void;
 
 // Dorins: kurze Menünamen wie im bisherigen Shop (utils/dorinsMenuLabel.ts)
 const menuLabel = dorinsMenuLabel;
+// Dorins: aktuelle Hauptkategorie unterstrichen wie im bisherigen Shop
+const dorinsRoute = useRoute();
+const isMenuActive = (node: CategoryTreeItem) => {
+  const target = localePath(generateCategoryLink(node));
+  return dorinsRoute.path === target || dorinsRoute.path.startsWith(`${target}/`);
+};
 
 const trapFocusOptions = {
   activeState: isOpen,

@@ -139,7 +139,9 @@ const renderButton = (fundingSource: FUNDING_SOURCE) => {
       style: {
         layout: 'vertical',
         label: getLabel(props.type),
-        color: 'gold',
+        // Dorins: graue, runde Knöpfe wie im bisherigen Shop statt Gold
+        color: 'silver',
+        shape: 'pill',
       },
       fundingSource: fundingSource,
       async onClick(data, actions) {

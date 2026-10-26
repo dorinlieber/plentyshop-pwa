@@ -195,9 +195,10 @@
                       type="submit"
                     >
                       <template #prefix>
-                        <div v-if="!loading" class="flex row items-center">
-                          <SfIconShoppingCart size="sm" />
+                        <!-- Dorins: Text und Warenkorb-Symbol des bisherigen Shops rechts daneben -->
+                        <div v-if="!loading" class="flex row items-center gap-3">
                           {{ t('common.actions.addToCart') }}
+                          <DorinsIcon name="basket" class="dorins-cart-icon" />
                         </div>
                         <div v-else>
                           <SfLoaderCircular size="sm" />
@@ -280,7 +281,6 @@ import {
   SfIconEmail,
   SfIconFavorite,
   SfIconFavoriteFilled,
-  SfIconShoppingCart,
   SfLoaderCircular,
   SfTooltip,
 } from '@storefront-ui/vue';

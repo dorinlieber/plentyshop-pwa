@@ -1438,6 +1438,7 @@
 ,
     "pageLabel": "Seite:",
     "pageOf": "{page} von {total}",
-    "textileSeal": "Textilsiegel"
+    "textileSeal": "Textilsiegel",
+    "searchPlaceholder": "Suchbegriff"
   }
 }

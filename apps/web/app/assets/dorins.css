@@ -1988,3 +1988,196 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
 [data-testid='header-container'] button[aria-controls^='carousel-'] {
   display: none !important;
 }
+
+/* ---------- Kopf am Rechner nach LTS-Maßen (26.10.2026, gemessen mit echter Schrift) ---------- */
+@media (min-width: 1200px) {
+  /* Kopfzeile 137 px hoch */
+  [data-testid='navbar-top-desktop'] {
+    min-height: 137px;
+  }
+  /* Suchfeld 374 × 52 px, hellgrau mit feinem Rahmen, Lupe rechts */
+  [data-testid='navbar-top-desktop'] > div:nth-child(2) {
+    flex: 0 0 374px !important;
+    margin-left: auto !important;
+    margin-right: 100px !important;
+  }
+  [data-testid='navbar-top-desktop'] form > span {
+    min-height: 52px;
+    background: #f7f7f7 !important;
+    border: 1px solid #e5e5e5;
+    border-radius: 26px;
+    flex-direction: row-reverse;
+    padding: 0 1rem 0 1.25rem;
+  }
+  [data-testid='navbar-top-desktop'] form input {
+    font-size: 14px;
+  }
+  /* Symbole größer, Beschriftung normal wie im LTS */
+  [data-testid='navbar-top-desktop'] > nav {
+    gap: 1.25rem !important;
+  }
+  [data-testid='navbar-top-desktop'] [data-dorins-label] svg {
+    width: 28px;
+    height: 28px;
+  }
+  [data-dorins-label]::after {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+}
+/* Hinweisleiste 47 px hoch, Schrift 18 px */
+@media (min-width: 768px) {
+  [data-testid='header-container'] .swiper p {
+    font-size: 18px;
+    line-height: 47px;
+    margin: 0;
+  }
+}
+/* Brotkrumen wie LTS: 12 px, schwarz, Links fett */
+[data-testid='breadcrumbs'] {
+  font-size: 12px;
+  color: #000;
+}
+[data-testid='breadcrumbs'] li {
+  color: #000 !important;
+}
+[data-testid='breadcrumbs'] a {
+  font-weight: 700;
+}
+[data-testid='breadcrumbs'] li:last-of-type {
+  font-weight: 400 !important;
+}
+
+/* LTS-Symbole (DorinsIcon): Grundgröße, im Kopf am Rechner 28 px, Lupe klein und schwarz */
+.dorins-icon {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+@media (min-width: 1200px) {
+  [data-testid='navbar-top-desktop'] .dorins-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+form[role='search'] .dorins-icon--magnifier {
+  width: 16px;
+  height: 16px;
+  color: #000;
+}
+/* aktuelle Hauptkategorie unterstrichen */
+[data-testid='category-button'].dorins-menu-active span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+/* Logo wie LTS: 20 px vom Rand, 165 px breit */
+@media (min-width: 1200px) {
+  [data-testid='navbar-top-desktop'] {
+    padding-left: 20px !important;
+  }
+  [data-testid='navbar-top-desktop'] #blockified-logo img,
+  [data-testid='navbar-top-desktop'] > div:first-child img {
+    width: 165px;
+    max-width: none;
+    height: auto;
+  }
+}
+/* Brotkrumen-Trenner wie LTS: Winkel mit Abstand */
+[data-testid='breadcrumbs'] li::before {
+  font-size: 15px;
+  padding: 0 10px !important;
+}
+
+/* Kategorietitel am Rechner näher an den Brotkrumen (LTS: 54 px) */
+@media (min-width: 1200px) {
+  [data-testid='category-data'] {
+    padding-top: 0 !important;
+  }
+}
+@media (min-width: 1200px) {
+  .dorins-subcategories {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ---------- Artikelseite am Rechner nach LTS-Maßen (26.10.2026, mit echter Schrift gemessen) ---------- */
+@media (min-width: 1200px) {
+  /* Kaufbox wie LTS: beginnt 73 px neben dem Bild, 484 px breit */
+  [data-testid='multi-grid-column']:has(> * [data-testid='purchase-card']),
+  [data-testid='multi-grid-column']:has([data-testid='purchase-card']):not(:has([data-testid='gallery'])) {
+    padding-left: 78px;
+  }
+  [data-testid='purchase-card'] [data-testid='product-name'] {
+    margin-bottom: 2.75rem;
+  }
+  .dorins-brand-logo {
+    max-width: 150px;
+    max-height: 101px;
+  }
+  [data-testid='attributes-with-size-chart'] {
+    margin-bottom: 1.5rem;
+  }
+  [data-testid='product-attributes'] > * + * {
+    margin-top: 1.25rem;
+  }
+  [data-testid='purchase-card'] [data-testid='product-name'] {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 36px;
+  }
+  [data-testid='purchase-card'] [data-testid='product-number-brand'] {
+    font-size: 14px;
+  }
+  #attribute-box > div {
+    min-width: 52px;
+    height: 52px;
+  }
+  #attribute-box > div div {
+    height: 52px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  [data-testid='purchase-card'] [data-testid='price'] {
+    font-size: 36px;
+    line-height: 54px;
+  }
+  [data-testid='purchase-card'] [data-testid='add-to-cart'] {
+    min-height: 60px;
+    border-radius: 30px;
+    font-size: 21px;
+    font-weight: 400;
+  }
+  .dorins-tabs-panel,
+  .dorins-tabs-description p {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+/* Artikelseite: Brotkrumen enden wie im LTS bei der Kategorie (ohne Artikelnamen) */
+body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-type {
+  display: none !important;
+}
+@media (min-width: 1200px) {
+  /* Markenlogo mittig neben Artikelnummer/Marke */
+  [data-testid='purchase-card'] div:has(> [data-testid='product-number-brand']) {
+    align-items: center;
+  }
+  /* Farbbilder 62 px wie LTS */
+  [data-testid='product-attributes'] .w-14.h-14 {
+    width: 62px;
+    height: 62px;
+  }
+  .dorins-cart-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Handy: Textsiegel nach der Beschreibung, vor den Pflegehinweisen (wie LTS) */
+@media (max-width: 1023px) {
+  .dorins-seals {
+    order: 3;
+  }
+}

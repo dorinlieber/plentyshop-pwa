@@ -31,7 +31,7 @@
               data-testid="mobile-account"
               @click="isAuthorized ? navigateTo(localePath(paths.account)) : navigateToLogin()"
             >
-              <SfIconPerson />
+              <DorinsIcon name="user" />
             </UiButton>
           </div>
           <NuxtLink
@@ -54,7 +54,7 @@
               :aria-label="t('dorins.account')"
               @click="isAuthorized ? navigateTo(localePath(paths.account)) : navigateToLogin()"
             >
-              <SfIconPerson />
+              <DorinsIcon name="user" />
             </UiButton>
             <UiButton
               :tag="NuxtLink"
@@ -65,7 +65,7 @@
               :style="{ color: iconColor }"
               :aria-label="t('cart.numberInWishlist', { count: wishlistItemIds.length })"
             >
-              <SfIconFavorite />
+              <DorinsIcon name="heart" />
               <SfBadge :content="wishlistItemIds.length" :max="99" placement="top-right" class="dorins-count" />
             </UiButton>
             <UiButton
@@ -77,7 +77,7 @@
               :style="{ color: iconColor }"
               :aria-label="t('cart.numberInCart', { count: cartItemsCount })"
             >
-              <SfIconShoppingCart />
+              <DorinsIcon name="basket" />
               <SfBadge :content="cartItemsCount" :max="99" placement="top-right" class="dorins-count" />
             </UiButton>
           </div>
@@ -211,7 +211,7 @@
             :data-dorins-label="t('dorins.wishlist')"
           >
             <template #prefix>
-              <SfIconFavorite />
+              <DorinsIcon name="heart" />
               <SfBadge
                 :content="wishlistItemIds.length"
                 :style="{
@@ -238,7 +238,7 @@
             square
           >
             <template #prefix>
-              <SfIconShoppingCart />
+              <DorinsIcon name="basket" />
               <SfBadge
                 :content="cartItemsCount"
                 :style="{
@@ -268,7 +268,7 @@
               @click="accountDropdownToggle()"
             >
               <template #prefix>
-                <SfIconPerson />
+                <DorinsIcon name="user" />
               </template>
               {{ user?.firstName }}
             </UiButton>
@@ -319,7 +319,7 @@
             square
             @click="navigateToLogin"
           >
-            <SfIconPerson />
+            <DorinsIcon name="user" />
           </UiButton>
         </nav>
       </div>
@@ -394,12 +394,9 @@ import {
   SfIconClose,
   SfIconLanguage,
   SfIconMenu,
-  SfIconPerson,
   SfIconSearch,
-  SfIconShoppingCart,
   SfListItem,
   SfModal,
-  SfIconFavorite,
   useDisclosure,
 } from '@storefront-ui/vue';
 import { useFloating, flip, offset, shift } from '@floating-ui/vue';

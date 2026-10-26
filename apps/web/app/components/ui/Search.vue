@@ -7,12 +7,12 @@
         v-model="inputModel"
         data-testid="search-bar-input"
         :aria-label="t('common.actions.search')"
-        :placeholder="t('common.actions.search')"
+        :placeholder="t('dorins.searchPlaceholder')"
         @focus="handleOpen"
       >
         <template #prefix>
           <SfLoaderCircular v-if="loading || loadingSuggestions" class="shrink-0" aria-hidden="true" />
-          <SfIconSearch v-else class="shrink-0" aria-hidden="true" />
+          <DorinsIcon v-else name="magnifier" class="shrink-0" />
         </template>
         <template #suffix>
           <button
@@ -115,7 +115,7 @@
 </template>
 
 <script setup lang="ts">
-import { SfIconCancel, SfIconChevronRight, SfIconSearch, SfInput, SfLoaderCircular } from '@storefront-ui/vue';
+import { SfIconCancel, SfIconChevronRight, SfInput, SfLoaderCircular } from '@storefront-ui/vue';
 import { onClickOutside, unrefElement } from '@vueuse/core';
 const props = defineProps<{
   close?: () => boolean;

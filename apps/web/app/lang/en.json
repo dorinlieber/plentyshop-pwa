@@ -1438,6 +1438,7 @@
 ,
     "pageLabel": "Page:",
     "pageOf": "{page} of {total}",
-    "textileSeal": "Textile seal"
+    "textileSeal": "Textile seal",
+    "searchPlaceholder": "Search term"
   }
 }
