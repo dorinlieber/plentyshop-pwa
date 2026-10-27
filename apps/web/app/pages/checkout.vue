@@ -39,7 +39,8 @@
         <UiDivider class="w-screen @md:w-auto -mx-4 @md:mx-0 mb-10" />
         <CheckoutGeneralTerms />
       </div>
-      <div class="col-span-6 @xl:col-span-5">
+      <!-- Dorins: rechte Spalte auf grauem Grund wie im bisherigen Shop -->
+      <div class="col-span-6 @xl:col-span-5 dorins-checkout-side">
         <div v-for="(cartItem, index) in cart?.items" :key="cartItem.id">
           <UiCartProductCard :cart-item="cartItem" :class="{ 'border-t': index === 0 }" />
         </div>

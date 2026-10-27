@@ -1,7 +1,9 @@
 <template>
   <div>
     <label for="attribute-box" class="leading-5 text-sm text-zinc-900">
-      {{ productAttributeGetters.getAttributeName(attribute) }}
+      {{ productAttributeGetters.getAttributeName(attribute) }}<template v-if="selectedName"
+        >: <strong>{{ selectedName }}</strong></template
+      >
     </label>
 
     <div id="attribute-box" class="w-full flex gap-4 flex-wrap">
@@ -41,6 +43,13 @@ const { shouldUseFakeData } = useEditorState();
 const { registerValidator, registerInvalidFields } = useValidatorAggregator('attributes');
 const props = defineProps<AttributeSelectProps>();
 const value = computed(() => getValue(props.attribute.attributeId));
+// Dorins: gewählte Größe hinter der Beschriftung wie im bisherigen Shop („Größe: 80“)
+const selectedName = computed(() => {
+  const item = productAttributeGetters
+    .getAttributeValues(props.attribute)
+    .find((entry) => productAttributeGetters.getAttributeValueId(entry) === value.value);
+  return item ? productAttributeGetters.getAttributeValueName(item) : '';
+});
 
 const getLabel = (item: VariationMapProductAttributeValue): string => {
   return productAttributeGetters.isAttributeValueDisabled(item) ? t('product.attributes.seeAvailableOptions') : '';

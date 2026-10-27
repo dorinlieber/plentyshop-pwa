@@ -2741,3 +2741,31 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
     font-size: 12px !important;
   }
 }
+
+/* Kasse wie LTS: rechte Spalte hellgrau, Übersicht flach ohne Schatten und Rahmen */
+@media (min-width: 1024px) {
+  .dorins-checkout-side {
+    background: #f7f7f7;
+    padding: 30px;
+    align-self: start;
+  }
+  .dorins-checkout-side [data-testid='order-summary'] {
+    box-shadow: none !important;
+    border: 0 !important;
+    background: transparent;
+  }
+  .dorins-checkout-side [data-testid='order-summary'] > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .dorins-checkout-side [data-testid='cart-product-card'] {
+    background: transparent;
+  }
+  .dorins-checkout-side [data-testid='cart-product-card'] > div:first-child {
+    width: 70px !important;
+  }
+  .dorins-checkout-side [data-testid='total'],
+  .dorins-checkout-side [data-testid='total-label'] {
+    font-size: 18px;
+  }
+}
