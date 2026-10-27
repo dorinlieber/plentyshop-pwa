@@ -69,25 +69,27 @@ const percent = computed(() => Math.min(100, Math.round((totals.value.subtotal /
 // Summen-Tabelle wie LTS: Warenwert und Versand je netto/brutto, MwSt., Gesamtsumme netto/brutto
 const sumRows = computed(() => {
   const c = cart.value;
+  const money = (amount: number) => format(amount) ?? '';
+  const vats = (totals.value.totalVats ?? []) as Parameters<typeof cartGetters.getTotalVatValue>[0][];
   const rows: SumRow[] = [
-    { label: t('dorins.cartPage.itemsNet'), value: format(cartGetters.getItemSumNet(c)) },
-    { label: t('dorins.cartPage.itemsGross'), value: format(totals.value.subtotal), strong: true },
-    { label: t('dorins.cartPage.shippingNet'), value: format(cartGetters.getShippingAmountNet(c)) },
-    { label: t('dorins.cartPage.shippingGross'), value: format(cartGetters.getShippingPrice(c)), strong: true },
+    { label: t('dorins.cartPage.itemsNet'), value: money(cartGetters.getItemSumNet(c)) },
+    { label: t('dorins.cartPage.itemsGross'), value: money(totals.value.subtotal), strong: true },
+    { label: t('dorins.cartPage.shippingNet'), value: money(cartGetters.getShippingAmountNet(c)) },
+    { label: t('dorins.cartPage.shippingGross'), value: money(cartGetters.getShippingPrice(c)), strong: true },
   ];
   if (cartGetters.getCouponDiscount(c)) {
-    rows.push({ label: t('coupon.name'), value: format(cartGetters.getCouponDiscount(c)) });
+    rows.push({ label: t('coupon.name'), value: money(cartGetters.getCouponDiscount(c)) });
   }
-  totals.value.totalVats.forEach((vat, index) =>
+  vats.forEach((vat, index: number) =>
     rows.push({
       label: t('dorins.cartPage.vat', { rate: cartGetters.getTotalVatValue(vat) }),
-      value: format(cartGetters.getTotalVatAmount(vat)),
+      value: money(cartGetters.getTotalVatAmount(vat)),
       gap: index === 0,
     }),
   );
   rows.push(
-    { label: t('dorins.cartPage.totalNet'), value: format(cartGetters.getBasketAmountNet(c)), gap: true },
-    { label: t('dorins.cartPage.totalGross'), value: format(totals.value.total), strong: true },
+    { label: t('dorins.cartPage.totalNet'), value: money(cartGetters.getBasketAmountNet(c)), gap: true },
+    { label: t('dorins.cartPage.totalGross'), value: money(totals.value.total), strong: true },
   );
   return rows;
 });

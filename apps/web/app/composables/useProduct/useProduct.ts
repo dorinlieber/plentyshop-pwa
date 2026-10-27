@@ -115,8 +115,9 @@ export const useProduct: UseProductReturn = (slug) => {
     useSeoMeta({
       ogTitle: productGetters.getTitle(state.value.data) || productGetters.getName(state.value.data),
       ogImage: productGetters.getCoverImage(state.value.data)?.replace('/middle/', '/full/') || undefined,
-      ogType: 'product',
     });
+    // og:type „product“ kennt useSeoMeta nicht, deshalb als Meta-Eintrag
+    useHead({ meta: [{ property: 'og:type', content: 'product' }] });
   };
 
   const { shouldUseFakeData } = useEditorState();
