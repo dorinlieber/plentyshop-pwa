@@ -2,7 +2,11 @@
   <NuxtLayout name="default">
     <div data-testid="search-results" class="relative" :class="{ 'pointer-events-none opacity-50': loading }">
       <SfLoaderCircular v-if="loading" class="fixed top-[50%] right-0 left-0 m-auto z-max" size="2xl" />
-      <div v-if="searchInfo && (searchInfo.corrected || searchInfo.sizes.length)" class="px-4 @md:px-0 mt-4 text-sm" data-testid="search-info">
+      <div
+        v-if="searchInfo && (searchInfo.corrected || searchInfo.sizes.length)"
+        class="px-4 @md:px-0 mt-4 text-sm"
+        data-testid="search-info"
+      >
         <p v-if="searchInfo.corrected">
           {{ t('search.correctedTerm', { original: searchInfo.originalTerm, term: searchInfo.term }) }}
         </p>
@@ -55,10 +59,9 @@ const route = useRoute();
 // Dorins: alte Shop-Suche hieß /search?query=…; ohne Suchbegriff fiel die Seite mit Fehler 500 aus
 if (!route.query.term) {
   const { query: oldTerm, ...rest } = route.query;
-  await navigateTo(
-    oldTerm ? { path: route.path, query: { ...rest, term: oldTerm } } : useLocalizedPath()(paths.home),
-    { redirectCode: 301 },
-  );
+  await navigateTo(oldTerm ? { path: route.path, query: { ...rest, term: oldTerm } } : useLocalizedPath()(paths.home), {
+    redirectCode: 301,
+  });
 }
 
 const { getSearch, data: productsCatalog, productsPerPage, loading } = useSearch();
