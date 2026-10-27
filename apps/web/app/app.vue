@@ -175,7 +175,8 @@ const robots = ref(getRobots());
 const fav = ref(getFavicon());
 const themeColor = ref(getPrimaryColor());
 
-const cssAssets = computed(() => (isSafeMode.value ? [] : getAssetsOfType('css')));
+// Dorins: ausgeschaltete CSS-Snippets nicht laden (Skripte prüfen isActive schon, CSS bisher nicht)
+const cssAssets = computed(() => (isSafeMode.value ? [] : getAssetsOfType('css').filter((asset) => asset.isActive)));
 
 const jsHeadAssets = computed(() =>
   isSafeMode.value
