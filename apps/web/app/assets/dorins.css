@@ -1181,7 +1181,7 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 
 /* Handy: Reiter erst nach der Kaufbox (wie LTS). Die Hüllen um die Reiter lösen sich auf, damit sie im
    gestapelten Raster eigenständig nach unten sortiert werden können */
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']),
   [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']) *:has([data-testid='dorins-product-tabs']) {
     display: contents;
@@ -1440,7 +1440,7 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 .dorins-mobile-title {
   display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .dorins-mobile-title {
     display: block;
     font-size: 1.125rem;
@@ -1674,7 +1674,7 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 }
 
 /* Handy-Artikelseite wie LTS: Nummer/Marke nach der Aktionszeile, Reiter als Akkordeon untereinander */
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   [data-testid='purchase-card'] section {
     display: flex;
     flex-direction: column;
@@ -1683,6 +1683,9 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
     order: 50;
     margin-top: 1.25rem;
   }
+}
+/* Reiter als Akkordeon nur am Handy (LTS-Tablet zeigt Pillen) */
+@media (max-width: 767px) {
   .dorins-tabs {
     display: flex;
     flex-direction: column;
@@ -2516,8 +2519,8 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
   }
 }
 
-/* ---------- Handy-Artikelseite nach LTS-Maßen (26.10.2026, echte Schrift) ---------- */
-@media (max-width: 767px) {
+/* ---------- Handy-Artikelseite nach LTS-Maßen (26.10.2026, echte Schrift; seit 27.10. bis 991 px wie LTS) ---------- */
+@media (max-width: 991px) {
   .dorins-mobile-title {
     margin-top: 1.75rem;
     font-weight: 300;
@@ -2541,12 +2544,16 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
   [data-testid='purchase-card'] [data-testid='add-to-cart'] {
     font-weight: 400;
   }
-  /* Merken, Fragen, Telefon untereinander wie im LTS */
+}
+@media (max-width: 767px) {
+  /* Merken, Fragen, Telefon untereinander wie im LTS (Tablet: nebeneinander) */
   .dorins-item-actions {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4rem;
   }
+}
+@media (max-width: 767px) {
   /* Hinweisleiste: längerer Text passt in eine Zeile */
   [data-testid='header-container'] .swiper p {
     font-size: 10.5px !important;
@@ -3047,5 +3054,31 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
     max-width: 360px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* ---------- Artikelseite bis 991 px einspaltig wie LTS (27.10.2026): Bilder über die volle Breite, Kaufbox darunter ---------- */
+@media (min-width: 768px) and (max-width: 991px) {
+  [data-testid='multi-grid-structure']:has([data-testid='purchase-card']) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  [data-testid='multi-grid-structure']:has([data-testid='purchase-card']) > [data-testid='multi-grid-column'] {
+    grid-column: 1 / -1 !important;
+    position: static !important;
+  }
+}
+/* Galerie bis 991 px: Punkte unter dem Bild statt Vorschauleiste (wie LTS-Tablet) */
+@media (min-width: 768px) and (max-width: 991px) {
+  [data-testid='gallery'] .hidden.\@md\:block {
+    display: none !important;
+  }
+  [data-testid='gallery'] .flex.\@md\:hidden {
+    display: flex !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .dorins-item-actions {
+    justify-content: flex-start;
+    gap: 1rem;
   }
 }

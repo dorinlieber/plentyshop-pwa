@@ -103,11 +103,7 @@
     <!-- Dorins: Vorschaubilder „unten“ zeigt der Rechner als Raster unter dem Hauptbild (wie im bisherigen Shop) -->
     <!-- Bildschirmbreite kennt nur der Browser, deshalb erst dort rendern (sonst Hydration-Abweichung) -->
     <ClientOnly>
-      <div
-        v-if="showImageGrid"
-        class="grid grid-cols-2 gap-2 mt-2"
-        data-testid="gallery-grid"
-      >
+      <div v-if="showImageGrid" class="grid grid-cols-2 gap-2 mt-2" data-testid="gallery-grid">
         <button
           v-for="(image, index) in images.slice(1)"
           :key="`grid-${index}`"
@@ -133,6 +129,7 @@ import { Thumbs, FreeMode, Keyboard, A11y } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { SfIconChevronLeft, SfIconChevronRight } from '@storefront-ui/vue';
 import { productImageGetters } from '@plentymarkets/shop-api';
+import { useMediaQuery } from '@vueuse/core';
 import type { GalleryProps } from '~/components/Gallery/types';
 
 const props = withDefaults(defineProps<GalleryProps>(), {
@@ -165,8 +162,15 @@ const galleryDirClass = computed(() => (isSide.value ? 'flex-col md:flex-row' : 
 const galleryGapClass = computed(() => (isSide.value ? '@md:gap-4' : '@md:gap-2'));
 const thumbContainerClass = computed(() => [isLeft.value ? '@md:order-first' : '@md:order-last']);
 const hasMoreImages = computed(() => images.value.length > 1);
+// Dorins: Raster erst ab 992 px wie im bisherigen Shop (darunter einspaltig mit Punkten unter dem Bild)
+const isWide = useMediaQuery('(min-width: 992px)');
 const showImageGrid = computed(
-  () => configuration.value.thumbnails.showThumbnails && type.value === 'bottom' && showNav.value && hasMoreImages.value,
+  () =>
+    configuration.value.thumbnails.showThumbnails &&
+    type.value === 'bottom' &&
+    showNav.value &&
+    isWide.value &&
+    hasMoreImages.value,
 );
 
 const thumbsDirection = computed(() => (isSide.value ? 'vertical' : 'horizontal'));
