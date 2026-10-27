@@ -1221,7 +1221,7 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 }
 [data-testid='gallery-grid'] button,
 [data-testid='gallery']:has([data-testid='gallery-grid']) [data-testid='gallery-images'] {
-  background: #f7f7f7;
+  background: #fcfcfc;
 }
 [data-testid='gallery-grid'] img {
   mix-blend-mode: multiply;
@@ -3082,6 +3082,8 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
 @media (min-width: 768px) {
   [data-testid='block-wrapper']:has(.dorins-banner) {
     padding: 0 20px;
+    /* LTS: Banner auf großen Bildschirmen über die volle Breite (20 px Rand), nicht auf 1580 px begrenzt */
+    max-width: none !important;
   }
   .swiper:has(.dorins-banner) .swiper-slide img {
     height: auto !important;
@@ -3576,5 +3578,40 @@ header:has(> [data-testid='navbar-top']) {
   }
   .dorins-checkout-side [data-testid='cart-product-card'].border-t {
     border-top: 0;
+  }
+}
+
+/* ---------- Artikelseite am Rechner wie LTS (27.10.2026): große Reiter ohne Pfeil, Slider 4 Karten, Überschrift 30 px ---------- */
+@media (min-width: 1200px) {
+  .dorins-tabs-labels {
+    gap: 15px;
+  }
+  .dorins-tabs-label {
+    min-height: 60px;
+    padding: 0 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 100;
+  }
+  .dorins-tabs-label::after {
+    display: none;
+  }
+  .rte-prose .dorins-slider-title {
+    font-size: 30px;
+    font-weight: 100;
+    padding-top: 30px;
+  }
+  [data-testid='product-slider'] div.overflow-x-auto:has(> [data-testid='product-card']) {
+    gap: 20px;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] {
+    width: calc((100% - 60px) / 4) !important;
+    max-width: none !important;
+  }
+}
+/* Unterkategorien ab 1600 px: 8 je Reihe wie im LTS (darunter 6) */
+@media (min-width: 1600px) {
+  .dorins-subcategories {
+    grid-template-columns: repeat(8, 1fr);
   }
 }
