@@ -2560,3 +2560,47 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 [data-testid='checkout-payment'] label > span img {
   max-height: 40px;
 }
+
+/* ---------- Mega-Menü nach LTS-Maßen (echte Schrift): abgerundeter Kasten mit 31 px Rand, überdeckt die Leiste ---------- */
+@media (min-width: 1200px) {
+  nav ul > li > div[class*='shadow-lg'] {
+    left: 31px !important;
+    right: 31px !important;
+    width: auto !important;
+    margin-top: -42px;
+    padding: 40px 30px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 40px rgb(0 0 0 / 25%) !important;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)) !important;
+    column-gap: 15px !important;
+  }
+  nav ul > li > div[class*='shadow-lg'] a {
+    font-size: 14px !important;
+    line-height: 16.8px !important;
+    padding: 5px 0 5px !important;
+  }
+  nav ul > li > div[class*='shadow-lg'] > div > a,
+  nav ul > li > div[class*='shadow-lg'] > ul > li > a {
+    font-size: 16px !important;
+    line-height: 19.2px !important;
+    padding: 0 !important;
+  }
+}
+
+/* Infoseiten (Text-Bausteine mit h4-Zwischenüberschriften) wie LTS: 14 px Text, Überschriften 17,5 px, Rand 41 px */
+@media (min-width: 1024px) {
+  main .rte-prose:has(h4) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+main .rte-prose:has(h4) h4 {
+  font-size: 17.5px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+main .rte-prose:has(h4) p,
+main .rte-prose:has(h4) li {
+  font-size: 14px;
+  line-height: 21px;
+}
