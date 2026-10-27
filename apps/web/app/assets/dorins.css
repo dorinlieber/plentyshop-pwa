@@ -2604,3 +2604,11 @@ main .rte-prose:has(h4) li {
   font-size: 14px;
   line-height: 21px;
 }
+/* Handy-Menü: Schrift wie LTS (Einträge 14 px, schwarzer Block 13 px) */
+.dorins-drawer nav > ul:first-of-type a,
+.dorins-drawer nav > ul:first-of-type p {
+  font-size: 14px;
+}
+.dorins-drawer-links a {
+  font-size: 13px;
+}

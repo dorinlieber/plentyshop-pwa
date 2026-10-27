@@ -248,7 +248,18 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', updateDropdownBounds);
 });
 
+// Dorins: auf der Suchseite steht der Suchbegriff weiter im Feld wie im bisherigen Shop (ohne Vorschläge aufzuklappen)
+let prefilling = false;
+const prefillFromRoute = () => {
+  const term = route.path === localePath(paths.search) ? route.query.term : undefined;
+  prefilling = true;
+  inputModel.value = typeof term === 'string' ? term : '';
+  nextTick(() => (prefilling = false));
+};
+onMounted(prefillFromRoute);
+
 watch(inputModel, () => {
+  if (prefilling) return;
   if (inputModel.value === '') {
     resetSuggestions();
     handleClose();
@@ -262,7 +273,7 @@ watch(inputModel, () => {
 watch(
   () => route.fullPath,
   () => {
-    inputModel.value = '';
+    prefillFromRoute();
     resetSuggestions();
     handleClose();
   },
