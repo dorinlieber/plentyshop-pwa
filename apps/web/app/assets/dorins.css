@@ -2957,3 +2957,16 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
     margin-bottom: 0;
   }
 }
+
+/* ---------- Suchergebnisse wie LTS (27.10.2026): drei Karten je Reihe ab 768 px, vier ab 1200 px, 30 px Rand ---------- */
+@media (min-width: 768px) {
+  body:has(.dorins-search-filters) [data-testid='category-grid'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    padding: 0 30px;
+  }
+}
+@media (min-width: 1200px) {
+  body:has(.dorins-search-filters) [data-testid='category-grid'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
