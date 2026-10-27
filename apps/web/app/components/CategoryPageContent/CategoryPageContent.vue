@@ -24,6 +24,24 @@
             {{ t('common.labels.listSettings') }}
           </UiButton>
         </div>
+        <!-- Dorins: unter 1200 px wie im bisherigen Shop Sortierung/Anzahl über den Artikeln, Filter über den Knopf unten rechts -->
+        <template v-if="$slots.listControls">
+          <div class="flex items-center justify-between gap-3 dorins-mobile-list-controls">
+            <slot name="listControls" />
+          </div>
+          <Teleport to="body">
+            <button
+              v-if="!isOpen"
+              type="button"
+              class="dorins-filter-fab"
+              data-testid="dorins-filter-fab"
+              @click="open"
+            >
+              {{ t('dorins.filterButton') }}
+              <SfIconTune size="sm" aria-hidden="true" />
+            </button>
+          </Teleport>
+        </template>
         <section
           v-if="products?.length"
           class="grid grid-cols-1 @2xs:grid-cols-2 gap-4 @md:gap-6 @md:grid-cols-2 @lg:grid-cols-3 @3xl:grid-cols-4 mb-10 @md:mb-5"

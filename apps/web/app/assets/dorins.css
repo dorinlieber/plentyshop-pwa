@@ -394,7 +394,7 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
 }
 
 /* Filter als graue Leiste mit weißen Pillen über den Artikeln (Vorlage: SortFilter ganz oben, volle Breite) */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .dorins-search-filters aside {
     position: static;
     transform: none;
@@ -1605,7 +1605,7 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   text-align: center;
   font-size: 1.875rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .dorins-search-filters [data-testid='category-page-content'] {
     display: block;
   }
@@ -2257,13 +2257,13 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 }
 
 /* Filterleiste: Pillen-Text 14 px wie LTS */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .dorins-search-filters button,
   .dorins-search-filters select {
     font-size: 14px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   /* Platz für Sortierung + Anzahl rechts (größere Schrift), Beschriftungen 13 px fett wie LTS */
   .dorins-search-filters aside > .grid {
     padding-right: 400px;
@@ -3338,5 +3338,45 @@ body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:n
   .dorins-subcategory-name {
     font-size: 14px;
     line-height: 28px;
+  }
+}
+
+/* Suche wie Kategorie (27.10.2026): Filterkasten erst ab 1200 px, darunter Knopf + Seitenleiste; Zählzeile entfällt (Titel nennt die Zahl) */
+.dorins-search-filters [data-testid='category-page-content'] > .flex-1 > .flex.justify-between.mb-6 {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dorins-search-filters [data-testid='category-page-content'] {
+    display: block;
+  }
+  .dorins-search-filters [data-testid='category-sidebar'] {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(100%, 420px) !important;
+    z-index: 60 !important;
+    transform: none !important;
+    box-shadow: 0 0 20px rgb(0 0 0 / 25%) !important;
+    overflow-y: auto;
+  }
+  .dorins-search-filters [data-testid='category-sidebar']:is([style*='display: none'], [style*='display:none']) {
+    display: none !important;
+  }
+  .dorins-search-filters [data-testid='category-sidebar'] .\@md\:hidden {
+    display: flex !important;
+  }
+  .dorins-search-filters [data-testid='category-sidebar'] :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
+    display: none !important;
+  }
+  .dorins-search-filters .dorins-mobile-list-controls {
+    margin: 0 30px 30px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dorins-mobile-list-controls > * {
+    width: auto !important;
+    flex: 0 0 auto;
+    margin: 0 !important;
   }
 }

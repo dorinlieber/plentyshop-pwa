@@ -26,6 +26,10 @@
         :products="productsCatalog.products"
         :items-per-page="Number(productsPerPage)"
       >
+        <template #listControls>
+          <CategorySorting class="dorins-mobile-sort" />
+          <CategoryItemsPerPage class="dorins-tablet-perpage" :total-products="productsCatalog.pagination.totals" />
+        </template>
         <template #sidebar>
           <CategorySorting />
           <CategoryItemsPerPage class="mt-6" :total-products="productsCatalog.pagination.totals" />
