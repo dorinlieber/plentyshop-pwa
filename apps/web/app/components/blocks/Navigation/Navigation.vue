@@ -212,7 +212,7 @@
                   >
                     <div class="flex items-center">
                       <p class="text-left typography-text-lg">{{ menuLabel(node) }}</p>
-                      </div>
+                    </div>
                   </NuxtLink>
                   <button
                     type="button"
@@ -228,9 +228,15 @@
           </ul>
           <!-- Dorins: Warenkorb, Konto, Merkliste als schwarzer Block unter den Kategorien wie im bisherigen Shop -->
           <ul class="dorins-drawer-links">
-            <li><NuxtLink :to="localePath(paths.cart)" @click="close()">{{ t('dorins.cart') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath(paths.account)" @click="close()">{{ t('dorins.account') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath(paths.wishlist)" @click="close()">{{ t('dorins.wishlist') }}</NuxtLink></li>
+            <li>
+              <NuxtLink :to="localePath(paths.cart)" @click="close()">{{ t('dorins.cart') }}</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink :to="localePath(paths.account)" @click="close()">{{ t('dorins.account') }}</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink :to="localePath(paths.wishlist)" @click="close()">{{ t('dorins.wishlist') }}</NuxtLink>
+            </li>
           </ul>
         </nav>
       </SfDrawer>

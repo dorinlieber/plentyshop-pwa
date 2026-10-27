@@ -1,150 +1,162 @@
 <template>
-  <NuxtLayout name="default">
-    <div class="@md:max-w-[677px] mx-auto px-4 pt-4 pb-20 @md:px-0 @md:mt-4">
-      <h1 class="font-bold mb-10 typography-headline-3 @md:typography-headline-2">
+  <NuxtLayout name="default" :breadcrumbs="breadcrumbs">
+    <!-- Dorins: Kontaktseite wie im bisherigen Shop: volle Breite, Adresse links, Formular rechts -->
+    <div class="dorins-contact px-4 pt-4 pb-20">
+      <h1 class="dorins-contact-title" data-testid="page-heading">
         {{ t('contact.contact') }}
       </h1>
-      <p class="mb-10">{{ t('contact.contactShopMessage') }}</p>
-      <div
-        v-if="turnstileSiteKey.length === 0 || contactShopEmail.length === 0"
-        class="flex items-start bg-warning-100 shadow-md pr-4 pl-4 ring-1 ring-warning-200 typography-text-sm @md:typography-text-base py-1 rounded-md mb-4"
-      >
-        <SfIconWarning class="mt-2 mr-2 text-warning-700 shrink-0" />
-        <div class="py-2">{{ t('contact.misConfigured') }}</div>
-      </div>
-
-      <form
-        v-else
-        data-testid="contact-form"
-        class="flex flex-col rounded-md gap-4"
-        novalidate
-        @submit.prevent="onSubmit"
-      >
-        <label>
-          <UiFormLabel class="mb-1 flex">
-            <span class="mr-1">
-              {{ t('contact.form.nameLabel') }}
-            </span>
-            <UiFormHelperText>({{ t('form.optional') }})</UiFormHelperText>
-          </UiFormLabel>
-          <SfInput v-bind="nameAttributes" v-model="name" name="name" type="text" :invalid="Boolean(errors['name'])" />
-          <ErrorMessage as="div" name="name" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </label>
-
-        <label>
-          <UiFormLabel class="mb-1">{{ t('contact.form.emailLabel') }} {{ t('form.required') }}</UiFormLabel>
-          <SfInput
-            v-bind="emailAttributes"
-            v-model="email"
-            name="email"
-            type="email"
-            :invalid="Boolean(errors['email'])"
-            autocomplete="email"
-          />
-          <ErrorMessage as="div" name="email" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </label>
-
-        <label>
-          <UiFormLabel class="mb-1">{{ t('contact.form.subjectLabel') }} {{ t('form.required') }}</UiFormLabel>
-          <SfInput
-            v-bind="subjectAttributes"
-            v-model="subject"
-            name="subject"
-            type="text"
-            :invalid="Boolean(errors['subject'])"
-          />
-          <ErrorMessage as="div" name="subject" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </label>
-
-        <label>
-          <UiFormLabel class="mb-1 flex">
-            <span class="mr-1">
-              {{ t('contact.form.order-id') }}
-            </span>
-            <UiFormHelperText>({{ t('form.optional') }})</UiFormHelperText>
-          </UiFormLabel>
-          <SfInput
-            v-bind="orderIdAttributes"
-            v-model="orderId"
-            name="orderId"
-            type="text"
-            :invalid="Boolean(errors['orderId'])"
-          />
-          <ErrorMessage as="div" name="orderId" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </label>
-
-        <label class="flex flex-col">
-          <UiFormLabel class="mb-1">{{ t('contact.form.message') }} {{ t('form.required') }}</UiFormLabel>
-          <SfTextarea
-            v-bind="messageAttributes"
-            v-model="message"
-            name="message"
-            type="text"
-            :invalid="Boolean(errors['message'])"
-            :placeholder="t('contact.form.message-placeholder')"
-            class="w-full"
-          />
-          <ErrorMessage as="div" name="message" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </label>
-
+      <p class="dorins-contact-intro">{{ t('contact.contactShopMessage') }}</p>
+      <div class="dorins-contact-grid">
+        <DorinsContactDetails />
         <div>
-          <div class="flex items-center">
-            <SfCheckbox
-              id="terms"
-              v-bind="privacyPolicyAttributes"
-              v-model="privacyPolicy"
-              :invalid="Boolean(errors['privacyPolicy'])"
-              value="value"
-              class="peer"
-            />
-            <label
-              class="ml-3 text-base text-neutral-900 cursor-pointer peer-disabled:text-disabled-900 select-none"
-              for="terms"
-            >
-              <i18n-t keypath="contact.privacyPolicy" scope="global">
-                <template #privacyPolicy>
-                  <UiLink
-                    :href="localePath(paths.privacyPolicy)"
-                    target="_blank"
-                    class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded"
-                  >
-                    {{ t('legal.privacyPolicy') }}
-                  </UiLink>
-                </template>
-              </i18n-t>
-              {{ t('form.required') }}
-            </label>
+          <div
+            v-if="turnstileSiteKey.length === 0 || contactShopEmail.length === 0"
+            class="flex items-start bg-warning-100 shadow-md pr-4 pl-4 ring-1 ring-warning-200 typography-text-sm @md:typography-text-base py-1 rounded-md mb-4"
+          >
+            <SfIconWarning class="mt-2 mr-2 text-warning-700 shrink-0" />
+            <div class="py-2">{{ t('contact.misConfigured') }}</div>
           </div>
-          <ErrorMessage as="div" name="privacyPolicy" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
-        </div>
 
-        <p class="text-sm text-neutral-500 mb-2">{{ t('form.required') }} {{ t('contact.form.asterixHint') }}</p>
+          <form
+            v-else
+            data-testid="contact-form"
+            class="flex flex-col rounded-md gap-4"
+            novalidate
+            @submit.prevent="onSubmit"
+          >
+            <label>
+              <UiFormLabel class="mb-1 flex">
+                <span class="mr-1">
+                  {{ t('contact.form.nameLabel') }}
+                </span>
+                <UiFormHelperText>({{ t('form.optional') }})</UiFormHelperText>
+              </UiFormLabel>
+              <SfInput
+                v-bind="nameAttributes"
+                v-model="name"
+                name="name"
+                type="text"
+                :invalid="Boolean(errors['name'])"
+              />
+              <ErrorMessage as="div" name="name" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </label>
 
-        <div class="@md:col-span-3 flex flex-col-reverse @md:flex-row justify-end gap-4">
-          <UiButton type="button" variant="secondary" :disabled="isContactLoading" @click="clearInputs">
-            {{ t('contact.clearAll') }}
-          </UiButton>
-          <UiButton data-testid="save-address" type="submit" class="min-w-[120px]" :disabled="isContactLoading">
-            <SfLoaderCircular v-if="isContactLoading" class="flex justify-center items-center" size="sm" />
-            <span v-else>
-              {{ t('contact.contactSend') }}
-            </span>
-          </UiButton>
-        </div>
+            <label>
+              <UiFormLabel class="mb-1">{{ t('contact.form.emailLabel') }} {{ t('form.required') }}</UiFormLabel>
+              <SfInput
+                v-bind="emailAttributes"
+                v-model="email"
+                name="email"
+                type="email"
+                :invalid="Boolean(errors['email'])"
+                autocomplete="email"
+              />
+              <ErrorMessage as="div" name="email" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </label>
 
-        <div>
-          <NuxtTurnstile
-            v-if="turnstileSiteKey.length > 0 && turnstileLoad"
-            v-bind="turnstileAttributes"
-            ref="turnstileElement"
-            v-model="turnstile"
-            :site-key="turnstileSiteKey"
-            :options="{ theme: 'light' }"
-            class="mt-4"
-          />
-          <ErrorMessage as="div" name="turnstile" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            <label>
+              <UiFormLabel class="mb-1">{{ t('contact.form.subjectLabel') }} {{ t('form.required') }}</UiFormLabel>
+              <SfInput
+                v-bind="subjectAttributes"
+                v-model="subject"
+                name="subject"
+                type="text"
+                :invalid="Boolean(errors['subject'])"
+              />
+              <ErrorMessage as="div" name="subject" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </label>
+
+            <label>
+              <UiFormLabel class="mb-1 flex">
+                <span class="mr-1">
+                  {{ t('contact.form.order-id') }}
+                </span>
+                <UiFormHelperText>({{ t('form.optional') }})</UiFormHelperText>
+              </UiFormLabel>
+              <SfInput
+                v-bind="orderIdAttributes"
+                v-model="orderId"
+                name="orderId"
+                type="text"
+                :invalid="Boolean(errors['orderId'])"
+              />
+              <ErrorMessage as="div" name="orderId" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </label>
+
+            <label class="flex flex-col">
+              <UiFormLabel class="mb-1">{{ t('contact.form.message') }} {{ t('form.required') }}</UiFormLabel>
+              <SfTextarea
+                v-bind="messageAttributes"
+                v-model="message"
+                name="message"
+                type="text"
+                :invalid="Boolean(errors['message'])"
+                :placeholder="t('contact.form.message-placeholder')"
+                class="w-full"
+              />
+              <ErrorMessage as="div" name="message" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </label>
+
+            <div>
+              <div class="flex items-center">
+                <SfCheckbox
+                  id="terms"
+                  v-bind="privacyPolicyAttributes"
+                  v-model="privacyPolicy"
+                  :invalid="Boolean(errors['privacyPolicy'])"
+                  value="value"
+                  class="peer"
+                />
+                <label
+                  class="ml-3 text-base text-neutral-900 cursor-pointer peer-disabled:text-disabled-900 select-none"
+                  for="terms"
+                >
+                  <i18n-t keypath="contact.privacyPolicy" scope="global">
+                    <template #privacyPolicy>
+                      <UiLink
+                        :href="localePath(paths.privacyPolicy)"
+                        target="_blank"
+                        class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded"
+                      >
+                        {{ t('legal.privacyPolicy') }}
+                      </UiLink>
+                    </template>
+                  </i18n-t>
+                  {{ t('form.required') }}
+                </label>
+              </div>
+              <ErrorMessage as="div" name="privacyPolicy" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </div>
+
+            <p class="text-sm text-neutral-500 mb-2">{{ t('form.required') }} {{ t('contact.form.asterixHint') }}</p>
+
+            <div class="@md:col-span-3 flex flex-col-reverse @md:flex-row justify-end gap-4">
+              <UiButton type="button" variant="secondary" :disabled="isContactLoading" @click="clearInputs">
+                {{ t('contact.clearAll') }}
+              </UiButton>
+              <UiButton data-testid="save-address" type="submit" class="min-w-[120px]" :disabled="isContactLoading">
+                <SfLoaderCircular v-if="isContactLoading" class="flex justify-center items-center" size="sm" />
+                <span v-else>
+                  {{ t('contact.contactSend') }}
+                </span>
+              </UiButton>
+            </div>
+
+            <div>
+              <NuxtTurnstile
+                v-if="turnstileSiteKey.length > 0 && turnstileLoad"
+                v-bind="turnstileAttributes"
+                ref="turnstileElement"
+                v-model="turnstile"
+                :site-key="turnstileSiteKey"
+                :options="{ theme: 'light' }"
+                class="mt-4"
+              />
+              <ErrorMessage as="div" name="turnstile" class="text-negative-700 text-left text-sm pt-[0.2rem]" />
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </NuxtLayout>
 </template>
@@ -177,6 +189,12 @@ const { setPageMeta } = usePageMeta();
 
 const icon = 'page';
 setPageMeta(t('contact.label'), icon, true);
+
+// Dorins: Brotkrumen wie im bisherigen Shop
+const breadcrumbs = computed(() => [
+  { name: t('common.labels.home'), link: localePath(paths.home) },
+  { name: t('contact.contact'), link: localePath(paths.contact) },
+]);
 
 const contactShopEmail = getContactShopEmail() ?? '';
 const turnstileSiteKey = getSetting() ?? '';
