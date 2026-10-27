@@ -51,6 +51,16 @@ definePageMeta({
 });
 
 const route = useRoute();
+
+// Dorins: alte Shop-Suche hieß /search?query=…; ohne Suchbegriff fiel die Seite mit Fehler 500 aus
+if (!route.query.term) {
+  const { query: oldTerm, ...rest } = route.query;
+  await navigateTo(
+    oldTerm ? { path: route.path, query: { ...rest, term: oldTerm } } : useLocalizedPath()(paths.home),
+    { redirectCode: 301 },
+  );
+}
+
 const { getSearch, data: productsCatalog, productsPerPage, loading } = useSearch();
 const { getFacetsFromURL } = useCategoryFilter();
 
