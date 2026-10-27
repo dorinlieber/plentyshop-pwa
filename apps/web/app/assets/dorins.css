@@ -2920,3 +2920,40 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
   color: #000;
   text-decoration: none;
 }
+
+/* ---------- Fuß auf Tablet-Breite (768-1199 px) wie LTS (27.10.2026): Konto, Informationen, Marken zentriert nebeneinander,
+   darunter Vorteile und Beratung zentriert über die volle Breite ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) {
+    grid-template-columns: 142px 201px 142px !important;
+    justify-content: center;
+    column-gap: 0 !important;
+    row-gap: 2.5rem !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-footer-col) > [data-testid='multi-grid-column'] {
+    grid-column: auto !important;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) { order: 1; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) { order: 2; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) { order: 3; }
+  [data-testid='multi-grid-structure'] > [data-testid='multi-grid-column']:has(.dorins-footer-col--vorteile) {
+    order: 4;
+    grid-column: 1 / -1 !important;
+  }
+  [data-testid='multi-grid-structure'] > [data-testid='multi-grid-column']:has(.dorins-footer-col--beratung) {
+    order: 5;
+    grid-column: 1 / -1 !important;
+  }
+  .dorins-footer-col,
+  .dorins-footer-col p {
+    text-align: center;
+  }
+  .dorins-footer-col {
+    max-width: none !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rte-prose .dorins-footer-col--vorteile .dorins-footer-check {
+    margin-bottom: 0;
+  }
+}
