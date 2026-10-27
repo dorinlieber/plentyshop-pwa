@@ -37,6 +37,14 @@
         <CustomerReference />
         <CustomerWish />
         <UiDivider class="w-screen @md:w-auto -mx-4 @md:mx-0 mb-10" />
+        <!-- Dorins: EU-Hinweis zur gesetzlichen Gewährleistung (Pflicht seit 27.09.2026) vor dem Kaufabschluss wie im bisherigen Shop -->
+        <img
+          src="https://cdn03.plentyone.com/0g0quyrt02bw/frontend/Siegel_PDFS/gesetzliche-gewaehrleitung.jpg"
+          :alt="t('dorins.legalGuaranteeAlt')"
+          class="dorins-legal-guarantee"
+          data-testid="dorins-legal-guarantee"
+          loading="lazy"
+        />
         <CheckoutGeneralTerms />
       </div>
       <!-- Dorins: rechte Spalte auf grauem Grund wie im bisherigen Shop -->

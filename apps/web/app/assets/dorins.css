@@ -3380,3 +3380,12 @@ body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:n
     margin: 0 !important;
   }
 }
+
+/* EU-Hinweis gesetzliche Gewährleistung in der Kasse wie LTS: volle Spaltenbreite über der AGB-Bestätigung */
+.dorins-legal-guarantee {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 0 1.5rem;
+}
