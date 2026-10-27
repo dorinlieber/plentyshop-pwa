@@ -1439,6 +1439,24 @@
     "pageLabel": "Page:",
     "pageOf": "{page} of {total}",
     "textileSeal": "Textile seal",
-    "searchPlaceholder": "Search term"
+    "searchPlaceholder": "Search term",
+    "cartPage": {
+      "country": "Delivery country",
+      "germany": "Germany",
+      "freeShippingRemaining": "Only {amount} left for {free}*",
+      "freeShipping": "free shipping",
+      "freeShippingReached": "Your order ships for free.*",
+      "freeShippingNote": "*Applies to shipping within Germany",
+      "sum": "Total",
+      "itemsNet": "Value of items (net)",
+      "itemsGross": "Value of items (gross)",
+      "shippingNet": "Shipping costs (net)",
+      "shippingGross": "Shipping costs (gross)",
+      "vat": "VAT {rate}%",
+      "totalNet": "Total (net)",
+      "totalGross": "Total (gross)",
+      "couponHint": "One coupon code can be applied per order.",
+      "checkout": "Checkout"
+    }
   }
 }

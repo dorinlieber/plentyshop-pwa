@@ -1439,6 +1439,24 @@
     "pageLabel": "Seite:",
     "pageOf": "{page} von {total}",
     "textileSeal": "Textilsiegel",
-    "searchPlaceholder": "Suchbegriff"
+    "searchPlaceholder": "Suchbegriff",
+    "cartPage": {
+      "country": "Lieferland",
+      "germany": "Deutschland",
+      "freeShippingRemaining": "Nur noch {amount} bis zum {free}*",
+      "freeShipping": "kostenlosen Versand",
+      "freeShippingReached": "Deine Bestellung wird kostenlos versendet.*",
+      "freeShippingNote": "*Gilt für den Versand nach Deutschland",
+      "sum": "Summe",
+      "itemsNet": "Warenwert (Netto)",
+      "itemsGross": "Warenwert (Brutto)",
+      "shippingNet": "Versandkosten (Netto)",
+      "shippingGross": "Versandkosten (Brutto)",
+      "vat": "MwSt. {rate}%",
+      "totalNet": "Gesamtsumme (Netto)",
+      "totalGross": "Gesamtsumme (Brutto)",
+      "couponHint": "Pro Einkauf ist ein Gutscheincode anwendbar.",
+      "checkout": "Kasse"
+    }
   }
 }

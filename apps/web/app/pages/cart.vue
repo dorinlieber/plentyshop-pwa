@@ -3,31 +3,30 @@
     name="checkout"
     :back-label-desktop="t('common.actions.back')"
     :back-label-mobile="t('common.actions.back')"
-    :heading="t('cart.myCart')"
+    :heading="t('common.labels.cart')"
   >
     <div v-if="!cartIsEmpty" class="@md:grid @md:grid-cols-12 @md:gap-x-6" data-testid="cart-page-content">
       <div class="col-span-7 mb-2 @md:mb-0">
         <div v-for="(cartItem, index) in cart?.items" :key="cartItem.id">
           <UiCartProductCard :cart-item="cartItem" :class="{ 'border-t': index === 0 }" />
         </div>
-        <Coupon v-if="viewport.isLessThan('lg')" class="mb-2" />
       </div>
       <div
         class="relative col-span-5 @md:sticky @md:top-10 h-fit"
         :class="{ 'pointer-events-none opacity-50': loading }"
       >
         <SfLoaderCircular v-if="loading" class="absolute top-[130px] right-0 left-0 m-auto z-loader" size="2xl" />
-        <FreeShippingBar class="mb-4" />
-        <OrderSummary :cart="cart">
-          <Coupon v-if="viewport.isGreaterOrEquals('lg')" class="mb-5" />
+        <!-- Dorins: rechte Spalte im Aufbau des bisherigen Shops (Lieferland, Versandfrei, Summe netto/brutto, Gutschein) -->
+        <DorinsCartSummary>
           <UiButton
             data-testid="checkout-button"
             :tag="NuxtLink"
             :to="goToCheckout()"
             size="lg"
-            class="w-full mb-4 @md:mb-0"
+            class="w-full mb-4 @md:mb-0 dorins-cart-checkout"
           >
-            {{ t('common.actions.goToCheckout') }}
+            {{ t('dorins.cartPage.checkout') }}
+            <SfIconCreditCard />
           </UiButton>
           <client-only>
             <PayPalExpressButton :disabled="loading" location="cartPage" class="mt-4" type="CartPreview" />
@@ -37,7 +36,7 @@
               :amount="cartGetters.getTotal(cartGetters.getTotals(cart))"
             />
           </client-only>
-        </OrderSummary>
+        </DorinsCartSummary>
       </div>
     </div>
     <div v-else class="flex items-center justify-center flex-col pt-24 pb-32" data-testid="cart-page-content">
@@ -48,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { SfLoaderCircular } from '@storefront-ui/vue';
+import { SfIconCreditCard, SfLoaderCircular } from '@storefront-ui/vue';
 import { cartGetters } from '@plentymarkets/shop-api';
 import type { Locale } from '#i18n';
 
@@ -61,7 +60,6 @@ const { setPageMeta } = usePageMeta();
 definePageMeta({ pageType: 'static' });
 
 const NuxtLink = resolveComponent('NuxtLink');
-const viewport = useViewport();
 const localePath = useLocalizedPath();
 const { data: cart, cartIsEmpty, loading } = useCart();
 // Direkt in den einseitigen Checkout, ohne Gast/Login-Zwischenseite (E-Mail + Login stehen dort inline)

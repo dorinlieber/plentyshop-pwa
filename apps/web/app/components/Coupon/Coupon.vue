@@ -59,7 +59,9 @@
 <script setup lang="ts">
 import { cartGetters } from '@plentymarkets/shop-api';
 import { SfAccordionItem, SfIconChevronLeft, SfIconClose, SfInput, SfLoaderCircular } from '@storefront-ui/vue';
-const openedCoupon = ref(false);
+// Dorins: im Warenkorb wie im bisherigen Shop immer offen (Feld + „Einlösen“ ohne Aufklappen)
+const props = defineProps<{ expanded?: boolean }>();
+const openedCoupon = ref(!!props.expanded);
 const couponCode = ref('');
 const { addCoupon, deleteCoupon, loading } = useCoupon();
 const { data: cart } = useCart();
@@ -71,6 +73,6 @@ const handleDeleteCoupon = async () => {
 
 onMounted(() => {
   couponCode.value = cartGetters.getCouponCode(cart.value);
-  openedCoupon.value = cartGetters.getCouponDiscount(cart.value) !== 0;
+  openedCoupon.value = !!props.expanded || cartGetters.getCouponDiscount(cart.value) !== 0;
 });
 </script>

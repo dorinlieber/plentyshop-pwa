@@ -2612,3 +2612,132 @@ main .rte-prose:has(h4) li {
 .dorins-drawer-links a {
   font-size: 13px;
 }
+
+/* ---------- Warenkorb wie im LTS (DorinsCartSummary, 27.10.2026) ---------- */
+body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
+  color: #c482b0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.dorins-cart-summary {
+  font-size: 13px;
+  color: #000;
+}
+.dorins-cart-heading {
+  color: #c482b0;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.dorins-cart-country {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+.dorins-cart-free {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.dorins-cart-free-icon {
+  width: 40px;
+  height: 19px;
+  color: #f8b229;
+  flex: none;
+}
+.dorins-cart-free-text {
+  flex: 1;
+}
+.dorins-cart-free-text p {
+  margin: 0;
+}
+.dorins-cart-free-bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0 6px;
+}
+.dorins-cart-free-bar span {
+  display: block;
+  height: 100%;
+  background: #f8b229;
+  border-radius: 4px;
+  transition: width 0.4s;
+}
+.dorins-cart-free-text .dorins-cart-free-note {
+  font-size: 10px;
+  color: #777;
+}
+.dorins-cart-sums {
+  margin-bottom: 20px;
+}
+.dorins-cart-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 28px;
+}
+.dorins-cart-row.dorins-strong {
+  font-weight: 700;
+}
+.dorins-cart-row--gap {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.dorins-cart-subheading {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+}
+.dorins-cart-small {
+  font-size: 11px;
+  margin: 0 0 8px;
+}
+.dorins-cart-coupon {
+  border: 0 !important;
+  margin-bottom: 20px;
+}
+.dorins-cart-coupon summary {
+  display: none !important;
+}
+.dorins-cart-coupon [data-testid='couponAdd'] {
+  border-radius: 0;
+  margin-left: 0 !important;
+}
+.dorins-cart-coupon [data-testid='couponCode'] {
+  margin-right: 0 !important;
+}
+.dorins-cart-coupon [data-testid='couponCode'] > * {
+  border-radius: 0;
+}
+.dorins-cart-checkout {
+  border-radius: 0 !important;
+  min-height: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  gap: 1rem;
+}
+/* Warenkorb-Zeilen links kompakt wie LTS: kleines Bild, kleine Schrift (nur Warenkorb-Seite) */
+@media (min-width: 768px) {
+  body:has([data-testid='dorins-cart-summary']) [data-testid='cart-product-card'] > div:first-child {
+    width: 70px !important;
+  }
+  body:has([data-testid='dorins-cart-summary']) [data-testid='cart-product-card'] a[class*='typography-text'] {
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  body:has([data-testid='dorins-cart-summary']) [data-testid='cart-product-card'] {
+    font-size: 12px;
+  }
+  body:has([data-testid='dorins-cart-summary']) [data-testid='cart-product-card'] ul,
+  body:has([data-testid='dorins-cart-summary']) [data-testid='cart-product-card'] [data-testid='cart-item-price'] {
+    font-size: 12px !important;
+  }
+}
