@@ -1999,7 +1999,7 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 991px) {
   /* Startseiten-Kacheln „Für wen möchtest Du einkaufen?“ zweispaltig und groß */
   [data-testid='multi-grid-structure']:has(.dorins-pill--tile) > * {
     grid-column: span 6 / span 6 !important;
@@ -2968,5 +2968,84 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
 @media (min-width: 1200px) {
   body:has(.dorins-search-filters) [data-testid='category-grid'] {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ---------- Startseite auf Tablet-Breite wie LTS (27.10.2026) ---------- */
+/* Banner ab 768 px im Bildformat (940×365) mit 20 px Rand statt fester Höhe 432/576 px */
+@media (min-width: 768px) {
+  [data-testid='block-wrapper']:has(.dorins-banner) {
+    padding: 0 20px;
+  }
+  .swiper:has(.dorins-banner) .swiper-slide img {
+    height: auto !important;
+    aspect-ratio: 940 / 365;
+  }
+}
+/* Überschriften 21 px dünn mit 40/30 px Luft (LTS ab 1200 px: 30 px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dorins-section-title,
+  .rte-prose .dorins-section-title {
+    font-size: 21px;
+    line-height: 21px;
+  }
+  [data-testid='block-wrapper']:has(.dorins-section-title) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  [data-testid='text-card']:has(.dorins-section-title) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .rte-prose .dorins-section-title {
+    margin: 40px 0 30px !important;
+  }
+}
+/* Kacheln zweispaltig: Pille fast kachelbreit, 50 px hoch, Name fett, Alter darunter */
+@media (min-width: 768px) and (max-width: 991px) {
+  .rte-prose .dorins-pill--tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 30px);
+    max-width: none;
+    min-height: 50px;
+    padding: 1px 6px;
+    border-radius: 30px;
+    font-size: 14px;
+    line-height: 16.8px;
+    font-weight: 700;
+    white-space: normal;
+    margin-bottom: 20px;
+  }
+  .rte-prose .dorins-pill--tile span {
+    display: block;
+    font-weight: 400;
+  }
+  /* Vorteile 2 × 2, Text 14 px dünn */
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 30px !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) > * {
+    grid-column: auto !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) p:not(:has(img)) {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 16.8px;
+  }
+}
+/* Banner-Text 768-991 px mittig und schmal wie LTS („Warm / durch den / Winter“) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .dorins-banner {
+    text-align: center;
+    padding-right: 0;
+  }
+  .rte-prose .dorins-banner-title {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
