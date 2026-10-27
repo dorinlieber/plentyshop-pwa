@@ -72,16 +72,22 @@
       </template>
     </CategorySidebar>
 
-    <!-- Dorins: am Handy die Sortierung direkt sichtbar wie im bisherigen Shop, Filter weiter über „Listeneinstellungen“ -->
-    <div class="@md:hidden flex items-center justify-between gap-3 dorins-mobile-list-controls">
-      <UiButton variant="tertiary" class="whitespace-nowrap !px-0" @click="open">
-        <template #prefix>
-          <SfIconTune />
-        </template>
-        {{ t('common.labels.listSettings') }}
-      </UiButton>
+    <!-- Dorins: unter 1200 px wie im bisherigen Shop: Sortierung (Tablet auch Anzahl) direkt über den Artikeln,
+         Filter über den runden Knopf unten rechts -->
+    <div class="flex items-center justify-between gap-3 dorins-mobile-list-controls">
       <CategorySorting v-if="props.content?.fields.sortBy" class="dorins-mobile-sort" />
+      <CategoryItemsPerPage
+        v-if="props.content?.fields.perPage"
+        class="dorins-tablet-perpage"
+        :total-products="productsCatalog.pagination?.totals ?? 0"
+      />
     </div>
+    <Teleport to="body">
+      <button v-if="!isOpen" type="button" class="dorins-filter-fab" data-testid="dorins-filter-fab" @click="open">
+        {{ t('dorins.filterButton') }}
+        <SfIconTune size="sm" aria-hidden="true" />
+      </button>
+    </Teleport>
   </div>
 
   <template v-else>

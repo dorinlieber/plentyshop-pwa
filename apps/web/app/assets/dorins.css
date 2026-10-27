@@ -395,7 +395,7 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
 
 /* Filter als graue Leiste mit weißen Pillen über den Artikeln (Vorlage: SortFilter ganz oben, volle Breite) */
 @media (min-width: 768px) {
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside {
+  .dorins-search-filters aside {
     position: static;
     transform: none;
     box-shadow: none;
@@ -404,7 +404,7 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     padding: 20px;
     margin-bottom: 20px;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid {
+  .dorins-search-filters aside > .grid {
     display: flex !important;
     flex-wrap: wrap;
     align-items: center;
@@ -414,32 +414,32 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     padding-right: 330px;
   }
   /* Sortierung und Anzahl fest oben rechts, auch wenn die Filter umbrechen */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid > [data-testid='category-sorting'] {
+  .dorins-search-filters aside > .grid > [data-testid='category-sorting'] {
     position: absolute;
     top: 0;
     right: 140px;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid > [data-testid='category-items-per-page'] {
+  .dorins-search-filters aside > .grid > [data-testid='category-items-per-page'] {
     position: absolute;
     top: 0;
     right: 0;
   }
   /* Pfeil nach unten wie im LTS */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details > summary svg {
+  .dorins-search-filters details > summary svg {
     transform: rotate(-90deg);
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid::before {
+  .dorins-search-filters aside > .grid::before {
     content: 'Filtern nach:';
     font-size: 0.75rem;
     font-weight: 700;
     margin-right: 4px;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid > div {
+  .dorins-search-filters aside > .grid > div {
     margin: 0 !important;
     width: auto;
   }
   /* eigene Filter (Zielgruppen, Größe, Farbe …) stecken gemeinsam in einem Spalten-Container */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid > div.flex-col {
+  .dorins-search-filters aside > .grid > div.flex-col {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
@@ -475,7 +475,7 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
   [data-testid='category-items-per-page'] > div:last-child {
     padding: 0 !important;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) select {
+  .dorins-search-filters select {
     border-radius: 20px;
     border: 0;
     background: #fff;
@@ -484,10 +484,10 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     height: 36px;
   }
   /* jede Filtergruppe als Pille, Inhalt klappt beim Darüberfahren auf */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details {
+  .dorins-search-filters details {
     position: relative;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details > summary > div {
+  .dorins-search-filters details > summary > div {
     background: #fff !important;
     border-radius: 20px;
     margin: 0 !important;
@@ -495,18 +495,18 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     gap: 0.25rem;
     align-items: center;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details > summary > div > div {
+  .dorins-search-filters details > summary > div > div {
     font-size: 0.75rem;
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
     padding: 0;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details > summary svg {
+  .dorins-search-filters details > summary svg {
     width: 1.1rem;
     height: 1.1rem;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details > :not(summary) {
+  .dorins-search-filters details > :not(summary) {
     display: none;
     position: absolute;
     top: 100%;
@@ -520,12 +520,12 @@ li:has(> [data-testid='category-button'][href$='/onlineshop-fuer-kindermode']) {
     padding: 0.5rem 0;
     margin: 0 !important;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details:hover > :not(summary),
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) details:focus-within > :not(summary) {
+  .dorins-search-filters details:hover > :not(summary),
+  .dorins-search-filters details:focus-within > :not(summary) {
     display: block;
   }
   /* Fußzeile der Seitenleiste (Zurücksetzen/Anwenden) in der Leiste ausblenden */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid > div:last-child.border-t {
+  .dorins-search-filters aside > .grid > div:last-child.border-t {
     display: none;
   }
 }
@@ -2258,17 +2258,17 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 
 /* Filterleiste: Pillen-Text 14 px wie LTS */
 @media (min-width: 768px) {
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) button,
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) select {
+  .dorins-search-filters button,
+  .dorins-search-filters select {
     font-size: 14px;
   }
 }
 @media (min-width: 768px) {
   /* Platz für Sortierung + Anzahl rechts (größere Schrift), Beschriftungen 13 px fett wie LTS */
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid {
+  .dorins-search-filters aside > .grid {
     padding-right: 400px;
   }
-  :is([data-testid='category-sort-filter'], .dorins-search-filters) aside > .grid::before,
+  .dorins-search-filters aside > .grid::before,
   [data-testid='category-sorting'] > div:first-child {
     font-size: 13px !important;
   }
@@ -3080,5 +3080,263 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
   .dorins-item-actions {
     justify-content: flex-start;
     gap: 1rem;
+  }
+}
+
+
+/* ---------- Kategorie-Filter wie LTS (27.10.2026): grauer Filterkasten erst ab 1200 px (Kopien der Regeln oben),
+   darunter runder „Filter“-Knopf unten rechts, Filter als Seitenleiste ---------- */
+@media (min-width: 1200px) {
+  [data-testid='category-sort-filter'] aside {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    background: #efefef;
+    border-radius: 0;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    position: relative;
+    padding-right: 330px;
+  }
+  /* Sortierung und Anzahl fest oben rechts, auch wenn die Filter umbrechen */
+  [data-testid='category-sort-filter'] aside > .grid > [data-testid='category-sorting'] {
+    position: absolute;
+    top: 0;
+    right: 140px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > [data-testid='category-items-per-page'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  /* Pfeil nach unten wie im LTS */
+  [data-testid='category-sort-filter'] details > summary svg {
+    transform: rotate(-90deg);
+  }
+  [data-testid='category-sort-filter'] aside > .grid::before {
+    content: 'Filtern nach:';
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > div {
+    margin: 0 !important;
+    width: auto;
+  }
+  /* eigene Filter (Zielgruppen, Größe, Farbe …) stecken gemeinsam in einem Spalten-Container */
+  [data-testid='category-sort-filter'] aside > .grid > div.flex-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  /* Sortierung und Anzahl rechts */
+  [data-testid='category-sorting'] {
+    order: 10;
+    margin-left: auto !important;
+  }
+  [data-testid='category-items-per-page'] {
+    order: 11;
+  }
+  [data-testid='category-sorting'],
+  [data-testid='category-items-per-page'] {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  [data-testid='category-sorting'] > div:first-child,
+  [data-testid='category-items-per-page'] > div:first-child {
+    background: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  [data-testid='category-items-per-page'] > div:first-child {
+    display: none;
+  }
+  [data-testid='category-sorting'] > div:last-child,
+  [data-testid='category-items-per-page'] > div:last-child {
+    padding: 0 !important;
+  }
+  [data-testid='category-sort-filter'] select {
+    border-radius: 20px;
+    border: 0;
+    background: #fff;
+    font-size: 0.75rem;
+    min-width: 120px;
+    height: 36px;
+  }
+  /* jede Filtergruppe als Pille, Inhalt klappt beim Darüberfahren auf */
+  [data-testid='category-sort-filter'] details {
+    position: relative;
+  }
+  [data-testid='category-sort-filter'] details > summary > div {
+    background: #fff !important;
+    border-radius: 20px;
+    margin: 0 !important;
+    padding: 0.35rem 0.75rem 0.35rem 1rem !important;
+    gap: 0.25rem;
+    align-items: center;
+  }
+  [data-testid='category-sort-filter'] details > summary > div > div {
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    padding: 0;
+  }
+  [data-testid='category-sort-filter'] details > summary svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+  [data-testid='category-sort-filter'] details > :not(summary) {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 30;
+    min-width: 240px;
+    max-height: 340px;
+    overflow-y: auto;
+    background: #fff;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 15%);
+    padding: 0.5rem 0;
+    margin: 0 !important;
+  }
+  [data-testid='category-sort-filter'] details:hover > :not(summary),
+  [data-testid='category-sort-filter'] details:focus-within > :not(summary) {
+    display: block;
+  }
+  /* Fußzeile der Seitenleiste (Zurücksetzen/Anwenden) in der Leiste ausblenden */
+  [data-testid='category-sort-filter'] aside > .grid > div:last-child.border-t {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  [data-testid='category-sort-filter'] button,
+  [data-testid='category-sort-filter'] select {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1200px) {
+  /* Platz für Sortierung + Anzahl rechts (größere Schrift), Beschriftungen 13 px fett wie LTS */
+  [data-testid='category-sort-filter'] aside > .grid {
+    padding-right: 400px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid::before,
+  [data-testid='category-sorting'] > div:first-child {
+    font-size: 13px !important;
+  }
+}
+.dorins-filter-fab {
+  position: fixed;
+  right: 10px;
+  bottom: 30px;
+  z-index: 2147483000;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+@media (min-width: 1200px) {
+  .dorins-filter-fab,
+  .dorins-mobile-list-controls {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .dorins-tablet-perpage {
+    display: none !important;
+  }
+  .dorins-mobile-list-controls .dorins-mobile-sort {
+    width: 100% !important;
+    max-width: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dorins-mobile-list-controls {
+    margin: 0 4px 40px;
+  }
+  .dorins-mobile-list-controls .dorins-mobile-sort select,
+  .dorins-tablet-perpage select {
+    min-width: 141px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    font-size: 14px;
+    padding-left: 0.9rem;
+    background-color: #fff;
+  }
+  .dorins-tablet-perpage > div:first-child:not(:last-child) {
+    display: none;
+  }
+  .dorins-tablet-perpage > div:last-child {
+    padding: 0 !important;
+  }
+  /* Filter als Seitenleiste von links, nur wenn geöffnet (Container-Regeln @md machen sie sonst zur Inline-Spalte) */
+  [data-testid='category-sort-filter'] [data-testid='category-sidebar'] {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(100%, 420px) !important;
+    z-index: 60 !important;
+    transform: none !important;
+    box-shadow: 0 0 20px rgb(0 0 0 / 25%) !important;
+    overflow-y: auto;
+  }
+  [data-testid='category-sort-filter'] [data-testid='category-sidebar']:is([style*='display: none'], [style*='display:none']) {
+    display: none !important;
+  }
+  [data-testid='category-sort-filter'] [data-testid='category-sidebar'] .\@md\:hidden {
+    display: flex !important;
+  }
+}
+/* Knopf liegt über der Shopvote-Leiste, verschwindet bei offener Filterleiste */
+body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:not([style*='display: none'], [style*='display:none'])) .dorins-filter-fab {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='category-sort-filter'] [data-testid='category-sidebar'] :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
+    display: none !important;
+  }
+}
+/* Kategorie auf Tablet-Breite: Abstände wie LTS (Brotkrumen > Titel 42 px, Unterkategorien > Sortierung > Artikel je 40 px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-data']) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  [data-testid='category-data'] {
+    padding-top: 6px !important;
+    padding-bottom: 0 !important;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-sort-filter']) {
+    padding-top: 0 !important;
+  }
+  .dorins-mobile-list-controls {
+    margin: 40px 4px 24px;
+  }
+  .dorins-subcategory-name {
+    font-size: 14px;
+    line-height: 28px;
   }
 }

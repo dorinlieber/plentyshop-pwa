@@ -1441,6 +1441,7 @@
     "textileSeal": "Textile seal",
     "searchPlaceholder": "Search term",
     "categorySearch": "Search category",
+    "filterButton": "Filter",
     "cartPage": {
       "country": "Delivery country",
       "germany": "Germany",
