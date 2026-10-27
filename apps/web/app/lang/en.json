@@ -1440,6 +1440,7 @@
     "pageOf": "{page} of {total}",
     "textileSeal": "Textile seal",
     "searchPlaceholder": "Search term",
+    "categorySearch": "Search category",
     "cartPage": {
       "country": "Delivery country",
       "germany": "Germany",

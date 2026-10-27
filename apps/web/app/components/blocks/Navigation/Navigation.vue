@@ -122,6 +122,27 @@
         class="right-12 max-w-96 bg-white overflow-y-auto z-drawer dorins-drawer"
       >
         <nav>
+          <!-- Dorins: Kategorie-Suche oben im Menü wie im bisherigen Shop -->
+          <div class="dorins-drawer-search">
+            <SfIconSearch aria-hidden="true" class="dorins-drawer-search-icon" />
+            <input
+              v-model="categorySearch"
+              type="text"
+              autocomplete="off"
+              data-testid="drawer-category-search"
+              :placeholder="t('dorins.categorySearch')"
+              :aria-label="t('dorins.categorySearch')"
+            />
+            <button
+              v-if="categorySearch"
+              type="button"
+              class="dorins-drawer-search-clear"
+              :aria-label="t('common.actions.resetSearch')"
+              @click="categorySearch = ''"
+            >
+              <SfIconClose size="xs" aria-hidden="true" />
+            </button>
+          </div>
           <div class="flex items-center justify-between p-4">
             <!-- Dorins: Überschrift „Kategorien“ wie im bisherigen Shop -->
             <p class="dorins-drawer-title">{{ t('dorins.categories') }}</p>
@@ -135,7 +156,24 @@
               <SfIconClose aria-hidden="true" class="text-neutral-500" />
             </UiButton>
           </div>
-          <ul v-if="activeMenu" class="mt-2 mb-6">
+          <div v-if="categorySearchTerm" class="dorins-drawer-results" data-testid="drawer-category-results">
+            <template v-for="group in categorySearchResults" :key="group.parent">
+              <p class="dorins-drawer-results-divider">{{ group.parent }}</p>
+              <NuxtLink
+                v-for="node in group.nodes"
+                :key="node.id"
+                :to="localePath(generateCategoryLink(node))"
+                class="dorins-drawer-results-link"
+                @click="close()"
+              >
+                {{ menuLabel(node) }}
+              </NuxtLink>
+            </template>
+            <p v-if="!categorySearchResults.length" class="dorins-drawer-results-empty">
+              {{ t('searchBar.noResultsFound') }}
+            </p>
+          </div>
+          <ul v-else-if="activeMenu" class="mt-2 mb-6">
             <li v-if="activeMenu.id !== 0">
               <SfListItem
                 size="lg"
@@ -207,6 +245,7 @@ import {
   SfListItem,
   SfIconChevronRight,
   SfIconArrowBack,
+  SfIconSearch,
   useTrapFocus,
   useDropdown,
 } from '@storefront-ui/vue';
@@ -356,6 +395,25 @@ const findNode = (keys: number[], node: CategoryTreeItem): CategoryTreeItem => {
     return node.children?.find((child) => child.id === keys[0]) || node;
   }
 };
+
+// Dorins: Kategorie-Suche im Handy-Menü durchsucht alle Ebenen, Treffer nach Oberkategorie gruppiert
+const categorySearch = ref('');
+const categorySearchTerm = computed(() => categorySearch.value.trim().toLowerCase());
+const categorySearchResults = computed(() => {
+  const term = categorySearchTerm.value;
+  if (!term) return [];
+  const groups: { parent: string; nodes: CategoryTreeItem[] }[] = [];
+  const walk = (nodes: CategoryTreeItem[], parent: string) => {
+    const hits = nodes.filter((node) => menuLabel(node).toLowerCase().includes(term));
+    if (hits.length) groups.push({ parent, nodes: hits });
+    nodes.forEach((node) => node.children?.length && walk(node.children, menuLabel(node)));
+  };
+  walk(categoryTree.value, t('dorins.categories'));
+  return groups;
+});
+watch(isOpen, (open) => {
+  if (!open) categorySearch.value = '';
+});
 
 const generateCategoryLink = (category: CategoryTreeItem) => {
   return buildCategoryMenuLink(category, categoryTree.value);

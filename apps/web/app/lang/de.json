@@ -1440,6 +1440,7 @@
     "pageOf": "{page} von {total}",
     "textileSeal": "Textilsiegel",
     "searchPlaceholder": "Suchbegriff",
+    "categorySearch": "Kategorie suchen",
     "cartPage": {
       "country": "Lieferland",
       "germany": "Deutschland",
