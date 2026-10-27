@@ -6,7 +6,7 @@
     :heading="t('common.labels.checkout')"
   >
     <div v-if="cart" class="@lg:grid @lg:grid-cols-12 @lg:gap-x-6">
-      <div class="col-span-6 @xl:col-span-7 mb-10 @lg:mb-0">
+      <div class="col-span-6 mb-10 @lg:mb-0 dorins-checkout-main">
         <UiDivider id="top-contact-information-divider" class="w-screen @md:w-auto -mx-4 @md:mx-0" />
         <ContactInformation id="contact-information" />
         <UiDivider id="top-shipping-divider" class="w-screen @md:w-auto -mx-4 @md:mx-0" />
@@ -46,28 +46,40 @@
           loading="lazy"
         />
         <CheckoutGeneralTerms />
+        <!-- Dorins: Kaufen-Knopf links unter der AGB-Bestätigung, darunter die Rechtslinks wie im bisherigen Shop -->
+        <div class="dorins-checkout-buy">
+          <ClientOnly>
+            <PaymentButtons />
+          </ClientOnly>
+          <ModuleComponentRendering area="checkout.afterBuyButton" />
+          <GuaranteeNoticeBanner
+            v-if="isGuaranteeNoticeEnabled && guaranteeNoticeDisplayMode === GUARANTEE_NOTICE_DISPLAY_MODE.Inline"
+            class="mt-4"
+          />
+          <GuaranteeNotice
+            v-else-if="isGuaranteeNoticeEnabled && guaranteeNoticeDisplayMode === GUARANTEE_NOTICE_DISPLAY_MODE.Modal"
+          />
+          <nav class="dorins-checkout-legal" data-testid="dorins-checkout-legal">
+            <NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('legal.termsAndConditions') }}</NuxtLink>
+            <NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('legal.privacyPolicy') }}</NuxtLink>
+            <NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('legal.legalDisclosure') }}</NuxtLink>
+          </nav>
+        </div>
       </div>
       <!-- Dorins: rechte Spalte auf grauem Grund wie im bisherigen Shop -->
-      <div class="col-span-6 @xl:col-span-5 dorins-checkout-side">
+      <div class="col-span-6 dorins-checkout-side">
         <div v-for="(cartItem, index) in cart?.items" :key="cartItem.id">
           <UiCartProductCard :cart-item="cartItem" :class="{ 'border-t': index === 0 }" />
         </div>
         <div class="relative @md:sticky @md:top-20 h-fit" :class="{ 'pointer-events-none opacity-50': cartLoading }">
           <SfLoaderCircular v-if="cartLoading" class="absolute top-[130px] right-0 left-0 m-auto z-loader" size="2xl" />
-          <Coupon />
+          <!-- Dorins: Gutschein offen und Versandfrei-Kasten über der Summe wie im bisherigen Shop -->
+          <h3 class="dorins-cart-subheading">{{ t('coupon.name') }}</h3>
+          <p class="dorins-cart-small">{{ t('dorins.cartPage.couponHint') }}</p>
+          <Coupon expanded class="dorins-cart-coupon" />
+          <DorinsFreeShippingBox />
           <OrderSummary v-if="cart" :cart="cart" class="mt-4">
             <CheckoutExportDeliveryHint v-if="cart.isExportDelivery" />
-            <ClientOnly>
-              <PaymentButtons />
-            </ClientOnly>
-            <ModuleComponentRendering area="checkout.afterBuyButton" />
-            <GuaranteeNoticeBanner
-              v-if="isGuaranteeNoticeEnabled && guaranteeNoticeDisplayMode === GUARANTEE_NOTICE_DISPLAY_MODE.Inline"
-              class="mt-4"
-            />
-            <GuaranteeNotice
-              v-else-if="isGuaranteeNoticeEnabled && guaranteeNoticeDisplayMode === GUARANTEE_NOTICE_DISPLAY_MODE.Modal"
-            />
           </OrderSummary>
         </div>
       </div>

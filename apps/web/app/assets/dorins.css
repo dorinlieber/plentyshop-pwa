@@ -6,11 +6,58 @@
 @import url('https://use.typekit.net/psi6xdj.css');
 
 /* Europa und Bely Display wie im LTS direkt eingebunden (das Kit psi6xdj liefert nur Brandon Grotesque) */
-@font-face { font-family: "europa"; src: url("https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype"); font-display: swap; font-style: normal; font-weight: 700; }
-@font-face { font-family: "europa"; src: url("https://use.typekit.net/af/821a05/00000000000000007735a082/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/821a05/00000000000000007735a082/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/821a05/00000000000000007735a082/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype"); font-display: swap; font-style: normal; font-weight: 300; }
-@font-face { font-family: "europa"; src: url("https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype"); font-display: swap; font-style: normal; font-weight: 400; }
-@font-face { font-family: "bely-display"; src: url("https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype"); font-display: swap; font-style: normal; font-weight: 400; }
-
+@font-face {
+  font-family: 'europa';
+  src:
+    url('https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/ebcd51/00000000000000007735a081/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'europa';
+  src:
+    url('https://use.typekit.net/af/821a05/00000000000000007735a082/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/821a05/00000000000000007735a082/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/821a05/00000000000000007735a082/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
+      format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'europa';
+  src:
+    url('https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/1db03a/00000000000000007735a08e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'bely-display';
+  src:
+    url('https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff'),
+    url('https://use.typekit.net/af/dd002d/00000000000000007735b06a/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('opentype');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
 
 body,
 .font-body {
@@ -874,7 +921,8 @@ body:has([data-testid='category-name']) [data-testid='item-count'] {
   content: '';
   width: 10px;
   height: 6px;
-  background: no-repeat center url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m4.999 6 1.125-1.1 3.875-3.8L8.874 0 4.999 3.8 1.124 0-.001 1.1l3.875 3.8z'/%3E%3C/svg%3E");
+  background: no-repeat center
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m4.999 6 1.125-1.1 3.875-3.8L8.874 0 4.999 3.8 1.124 0-.001 1.1l3.875 3.8z'/%3E%3C/svg%3E");
   transition: transform 0.3s;
 }
 .dorins-tabs-label--active {
@@ -957,198 +1005,198 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
   display: none;
 }
 .dorins-care .icon-1 {
-  background-position:-324px -42px;
-  height:31px;
-  width:44px
+  background-position: -324px -42px;
+  height: 31px;
+  width: 44px;
 }
 .dorins-care .icon-2 {
-  background-position:-162px -267px;
-  height:34px;
-  width:44px
+  background-position: -162px -267px;
+  height: 34px;
+  width: 44px;
 }
 .dorins-care .icon-3 {
-  background-position:-108px -312px;
-  height:26px;
-  width:44px
+  background-position: -108px -312px;
+  height: 26px;
+  width: 44px;
 }
 .dorins-care .icon-4 {
-  background-position:-162px -219px;
-  height:37px;
-  width:44px
+  background-position: -162px -219px;
+  height: 37px;
+  width: 44px;
 }
 .dorins-care .icon-5 {
-  background-position:-216px -219px;
-  height:37px;
-  width:44px
+  background-position: -216px -219px;
+  height: 37px;
+  width: 44px;
 }
 .dorins-care .icon-6 {
-  background-position:-270px -106px;
-  height:40px;
-  width:44px
+  background-position: -270px -106px;
+  height: 40px;
+  width: 44px;
 }
 .dorins-care .icon-7 {
-  background-position:-162px -165px;
-  height:44px;
-  width:44px
+  background-position: -162px -165px;
+  height: 44px;
+  width: 44px;
 }
 .dorins-care .icon-8 {
-  background-position:-270px -53px;
-  height:43px;
-  width:44px
+  background-position: -270px -53px;
+  height: 43px;
+  width: 44px;
 }
 .dorins-care .icon-9 {
-  background-position:0 0;
-  height:47px;
-  width:44px
+  background-position: 0 0;
+  height: 47px;
+  width: 44px;
 }
 .dorins-care .icon-10 {
-  background-position:-270px -267px;
-  height:32px;
-  width:44px
+  background-position: -270px -267px;
+  height: 32px;
+  width: 44px;
 }
 .dorins-care .icon-11 {
-  background-position:-270px -219px;
-  height:35px;
-  width:44px
+  background-position: -270px -219px;
+  height: 35px;
+  width: 44px;
 }
 .dorins-care .icon-12 {
-  background-position:-270px -156px;
-  height:38px;
-  width:44px
+  background-position: -270px -156px;
+  height: 38px;
+  width: 44px;
 }
 .dorins-care .icon-13 {
-  background-position:-324px 0;
-  height:32px;
-  width:44px
+  background-position: -324px 0;
+  height: 32px;
+  width: 44px;
 }
 .dorins-care .icon-14 {
-  background-position:0 -267px;
-  height:35px;
-  width:44px
+  background-position: 0 -267px;
+  height: 35px;
+  width: 44px;
 }
 .dorins-care .icon-15 {
-  background-position:-324px -83px;
-  height:31px;
-  width:44px
+  background-position: -324px -83px;
+  height: 31px;
+  width: 44px;
 }
 .dorins-care .icon-16 {
-  background-position:-54px -267px;
-  height:35px;
-  width:44px
+  background-position: -54px -267px;
+  height: 35px;
+  width: 44px;
 }
 .dorins-care .icon-17 {
-  background-position:-324px -124px;
-  height:31px;
-  width:44px
+  background-position: -324px -124px;
+  height: 31px;
+  width: 44px;
 }
 .dorins-care .icon-18 {
-  background-position:-108px -267px;
-  height:35px;
-  width:44px
+  background-position: -108px -267px;
+  height: 35px;
+  width: 44px;
 }
 .dorins-care .icon-19 {
-  background-position:0 -57px;
-  height:44px;
-  width:44px
+  background-position: 0 -57px;
+  height: 44px;
+  width: 44px;
 }
 .dorins-care .icon-20 {
-  background-position:-54px -57px
+  background-position: -54px -57px;
 }
 .dorins-care .icon-21 {
-  background-position:-108px -57px
+  background-position: -108px -57px;
 }
 .dorins-care .icon-22 {
-  background-position:-216px -267px;
-  height:34px;
-  width:44px
+  background-position: -216px -267px;
+  height: 34px;
+  width: 44px;
 }
 .dorins-care .icon-23 {
-  background-position:-324px -165px
+  background-position: -324px -165px;
 }
 .dorins-care .icon-24 {
-  background-position:-324px -204px
+  background-position: -324px -204px;
 }
 .dorins-care .icon-25 {
-  background-position:-54px -312px;
-  height:28px;
-  width:44px
+  background-position: -54px -312px;
+  height: 28px;
+  width: 44px;
 }
 .dorins-care .icon-26 {
-  background-position:-324px -243px
+  background-position: -324px -243px;
 }
 .dorins-care .icon-27 {
-  background-position:0 -312px
+  background-position: 0 -312px;
 }
 .dorins-care .icon-28 {
-  background-position:-162px 0
+  background-position: -162px 0;
 }
 .dorins-care .icon-29 {
-  background-position:-162px -54px
+  background-position: -162px -54px;
 }
 .dorins-care .icon-30 {
-  background-position:0 -111px
+  background-position: 0 -111px;
 }
 .dorins-care .icon-31 {
-  background-position:-54px -111px
+  background-position: -54px -111px;
 }
 .dorins-care .icon-32 {
-  background-position:-108px -111px
+  background-position: -108px -111px;
 }
 .dorins-care .icon-33 {
-  background-position:-162px -111px
+  background-position: -162px -111px;
 }
 .dorins-care .icon-34 {
-  background-position:-216px 0
+  background-position: -216px 0;
 }
 .dorins-care .icon-35 {
-  background-position:-216px -54px
+  background-position: -216px -54px;
 }
 .dorins-care .icon-36 {
-  background-position:-216px -108px
+  background-position: -216px -108px;
 }
 .dorins-care .icon-37 {
-  background-position:0 -165px
+  background-position: 0 -165px;
 }
 .dorins-care .icon-38 {
-  background-position:0 -219px;
-  height:38px;
-  width:44px
+  background-position: 0 -219px;
+  height: 38px;
+  width: 44px;
 }
 .dorins-care .icon-39 {
-  background-position:-54px -165px;
-  height:44px;
-  width:44px
+  background-position: -54px -165px;
+  height: 44px;
+  width: 44px;
 }
 .dorins-care .icon-40 {
-  background-position:-216px -165px;
-  height:43px;
-  width:44px
+  background-position: -216px -165px;
+  height: 43px;
+  width: 44px;
 }
 .dorins-care .icon-41 {
-  background-position:-54px 0;
-  height:46px;
-  width:44px
+  background-position: -54px 0;
+  height: 46px;
+  width: 44px;
 }
 .dorins-care .icon-42 {
-  background-position:-108px -165px;
-  height:44px;
-  width:44px
+  background-position: -108px -165px;
+  height: 44px;
+  width: 44px;
 }
 .dorins-care .icon-43 {
-  background-position:-270px 0;
-  height:43px;
-  width:44px
+  background-position: -270px 0;
+  height: 43px;
+  width: 44px;
 }
 .dorins-care .icon-44 {
-  background-position:-108px 0;
-  height:46px;
-  width:44px
+  background-position: -108px 0;
+  height: 46px;
+  width: 44px;
 }
 .dorins-care .icon-45 {
-  background-position:-54px -219px
+  background-position: -54px -219px;
 }
 .dorins-care .icon-46 {
-  background-position:-108px -219px
+  background-position: -108px -219px;
 }
 
 /* Empfehlungs-Slider: breitere Karten wie im LTS, Überschrift dünn und linksbündig */
@@ -1183,15 +1231,18 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
    gestapelten Raster eigenständig nach unten sortiert werden können */
 @media (max-width: 991px) {
   [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']),
-  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']) *:has([data-testid='dorins-product-tabs']) {
+  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs'])
+    *:has([data-testid='dorins-product-tabs']) {
     display: contents;
   }
   [data-testid='multi-grid-structure']:has([data-testid='dorins-product-tabs']) > [data-testid='multi-grid-column'] {
     order: 2;
   }
   /* Raster hat 12 Spalten: aufgelöste Teile (Abzeichen, Galerie, Reiter) über die volle Breite legen */
-  [data-testid='multi-grid-structure']:has([data-testid='dorins-product-tabs']) > * ,
-  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs']) *:has([data-testid='dorins-product-tabs']) > * {
+  [data-testid='multi-grid-structure']:has([data-testid='dorins-product-tabs']) > *,
+  [data-testid='multi-grid-column']:has([data-testid='dorins-product-tabs'])
+    *:has([data-testid='dorins-product-tabs'])
+    > * {
     grid-column: 1 / -1;
   }
   [data-testid='multi-grid-structure'] [data-testid='dorins-product-tabs'] {
@@ -1287,8 +1338,10 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 }
 
 /* Jungen-/Mädchenmode: im LTS nur Kacheln und Text, keine Artikelliste */
-body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has(:is([data-testid='category-sort-filter'], .dorins-search-filters)),
-body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-testid='item-count'], [data-testid='product-card']) {
+body:has(.dorins-subcategories--gross)
+  [data-testid='block-wrapper']:has(:is([data-testid='category-sort-filter'], .dorins-search-filters)),
+body:has(.dorins-subcategories--gross)
+  [data-testid='block-wrapper']:has([data-testid='item-count'], [data-testid='product-card']) {
   display: none;
 }
 
@@ -1401,7 +1454,9 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
 }
 @media (max-width: 1199px) {
   /* rosa Leiste einzeilig, Logo kleiner, Suche als graue Pille ohne Rahmen */
-  [data-testid='header-container'] > div:not(:has([data-testid='navbar-top-mobile'], [data-testid='category-button'])) p {
+  [data-testid='header-container']
+    > div:not(:has([data-testid='navbar-top-mobile'], [data-testid='category-button']))
+    p {
     font-size: 0.8125rem;
     line-height: 1.3;
   }
@@ -1785,11 +1840,21 @@ body:has(.dorins-subcategories--gross) [data-testid='block-wrapper']:has([data-t
   .dorins-acc-toggle:not(:checked) ~ .dorins-acc-body {
     display: none;
   }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) { order: 1; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) { order: 2; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) { order: 3; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--vorteile) { order: 4; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--beratung) { order: 5; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) {
+    order: 1;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) {
+    order: 2;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) {
+    order: 3;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--vorteile) {
+    order: 4;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--beratung) {
+    order: 5;
+  }
 }
 
 /* Tabellen in Infoseiten (Größentabelle) wie LTS: Rahmen, Kopfzeile grau, Zebrastreifen, kleine Schrift */
@@ -1866,17 +1931,24 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
   font-size: 0.875rem;
   justify-content: center;
 }
-nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul button[disabled][aria-hidden='true'] {
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom'])
+  > ul
+  button[disabled][aria-hidden='true'] {
   border-color: transparent;
 }
-nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > ul button[aria-current='true'] {
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom'])
+  > ul
+  button[aria-current='true'] {
   background: #000;
   color: #fff !important;
 }
-nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > button > span:not(:has(svg)) {
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom'])
+  > button
+  > span:not(:has(svg)) {
   display: none !important;
 }
-nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom']) > button[disabled] {
+nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid='pagination-bottom'])
+  > button[disabled] {
   opacity: 0.35;
 }
 .dorins-page-info {
@@ -1928,7 +2000,8 @@ nav:is([data-testid='pagination'], [data-testid='pagination-top'], [data-testid=
     margin-bottom: 0;
   }
   /* leerer Brotkrumen-Rahmen über dem Kategorie-Banner */
-  body:has([data-testid='dorins-category-pills']) [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']):not(:has(> :not([data-testid='breadcrumbs']))) {
+  body:has([data-testid='dorins-category-pills'])
+    [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']):not(:has(> :not([data-testid='breadcrumbs']))) {
     display: none;
   }
 }
@@ -2821,9 +2894,29 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
 /* Kasse wie LTS: rechte Spalte hellgrau, Übersicht flach ohne Schatten und Rahmen */
 @media (min-width: 1024px) {
   .dorins-checkout-side {
-    background: #f7f7f7;
-    padding: 30px;
-    align-self: start;
+    background: #f5f5f5;
+    padding: 36px 0 36px 36px;
+    align-self: stretch;
+    /* grauer Grund bis zum rechten Rand und nach unten wie im LTS (rechte Bildschirmhälfte) */
+    box-shadow: 0 0 0 100vmax #f5f5f5;
+    clip-path: inset(-20px -100vmax -100vmax 0);
+  }
+  .dorins-checkout-side > * {
+    max-width: 470px;
+  }
+  .dorins-checkout-main {
+    padding: 36px 34px 0 0;
+  }
+  [data-testid='checkout-layout'] [data-testid='narrow-container'] {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-bottom: 0;
+  }
+  [data-testid='checkout-layout'] div:has(> .dorins-checkout-main) {
+    column-gap: 0;
+  }
+  .dorins-checkout-side [data-testid='order-summary'] > div:first-child {
+    display: none;
   }
   .dorins-checkout-side [data-testid='order-summary'] {
     box-shadow: none !important;
@@ -2940,9 +3033,15 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
   [data-testid='multi-grid-structure']:has(.dorins-footer-col) > [data-testid='multi-grid-column'] {
     grid-column: auto !important;
   }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) { order: 1; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) { order: 2; }
-  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) { order: 3; }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--konto) {
+    order: 1;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--info) {
+    order: 2;
+  }
+  [data-testid='multi-grid-column']:has(.dorins-footer-col--marken) {
+    order: 3;
+  }
   [data-testid='multi-grid-structure'] > [data-testid='multi-grid-column']:has(.dorins-footer-col--vorteile) {
     order: 4;
     grid-column: 1 / -1 !important;
@@ -3082,7 +3181,6 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
     gap: 1rem;
   }
 }
-
 
 /* ---------- Kategorie-Filter wie LTS (27.10.2026): grauer Filterkasten erst ab 1200 px (Kopien der Regeln oben),
    darunter runder „Filter“-Knopf unten rechts, Filter als Seitenleiste ---------- */
@@ -3302,7 +3400,8 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
     box-shadow: 0 0 20px rgb(0 0 0 / 25%) !important;
     overflow-y: auto;
   }
-  [data-testid='category-sort-filter'] [data-testid='category-sidebar']:is([style*='display: none'], [style*='display:none']) {
+  [data-testid='category-sort-filter']
+    [data-testid='category-sidebar']:is([style*='display: none'], [style*='display:none']) {
     display: none !important;
   }
   [data-testid='category-sort-filter'] [data-testid='category-sidebar'] .\@md\:hidden {
@@ -3310,11 +3409,17 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
   }
 }
 /* Knopf liegt über der Shopvote-Leiste, verschwindet bei offener Filterleiste */
-body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:not([style*='display: none'], [style*='display:none'])) .dorins-filter-fab {
+body:has(
+    [data-testid='category-sort-filter']
+      [data-testid='category-sidebar']:not([style*='display: none'], [style*='display:none'])
+  )
+  .dorins-filter-fab {
   display: none;
 }
 @media (min-width: 768px) and (max-width: 1199px) {
-  [data-testid='category-sort-filter'] [data-testid='category-sidebar'] :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
+  [data-testid='category-sort-filter']
+    [data-testid='category-sidebar']
+    :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
     display: none !important;
   }
 }
@@ -3366,7 +3471,9 @@ body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:n
   .dorins-search-filters [data-testid='category-sidebar'] .\@md\:hidden {
     display: flex !important;
   }
-  .dorins-search-filters [data-testid='category-sidebar'] :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
+  .dorins-search-filters
+    [data-testid='category-sidebar']
+    :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) {
     display: none !important;
   }
   .dorins-search-filters .dorins-mobile-list-controls {
@@ -3388,4 +3495,86 @@ body:has([data-testid='category-sort-filter'] [data-testid='category-sidebar']:n
   max-width: 560px;
   height: auto;
   margin: 0 0 1.5rem;
+}
+
+/* ---------- Kasse wie im LTS (27.10.2026): Logo mittig, keine Überschrift, grüner Kaufen-Knopf links, Rechtslinks statt Fuß ---------- */
+[data-testid='checkout-layout'] > div > div:first-child:has([data-testid='checkout-back-button']) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  margin: 0;
+}
+header:has(> [data-testid='navbar-top']) {
+  box-shadow: none !important;
+  border-bottom: 1px solid #e6e6e6;
+}
+[data-testid='navbar-top'] {
+  justify-content: center !important;
+}
+[data-testid='navbar-top'] > div {
+  padding-left: 0;
+}
+.dorins-checkout-buy [data-testid='place-order-button'] {
+  position: relative;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 20px;
+  border-radius: 0;
+  background: #b1cb45;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+.dorins-checkout-buy [data-testid='place-order-button']:hover:not(:disabled) {
+  background: #9db539;
+}
+.dorins-checkout-buy [data-testid='place-order-button']::after {
+  content: '→';
+  position: absolute;
+  right: 22px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.dorins-checkout-legal {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 14px 0 40px;
+  font-size: 13px;
+  color: #666;
+}
+.dorins-checkout-legal a {
+  text-decoration: underline;
+}
+.dorins-checkout-side .dorins-cart-coupon {
+  margin-bottom: 20px;
+}
+.dorins-checkout-side .dorins-cart-subheading {
+  font-size: 15px;
+  margin-top: 24px;
+}
+.dorins-checkout-side .dorins-cart-small {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+/* Kasse unter 1024 px: Artikel und Summe oben, Formular mit Kaufen-Knopf darunter (LTS zeigt die Bestellübersicht ebenfalls oben) */
+@media (max-width: 1023px) {
+  [data-testid='checkout-layout'] div:has(> .dorins-checkout-main) {
+    display: flex;
+    flex-direction: column;
+  }
+  .dorins-checkout-side {
+    order: -1;
+    margin-bottom: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  #top-contact-information-divider {
+    display: none;
+  }
+  .dorins-checkout-side [data-testid='cart-product-card'].border-t {
+    border-top: 0;
+  }
 }
