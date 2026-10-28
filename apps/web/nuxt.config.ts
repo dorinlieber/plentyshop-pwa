@@ -7,7 +7,11 @@ import cookieConfig from './app/configuration/cookie.config';
 import { paths } from './app/utils/paths';
 import settingsConfig from './app/configuration/settings.config';
 import featureFlagsConfig from './app/configuration/feature-flags.config';
-import { FailOnLargeChunksPlugin, FailOnForbiddenDataInPublicFolderPlugin } from './app/configuration/vite.config';
+import {
+  FailOnLargeChunksPlugin,
+  FailOnForbiddenDataInPublicFolderPlugin,
+  ChunkNamesPerBuildPlugin,
+} from './app/configuration/vite.config';
 import { FailOnUnmarkedBlockOverridesPlugin } from './app/configuration/vite.block-overrides';
 import { thirdPartyDeps, localPackageDeps } from './app/configuration/optimize-deps.config';
 
@@ -67,7 +71,12 @@ export default defineNuxtConfig({
         ],
       },
     },
-    plugins: [FailOnLargeChunksPlugin, FailOnForbiddenDataInPublicFolderPlugin, FailOnUnmarkedBlockOverridesPlugin],
+    plugins: [
+      FailOnLargeChunksPlugin,
+      FailOnForbiddenDataInPublicFolderPlugin,
+      FailOnUnmarkedBlockOverridesPlugin,
+      ChunkNamesPerBuildPlugin,
+    ],
     resolve: {
       alias: {
         // cookiejs (via nuxt-viewport) ships a UMD `browser` entry without a default export.

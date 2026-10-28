@@ -43,3 +43,21 @@ export const FailOnForbiddenDataInPublicFolderPlugin = {
     }
   },
 };
+
+/*
+ * Dorins: Vite 8 behält den Dateinamen eines JS-Chunks bei, wenn sich nur der Name einer darin genannten
+ * CSS-Datei ändert. Browser halten /_nuxt/ ein Jahr lang („immutable“) und laden dann über den alten Chunk
+ * das alte CSS nach (27.10.2026 im Testshop gesehen). Eine Kennung je Build im Namen erzwingt den neuen Stand.
+ */
+const buildId = Date.now().toString(36);
+
+export const ChunkNamesPerBuildPlugin = {
+  name: 'dorins-chunk-names-per-build',
+  apply: 'build' as const,
+  enforce: 'post' as const,
+  configEnvironment(name: string) {
+    if (name !== 'client') return;
+    const fileNames = `_nuxt/[hash]-${buildId}.js`;
+    return { build: { rolldownOptions: { output: { chunkFileNames: fileNames, entryFileNames: fileNames } } } };
+  },
+};
