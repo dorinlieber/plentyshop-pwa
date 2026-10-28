@@ -1413,6 +1413,13 @@
     "qualified": "Juhu! Du erhältst kostenlosen Versand 🎉"
   },
   "dorins": {
+    "shippingCountdown": {
+      "today": "Innerhalb von {countdown} bestellen - Versand heute!*",
+      "later": "{truck} Wenn Sie heute bestellen, erfolgt der Versand {day}*",
+      "tomorrow": "Morgen",
+      "hours": "Std.",
+      "note": "*Bei sofortiger Bezahlung"
+    },
     "itemNumber": "Artikelnummer",
     "brand": "Marke",
     "sizeChart": "Größentabelle",

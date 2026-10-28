@@ -242,6 +242,7 @@
                     placement="product"
                   />
                 </template>
+                <DorinsShippingCountdown :product="product" />
                 <!-- Dorins: Merken, Frage per Mail, Telefon wie im bisherigen Shop -->
                 <div class="dorins-item-actions" data-testid="dorins-item-actions">
                   <button type="button" :disabled="wishlistLoading" @click="toggleWishlist">

@@ -1413,6 +1413,13 @@
     "qualified": "You qualify for free shipping 🎉"
   },
   "dorins": {
+    "shippingCountdown": {
+      "today": "Order within {countdown} - ships today!*",
+      "later": "{truck} If you order today, your order ships {day}*",
+      "tomorrow": "tomorrow",
+      "hours": "h",
+      "note": "*With immediate payment"
+    },
     "itemNumber": "Item number",
     "brand": "Brand",
     "sizeChart": "Size chart",
