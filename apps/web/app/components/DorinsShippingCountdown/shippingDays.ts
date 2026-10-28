@@ -3,8 +3,8 @@
 
 import type { BerlinNow, ShippingInfo } from './types';
 
-// Annahmeschluss in Minuten nach Mitternacht; im bisherigen Shop eingestellt: 06:00
-export const CUTOFF_MINUTES = 6 * 60;
+// Annahmeschluss in Minuten nach Mitternacht: 05:30, dann entstehen die Picklisten (Dorin 28.10.2026; LTS-Widget steht noch auf 06:00)
+export const CUTOFF_MINUTES = 5 * 60 + 30;
 export const SATURDAY_SHIPPING = false;
 
 export const berlinNow = (date: Date): BerlinNow => {
