@@ -25,8 +25,12 @@
               <div class="mb-2 flex items-start justify-between gap-4">
                 <!-- Dorins: zwei Zeilen mit fetter Bezeichnung wie im bisherigen Shop -->
                 <p class="typography-text-sm" data-testid="product-number-brand">
-                  <span class="block"><strong>{{ t('dorins.itemNumber') }}:</strong> {{ productGetters.getItemId(product) }}</span>
-                  <span v-if="brandName" class="block"><strong>{{ t('dorins.brand') }}:</strong> {{ brandName }}</span>
+                  <span class="block"
+                    ><strong>{{ t('dorins.itemNumber') }}:</strong> {{ productGetters.getItemId(product) }}</span
+                  >
+                  <span v-if="brandName" class="block"
+                    ><strong>{{ t('dorins.brand') }}:</strong> {{ brandName }}</span
+                  >
                 </p>
                 <!-- Dorins: Markenlogo rechts daneben wie im bisherigen Shop (Logo aus den Herstellerdaten in plenty) -->
                 <img
@@ -67,6 +71,22 @@
                 :unit-content="productGetters.getUnitContent(product)"
                 :unit-name="productGetters.getUnitName(product)"
               />
+              <!-- Dorins: „inkl. MwSt. zzgl. Versandkosten“ direkt unter dem Preis wie im bisherigen Shop -->
+              <div class="mt-1 mb-2 typography-text-xs flex gap-1" data-testid="dorins-vat-hint">
+                <span>{{ t('common.labels.asterisk') }}</span>
+                <span>{{ showNetPrices ? t('product.priceExclVAT') : t('product.priceInclVAT') }}</span>
+                <i18n-t keypath="shipping.excludedLabel" scope="global">
+                  <template #shipping>
+                    <UiLink
+                      :href="resolvePathTrailingSlash(localePath(paths.shipping))"
+                      class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded"
+                      target="_blank"
+                    >
+                      {{ t('common.labels.delivery') }}
+                    </UiLink>
+                  </template>
+                </i18n-t>
+              </div>
             </template>
             <!-- Dorins: Abzeichen (slim, Rabatt) stehen wie im bisherigen Shop auf dem Hauptbild (ImageGallery), nicht hier -->
             <template v-if="key === 'availability' && configuration?.fields.availability">
@@ -208,31 +228,7 @@
                   </SfTooltip>
                 </div>
 
-                <div class="mt-4 typography-text-xs flex gap-1">
-                  <span>{{ t('common.labels.asterisk') }}</span>
-                  <span>{{ showNetPrices ? t('product.priceExclVAT') : t('product.priceInclVAT') }}</span>
-                  <i18n-t keypath="shipping.excludedLabel" scope="global">
-                    <template #shipping>
-                      <UiLink
-                        :href="resolvePathTrailingSlash(localePath(paths.shipping))"
-                        class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded"
-                        target="_blank"
-                      >
-                        {{ t('common.labels.delivery') }}
-                      </UiLink>
-                    </template>
-                  </i18n-t>
-                </div>
-                <!-- Dorins: Merken, Frage per Mail, Telefon wie im bisherigen Shop -->
-                <div class="dorins-item-actions" data-testid="dorins-item-actions">
-                  <button type="button" :disabled="wishlistLoading" @click="toggleWishlist">
-                    <SfIconFavoriteFilled v-if="isWishlistItem(productGetters.getVariationId(product))" size="sm" />
-                    <SfIconFavorite v-else size="sm" />
-                    {{ t('dorins.rememberItem') }}
-                  </button>
-                  <a :href="questionMailto"><SfIconEmail size="sm" />{{ t('dorins.askQuestion') }}</a>
-                  <a :href="SHOP_PHONE_HREF"><SfIconCall size="sm" />{{ SHOP_PHONE }}</a>
-                </div>
+                <!-- Dorins: PayPal-Knöpfe direkt unter „In den Warenkorb“ wie im bisherigen Shop -->
                 <template v-if="showPayPalButtons">
                   <PayPalExpressButton
                     class="mt-4"
@@ -246,6 +242,16 @@
                     placement="product"
                   />
                 </template>
+                <!-- Dorins: Merken, Frage per Mail, Telefon wie im bisherigen Shop -->
+                <div class="dorins-item-actions" data-testid="dorins-item-actions">
+                  <button type="button" :disabled="wishlistLoading" @click="toggleWishlist">
+                    <SfIconFavoriteFilled v-if="isWishlistItem(productGetters.getVariationId(product))" size="sm" />
+                    <SfIconFavorite v-else size="sm" />
+                    {{ t('dorins.rememberItem') }}
+                  </button>
+                  <a :href="questionMailto"><SfIconEmail size="sm" />{{ t('dorins.askQuestion') }}</a>
+                  <a :href="SHOP_PHONE_HREF"><SfIconCall size="sm" />{{ SHOP_PHONE }}</a>
+                </div>
               </div>
             </template>
 
