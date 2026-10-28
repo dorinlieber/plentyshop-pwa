@@ -54,7 +54,7 @@
             </template>
             <template v-if="key === 'price' && configuration?.fields.price">
               <div class="flex space-x-2">
-                <Price :crossed-price="crossedPrice" :price="priceWithProperties" />
+                <Price :crossed-price="crossedPrice" :price="priceWithProperties" :display-vat-hint="false" />
                 <div
                   v-if="(productBundleGetters?.getBundleDiscount(product) ?? 0) > 0 && showBundleComponents"
                   class="m-auto"
@@ -71,9 +71,8 @@
                 :unit-content="productGetters.getUnitContent(product)"
                 :unit-name="productGetters.getUnitName(product)"
               />
-              <!-- Dorins: „inkl. MwSt. zzgl. Versandkosten“ direkt unter dem Preis wie im bisherigen Shop -->
-              <div class="mt-1 mb-2 typography-text-xs flex gap-1" data-testid="dorins-vat-hint">
-                <span>{{ t('common.labels.asterisk') }}</span>
+              <!-- Dorins: „inkl. MwSt. zzgl. Versandkosten“ direkt unter dem Preis, ohne Sternchen wie im bisherigen Shop -->
+              <div class="flex gap-1" data-testid="dorins-vat-hint">
                 <span>{{ showNetPrices ? t('product.priceExclVAT') : t('product.priceInclVAT') }}</span>
                 <i18n-t keypath="shipping.excludedLabel" scope="global">
                   <template #shipping>

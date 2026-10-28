@@ -1333,13 +1333,43 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 }
 [data-testid='purchase-card'] [data-testid='badges'] li {
   background: none !important;
-  color: #5cb85c !important;
-  padding-left: 1.6rem !important;
-  font-size: 0.875rem;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235cb85c' stroke-width='1.6'%3E%3Cpath d='M2 6h11v9H2zM13 9h4l3 3v3h-7z'/%3E%3Ccircle cx='6' cy='17' r='1.8'/%3E%3Ccircle cx='17' cy='17' r='1.8'/%3E%3C/svg%3E") !important;
+  color: #75b595 !important;
+  padding-left: 42px !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032.265%2015'%20fill='%2375b595'%3E%3Cg%3E%3Cg%20transform='translate(791.703%20-166.166)'%3E%3Cpath%20d='M-764.893,168.4a.39.39,0,0,0-.364-.249h-2.683a.391.391,0,0,0-.391.39v3.8a.39.39,0,0,0,.391.39h4.145a.391.391,0,0,0,.322-.169.392.392,0,0,0,.042-.362Zm-2.657,3.549v-3.018h2.026l1.159,3.018Z'%3E%3C/path%3E%3Cpath%20d='M-759.445,177.232l-.241-3.411a1.437,1.437,0,0,0-1.277-1.192l-.046-.03-2.27-5.614a1.305,1.305,0,0,0-1.214-.819h-15.65a1.125,1.125,0,0,0-1.123,1.123V177.9a1.009,1.009,0,0,0,1.008,1.008h1.725a2.656,2.656,0,0,0,2.623,2.262,2.657,2.657,0,0,0,2.624-2.262h6.066a2.926,2.926,0,0,0,2.873,2.262,2.415,2.415,0,0,0,2.374-2.262h1.112a1.434,1.434,0,0,0,1.1-.508A1.513,1.513,0,0,0-759.445,177.232Zm-16.465,3.154a1.874,1.874,0,0,1-1.871-1.872,1.874,1.874,0,0,1,1.871-1.872,1.874,1.874,0,0,1,1.872,1.872A1.874,1.874,0,0,1-775.91,180.386Zm11.313,0a1.874,1.874,0,0,1-1.871-1.872,1.874,1.874,0,0,1,1.871-1.872,1.874,1.874,0,0,1,1.872,1.872A1.874,1.874,0,0,1-764.6,180.386Zm4.236-2.494a.656.656,0,0,1-.5.232h-1.112a2.657,2.657,0,0,0-2.624-2.262,2.656,2.656,0,0,0-2.623,2.262h-6.066a2.657,2.657,0,0,0-2.624-2.262,2.656,2.656,0,0,0-2.623,2.262h-1.725a.228.228,0,0,1-.227-.228V167.289a.342.342,0,0,1,.342-.342h15.65a.526.526,0,0,1,.49.331l2.359,5.833a.391.391,0,0,0,.324.243l.281.052a.655.655,0,0,1,.583.544l.241,3.41A.729.729,0,0,1-760.361,177.892Z'%3E%3C/path%3E%3Cpath%20d='M-783.819,169.5h-2.754a.39.39,0,0,0-.39.39.391.391,0,0,0,.39.391h2.754a.391.391,0,0,0,.391-.391A.391.391,0,0,0-783.819,169.5Z'%3E%3C/path%3E%3Cpath%20d='M-783.819,172.1h-5.124a.39.39,0,0,0-.39.39.39.39,0,0,0,.39.39h5.124a.39.39,0,0,0,.391-.39A.391.391,0,0,0-783.819,172.1Z'%3E%3C/path%3E%3Cpath%20d='M-783.819,174.709h-7.494a.39.39,0,0,0-.39.391.39.39,0,0,0,.39.39h7.494a.391.391,0,0,0,.391-.39A.391.391,0,0,0-783.819,174.709Z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: 0 50% !important;
-  background-size: 1.2rem !important;
+  background-size: 32.265px 15px !important;
+}
+[data-testid='purchase-card'] [data-testid='badges']:has(li) {
+  margin: 0;
+}
+[data-testid='purchase-card'] [data-testid='badges'] li {
+  margin-top: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 0;
+}
+/* 30 px von der Lieferzeit bis „In den Warenkorb“ wie im LTS */
+[data-testid='purchase-card'] [data-testid='add-to-cart'] {
+  margin-top: 14px;
+}
+/* Preis schwarz wie im LTS (reduzierte Preise bleiben rot, Inline-Stil) */
+[data-testid='purchase-card'] [data-testid='price'] {
+  color: #000;
+}
+/* „inkl. MwSt. zzgl. Versandkosten“ in 14 px wie im LTS */
+[data-testid='dorins-vat-hint'] {
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+  padding-bottom: 5px;
+}
+[data-testid='dorins-vat-hint'] a {
+  color: inherit;
+  text-decoration: none;
 }
 [data-testid='attributes-with-size-chart'] [data-testid='size-chart-link'] {
   position: absolute;
@@ -3661,6 +3691,16 @@ header:has(> [data-testid='navbar-top']) {
   [data-testid='purchase-card'] .paypal-button > * {
     flex: 1 1 0;
     min-width: 0;
+  }
+}
+
+/* Am Handy untereinander, „Später Bezahlen“ oben wie im LTS */
+@media (max-width: 767px) {
+  [data-testid='purchase-card'] .paypal-button {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 10px;
   }
 }
 
