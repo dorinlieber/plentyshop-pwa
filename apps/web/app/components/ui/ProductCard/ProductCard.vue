@@ -159,7 +159,12 @@
           </p>
           <!-- Dorins: Farbpunkte aus Eigenschaft 199 „Farbkacheln“ wie im bisherigen Shop -->
           <span v-if="colorTiles.length" class="dorins-color-tiles" data-testid="product-card-colors">
-            <span v-for="color in colorTiles" :key="color" :style="{ backgroundColor: color }" />
+            <span
+              v-for="color in colorTiles"
+              :key="color"
+              :class="{ 'dorins-color-tile--white': /^#f{3}(f{3})?$/.test(color) }"
+              :style="{ backgroundColor: color }"
+            />
           </span>
         </template>
         <template v-if="key === 'addToCart' && configuration?.fields?.addToCart">
@@ -238,15 +243,15 @@ const availabilityName = computed(() => {
   return /variante/i.test(name) ? '' : name;
 });
 
-// Eigenschaft 199 „Farbkacheln“: Farbcodes kommagetrennt, z. B. „#37503D,#F7D1D4“
+// Eigenschaft 199 „Farbkacheln“: Farbcodes kommagetrennt, z. B. „#37503D,#F7D1D4“; in den Daten auch mit „;“, „.“ oder ohne Trenner
 const COLOR_TILES_PROPERTY_ID = 199;
 const colorTiles = computed(() => {
   const property = (product.value?.variationProperties ?? [])
     .flatMap((group) => group.properties ?? [])
     .find((entry) => Number(entry.id) === COLOR_TILES_PROPERTY_ID);
   const value = (property?.values as { value?: string } | undefined)?.value ?? '';
-  return [...new Set(value.split(',').map((color) => color.trim()))].filter((color) =>
-    /^#[0-9a-fA-F]{3,8}$/.test(color),
+  return [...new Set(value.split(/[,;.\s]+|(?=#)/).map((color) => color.trim().toLowerCase()))].filter((color) =>
+    /^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/.test(color),
   );
 });
 

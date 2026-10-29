@@ -1418,6 +1418,7 @@
       "later": "{truck} If you order today, your order ships {day}*",
       "tomorrow": "tomorrow",
       "hours": "h",
+      "minutes": "{n} minute | {n} minutes",
       "note": "*With immediate payment"
     },
     "itemNumber": "Item number",

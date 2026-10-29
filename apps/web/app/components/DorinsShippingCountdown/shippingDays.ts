@@ -88,7 +88,8 @@ export const isShippingDay = (date: Date) => {
 export const shippingInfo = (now: BerlinNow): ShippingInfo => {
   const today = utcDay(now.year, now.month, now.day);
   const secondsLeft = CUTOFF_MINUTES * 60 - now.seconds;
-  if (secondsLeft > 0 && isShippingDay(today)) {
+  // wie im LTS: „heute“ nur mit mindestens einer vollen Minute Rest, in der letzten Minute schon der nächste Versandtag
+  if (secondsLeft >= 60 && isShippingDay(today)) {
     return { minutesLeft: Math.floor(secondsLeft / 60), daysAhead: 0, shipDate: today };
   }
   let daysAhead = 1;

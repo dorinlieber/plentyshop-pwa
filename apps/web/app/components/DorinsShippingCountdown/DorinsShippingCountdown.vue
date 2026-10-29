@@ -48,6 +48,10 @@ const state = computed(() => {
   if (!now.value || !AVAILABILITY_IDS.includes(productGetters.getAvailabilityId(props.product))) return null;
   const info = shippingInfo(berlinNow(now.value));
   if (info.minutesLeft !== null) {
+    // wie im LTS: ab einer Stunde „1:42 Std.“, darunter „39 Minuten“ / „1 Minute“
+    if (info.minutesLeft < 60) {
+      return { today: true, countdown: t('dorins.shippingCountdown.minutes', info.minutesLeft) };
+    }
     const minutes = String(info.minutesLeft % 60).padStart(2, '0');
     return {
       today: true,

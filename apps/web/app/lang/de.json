@@ -1418,6 +1418,7 @@
       "later": "{truck} Wenn Sie heute bestellen, erfolgt der Versand {day}*",
       "tomorrow": "Morgen",
       "hours": "Std.",
+      "minutes": "{n} Minute | {n} Minuten",
       "note": "*Bei sofortiger Bezahlung"
     },
     "itemNumber": "Artikelnummer",

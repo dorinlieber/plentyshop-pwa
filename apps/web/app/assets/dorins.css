@@ -1305,7 +1305,8 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 }
 
 /* Artikelkarten: Name und Preis größer wie im LTS */
-/* Kartentexte nach LTS-Maßen (mit echter Schrift gemessen 26.10.): Handy 14 px, ab Tablet 18 px, Name dünn */
+/* Kartentexte nach LTS-Maßen (mit echter Schrift gemessen 26.10., Stufen nachgemessen 29.10.):
+   Name 14 px am Handy, 16/22,4 px von 576 bis 991 px, ab 992 px 18/27 px; Preis ab 576 px 18 px; Name dünn */
 [data-testid='productcard-name'] {
   font-size: 14px;
   font-weight: 300;
@@ -1314,13 +1315,19 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
 [data-testid='product-card-vertical-price'] {
   font-size: 14px;
 }
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   [data-testid='productcard-name'] {
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 22.4px;
   }
   [data-testid='product-card-vertical-price'] {
     font-size: 18px;
+  }
+}
+@media (min-width: 992px) {
+  [data-testid='productcard-name'] {
+    font-size: 18px;
+    line-height: 27px;
   }
 }
 
@@ -2415,8 +2422,13 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
 /* Karten: Name hat Platz für zwei Zeilen, Preis darunter auf gleicher Höhe wie im LTS */
 @media (min-width: 768px) {
   [data-testid='productcard-name'] {
-    min-height: 54px;
+    min-height: 44.8px;
     margin-bottom: 0.75rem;
+  }
+}
+@media (min-width: 992px) {
+  [data-testid='productcard-name'] {
+    min-height: 54px;
   }
 }
 .dorins-truck-icon {
@@ -3749,7 +3761,8 @@ header:has(> [data-testid='navbar-top']) {
   height: 15px;
   border-radius: 7.5px;
 }
-.dorins-color-tiles > span[style*='rgb(255, 255, 255)'] {
+/* Klasse statt style-Selektor: beim Server-Rendern steht der Hexwert roh im style-Attribut */
+.dorins-color-tiles > span.dorins-color-tile--white {
   border: 1px solid #000;
 }
 [data-testid='product-card'] [data-testid='productcard-name'] {
@@ -3761,6 +3774,14 @@ header:has(> [data-testid='navbar-top']) {
     margin-top: 21px;
     margin-bottom: 0;
   }
+}
+/* unter 1200 px nur 15 px vom Bild zum Namen wie im LTS (nachgemessen 29.10.) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='product-card'] [data-testid='productcard-name'] {
+    margin-top: 6px;
+  }
+}
+@media (min-width: 768px) {
   /* Preis direkt unter dem zweizeiligen Namen, nicht an den Kartenboden geschoben */
   [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
     margin-top: 0;
@@ -3878,8 +3899,10 @@ header:has(> [data-testid='navbar-top']) {
   /* Kachel-Beschriftung wie LTS: 140 px breit, 50 px hoch, 14 px */
   .rte-prose .dorins-pill--tile {
     width: 140px;
+    max-width: none;
     min-height: 50px;
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1px 6px !important;
