@@ -3736,3 +3736,37 @@ header:has(> [data-testid='navbar-top']) {
   font-weight: 500;
   padding: 20px 0 10px;
 }
+
+/* Farbpunkte unter den Artikelkarten wie im LTS: 15 px rund, 5 px Abstand, Weiß mit schwarzem Rand */
+.dorins-color-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-top: 15px;
+}
+.dorins-color-tiles > span {
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+}
+.dorins-color-tiles > span[style*='rgb(255, 255, 255)'] {
+  border: 1px solid #000;
+}
+[data-testid='product-card'] [data-testid='productcard-name'] {
+  color: #000;
+}
+/* Kartenabstände nach LTS-Maßen (29.10.2026, 1440 px): Bild bis Name 30 px, Preis bis Lieferzeit 48 px, Lieferzeit 25 px hoch */
+@media (min-width: 768px) {
+  [data-testid='product-card'] [data-testid='productcard-name'] {
+    margin-top: 21px;
+    margin-bottom: 0;
+  }
+  /* Preis direkt unter dem zweizeiligen Namen, nicht an den Kartenboden geschoben */
+  [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+    margin-top: 0;
+  }
+  [data-testid='product-card'] [data-testid='product-card-availability'] {
+    margin-top: 20px;
+    margin-bottom: 9px;
+  }
+}

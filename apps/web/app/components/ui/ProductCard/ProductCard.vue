@@ -151,12 +151,16 @@
           <p
             v-if="availabilityName"
             class="flex items-center gap-1 typography-text-xs"
-            :style="{ color: '#7bc59a' }"
+            :style="{ color: '#75b595' }"
             data-testid="product-card-availability"
           >
             <DorinsIcon name="truck" class="dorins-truck-icon" />
             {{ availabilityName }}
           </p>
+          <!-- Dorins: Farbpunkte aus Eigenschaft 199 „Farbkacheln“ wie im bisherigen Shop -->
+          <span v-if="colorTiles.length" class="dorins-color-tiles" data-testid="product-card-colors">
+            <span v-for="color in colorTiles" :key="color" :style="{ backgroundColor: color }" />
+          </span>
         </template>
         <template v-if="key === 'addToCart' && configuration?.fields?.addToCart">
           <UiButton
@@ -232,6 +236,18 @@ const product = computed(() => props.product);
 const availabilityName = computed(() => {
   const name = productGetters.getAvailabilityName(product.value);
   return /variante/i.test(name) ? '' : name;
+});
+
+// Eigenschaft 199 „Farbkacheln“: Farbcodes kommagetrennt, z. B. „#37503D,#F7D1D4“
+const COLOR_TILES_PROPERTY_ID = 199;
+const colorTiles = computed(() => {
+  const property = (product.value?.variationProperties ?? [])
+    .flatMap((group) => group.properties ?? [])
+    .find((entry) => Number(entry.id) === COLOR_TILES_PROPERTY_ID);
+  const value = (property?.values as { value?: string } | undefined)?.value ?? '';
+  return [...new Set(value.split(',').map((color) => color.trim()))].filter((color) =>
+    /^#[0-9a-fA-F]{3,8}$/.test(color),
+  );
 });
 
 const configuration = computed(() => props.configuration || ({} as ItemGridContent));
