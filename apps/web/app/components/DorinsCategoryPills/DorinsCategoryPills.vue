@@ -1,7 +1,17 @@
 <template>
   <!-- Dorins: Kategorie-Leiste zum Wischen unter der Suche am Handy, wie im bisherigen Shop -->
-  <nav v-if="pills.length" class="dorins-pills" data-testid="dorins-category-pills">
-    <NuxtLink v-if="parentLink" :to="localePath(parentLink)" class="dorins-pills-back" :aria-label="t('common.actions.back')">
+  <!-- Hauptkategorien (oberste Ebene) stehen am Tablet schon als Reiter im Kopf, dort blendet der LTS die Leiste aus -->
+  <nav
+    v-if="pills.length"
+    :class="['dorins-pills', { 'dorins-pills--root': currentPath.length <= 1 }]"
+    data-testid="dorins-category-pills"
+  >
+    <NuxtLink
+      v-if="parentLink"
+      :to="localePath(parentLink)"
+      class="dorins-pills-back"
+      :aria-label="t('common.actions.back')"
+    >
       <SfIconChevronLeft size="sm" />
     </NuxtLink>
     <NuxtLink
@@ -69,16 +79,18 @@ const pills = computed(() => {
   }
   const current = path[path.length - 1]!;
   const siblings = path.length > 1 ? (path[path.length - 2]!.children ?? []) : (categoryTree.value ?? []);
-  return siblings
-    .filter((node) => categoryTreeGetters.getName(node))
-    .map((node) => ({
-      id: node.id,
-      name: dorinsMenuLabel(node),
-      link: buildCategoryMenuLink(node, categoryTree.value ?? []),
-      active: node.id === current.id,
-    }))
-    // aktuelle Kategorie zuerst, wie im LTS
-    .sort((a, b) => Number(b.active) - Number(a.active));
+  return (
+    siblings
+      .filter((node) => categoryTreeGetters.getName(node))
+      .map((node) => ({
+        id: node.id,
+        name: dorinsMenuLabel(node),
+        link: buildCategoryMenuLink(node, categoryTree.value ?? []),
+        active: node.id === current.id,
+      }))
+      // aktuelle Kategorie zuerst, wie im LTS (dort per CSS-Reihenfolge, im Quelltext steht sie an ihrer Stelle)
+      .sort((a, b) => Number(b.active) - Number(a.active))
+  );
 });
 
 // Zurück-Pfeil nur auf Kategorieseiten (Artikelseite im LTS ohne)

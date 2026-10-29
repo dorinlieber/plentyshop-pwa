@@ -3770,3 +3770,86 @@ header:has(> [data-testid='navbar-top']) {
     margin-bottom: 9px;
   }
 }
+
+/* Hinweisleiste unter 1200 px nach LTS-Maßen (29.10.2026): 14 px dünn, Zeilenhöhe 16,8 px, 7 px oben und unten,
+   langer Text bricht am Handy auf zwei Zeilen um (LTS: 31 px einzeilig, 48 px zweizeilig) */
+@media (max-width: 1199px) {
+  [data-testid='header-container'] .swiper p {
+    font-size: 14px !important;
+    line-height: 16.8px !important;
+    white-space: normal !important;
+    overflow: visible;
+    margin: 0;
+    padding: 7px 10px;
+  }
+  /* ohne Pfeile braucht die Leiste weder 40 px Mindesthöhe noch 56 px Rand */
+  [data-testid='header-container'] div:has(> [data-testid='announcement-bar-text']) {
+    min-height: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+[data-testid='header-container'] .swiper p {
+  font-weight: 100;
+}
+
+/* Handy und Tablet nach LTS-Maßen (29.10.2026): Logo 116 px breit, zwischen 576 und 767 px 165 px;
+   Kategorie-Leiste mit 30 px hohen Pillen, die sich über die Breite verteilen, Rand 10 px (ab 576 px 20 px) */
+@media (max-width: 1199px) {
+  #blockified-logo-mobile img {
+    width: 116px;
+  }
+}
+@media (max-width: 767px) {
+  /* Handy-Kopf: Logo 20 px unter der rosa Leiste wie im LTS */
+  .dorins-mobile-head {
+    padding-top: 12px;
+  }
+  .dorins-pills {
+    margin-top: 9px;
+  }
+}
+@media (max-width: 1199px) {
+  .dorins-pills {
+    gap: 10px;
+    padding: 0 10px 0.75rem;
+  }
+  .dorins-pill-nav {
+    flex: 1 0 auto;
+    justify-content: center;
+    height: 30px;
+    padding: 0 15px;
+    border-radius: 15px;
+  }
+  .dorins-pills-back {
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    padding: 0;
+    border-radius: 15px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  #blockified-logo-mobile img {
+    width: 165px;
+  }
+  .dorins-pills {
+    padding: 0 20px 0.75rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dorins-pills {
+    padding: 0 20px 0.75rem;
+  }
+  /* Tablet-Kopfzeile 61 px hoch wie im LTS (Logo 40 px, 10 px darüber) */
+  .dorins-tablet-head > a:first-child {
+    padding: 10px 20px 11px;
+  }
+  .dorins-tablet-head > a:first-child img {
+    padding: 0;
+  }
+  /* Hauptkategorien stehen am Tablet schon als Reiter im Kopf */
+  .dorins-pills--root {
+    display: none;
+  }
+}
