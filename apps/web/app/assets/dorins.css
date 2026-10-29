@@ -3853,3 +3853,75 @@ header:has(> [data-testid='navbar-top']) {
     display: none;
   }
 }
+
+/* Startseite am Handy nach LTS-Maßen (29.10.2026, 390 px): Überschrift-Bereich 99 px (Text 41 px unter dem Kopf,
+   34 px bis zu den Kacheln), Kacheln und Banner mit 10 px Rand und 10 px Abstand */
+@media (max-width: 575px) {
+  [data-testid='block-wrapper']:has(.dorins-section-title) {
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-bottom: 19px;
+  }
+  .rte-prose .dorins-section-title {
+    margin-top: 7px !important;
+  }
+  [data-testid='multi-grid-structure']:has([data-testid='image-block']) {
+    gap: 10px !important;
+    margin-bottom: 0 !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  [data-testid='block-wrapper']:has([data-testid^='banner-image']) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* Kachel-Beschriftung wie LTS: 140 px breit, 50 px hoch, 14 px */
+  .rte-prose .dorins-pill--tile {
+    width: 140px;
+    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 6px !important;
+    font-size: 14px !important;
+    line-height: 16.8px;
+    border-radius: 30px;
+  }
+  /* Beliebte Themen: 10 px Rand, Text 15 px eingerückt, Titel 20 px */
+  [data-testid='block-wrapper']:has(.dorins-themes) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .dorins-theme-text {
+    inset: 15px;
+  }
+  .rte-prose .dorins-theme-title {
+    font-size: 20px !important;
+    line-height: 20px;
+  }
+  .rte-prose .dorins-theme-buttons .dorins-pill {
+    min-width: 150px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px !important;
+  }
+  /* großes drittes Thema: Titel 45 px, Knöpfe 50 px hoch über die ganze Breite */
+  .rte-prose .dorins-theme:nth-child(3) .dorins-theme-title {
+    font-size: 45px !important;
+    line-height: 45px;
+  }
+  .dorins-theme:nth-child(3) .dorins-theme-buttons {
+    flex-wrap: nowrap;
+  }
+  .rte-prose .dorins-theme:nth-child(3) .dorins-theme-buttons .dorins-pill {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 50px;
+  }
+  /* Banner 1:1,8 der Breite ohne Rand (LTS 370 × 666 px) */
+  .swiper:has(.dorins-banner) .swiper-slide img {
+    height: calc((100vw - 20px) * 1.8) !important;
+  }
+}
