@@ -1413,6 +1413,7 @@
     "qualified": "Juhu! Du erhältst kostenlosen Versand 🎉"
   },
   "dorins": {
+    "showMoreProducts": "Weitere Artikel laden",
     "shippingCountdown": {
       "today": "Innerhalb von {countdown} bestellen - Versand heute!*",
       "later": "{truck} Wenn Sie heute bestellen, erfolgt der Versand {day}*",

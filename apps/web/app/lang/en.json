@@ -1413,6 +1413,7 @@
     "qualified": "You qualify for free shipping 🎉"
   },
   "dorins": {
+    "showMoreProducts": "Load more items",
     "shippingCountdown": {
       "today": "Order within {countdown} - ships today!*",
       "later": "{truck} If you order today, your order ships {day}*",
