@@ -3949,6 +3949,142 @@ header:has(> [data-testid='navbar-top']) {
   }
 }
 
+/* Überschrift-Bereiche der Startseite auch von 576 bis 767 px wie am Handy (LTS: gleiche Überschrift 21 px mit 40/30 px Luft) */
+@media (min-width: 576px) and (max-width: 767px) {
+  [data-testid='block-wrapper']:has(.dorins-section-title) {
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-bottom: 19px;
+  }
+  .rte-prose .dorins-section-title {
+    margin-top: 7px !important;
+  }
+}
+
+/* Startseite unter 768 px: Abstände Überschrift/Inhalt/nächste Überschrift nach LTS-Text (gemessen 30.10.2026 bei 390 und 700 px):
+   Überschrift-Text bis Inhalt 53 px, Themen bis „Unsere Topartikel“ 43 px, Marken-Logos bis „Dorins Kindermode“ 58 px */
+@media (max-width: 767px) {
+  [data-testid='block-wrapper']:has(.dorins-section-title):not(:has([data-testid='product-slider'])) {
+    margin-bottom: 14px;
+  }
+  [data-testid='recommended-block']:has(.dorins-section-title) {
+    padding-bottom: 22px;
+  }
+  [data-testid='block-wrapper']:has(.dorins-themes) {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 31px;
+  }
+  [data-testid='block-wrapper']:has(.dorins-brands) {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  body:has(.dorins-themes) [data-testid='block-wrapper']:has(.dorins-seo) {
+    padding-top: 0;
+  }
+  body:has(.dorins-themes) [data-testid='text-card']:has(.dorins-seo) {
+    padding-top: 29px !important;
+  }
+}
+
+/* Highlight-Banner von 576 bis 767 px quadratisch mit 20 px Rand wie im LTS (700 px: 660 × 660) */
+@media (min-width: 576px) and (max-width: 767px) {
+  [data-testid='block-wrapper']:has([data-testid^='banner-image']) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .swiper:has(.dorins-banner) .swiper-slide img {
+    aspect-ratio: auto;
+    height: calc(100vw - 40px) !important;
+  }
+  /* Kacheln und Themen mit 20 px Rand und 20 px Abstand (LTS 700 px: Kacheln 320 × 384) */
+  [data-testid='multi-grid-structure']:has([data-testid='image-block']) {
+    gap: 20px !important;
+    margin-bottom: 0 !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  [data-testid='block-wrapper']:has(.dorins-themes) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dorins-themes {
+    gap: 20px;
+  }
+  /* Themen bis „Unsere Topartikel“ 48 px, „Weitere Artikel laden“ bis „Starke Marken“ 80 px (LTS 700 px) */
+  [data-testid='block-wrapper']:has(.dorins-themes) {
+    margin-bottom: 36px;
+  }
+  body:has(.dorins-themes) [data-testid='block-wrapper']:has([data-testid='product-slider']) {
+    margin-bottom: 34px;
+  }
+}
+
+/* Marken-Logos wie im LTS: unter 576 px zwei je Reihe (Kasten 180 × 103 px bei 390 px), bis 767 px drei mit 20 px Abstand,
+   Logo-Fläche 158:81 */
+@media (max-width: 575px) {
+  .dorins-brands {
+    margin: -5px -11px;
+  }
+  .dorins-brands a {
+    width: 50%;
+  }
+  .dorins-brands img {
+    aspect-ratio: 158 / 81;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .dorins-brands {
+    margin: -10px -6px;
+  }
+  .dorins-brands a {
+    padding: 10px;
+  }
+  .dorins-brands img {
+    aspect-ratio: 158 / 81;
+  }
+}
+
+/* Vorteile unter 768 px wie im LTS: 2 × 2, Logo 40 px hoch über die Spaltenbreite (höchstens 240 px),
+   Text 14 px dünn 20 px darunter, 30 px zwischen den Reihen */
+@media (max-width: 767px) {
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    column-gap: 0 !important;
+    row-gap: 30px !important;
+    margin-bottom: 37px !important;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) .rte-prose {
+    padding: 0 10px;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) .rte-prose p {
+    max-width: 240px;
+    margin: 20px auto 0;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) .rte-prose p:has(img) {
+    margin-top: 0;
+  }
+  .rte-prose .dorins-usp-icon {
+    display: block;
+    width: 100%;
+    height: 40px;
+    object-fit: contain;
+  }
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) p:not(:has(img)) {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 16.8px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  [data-testid='multi-grid-structure']:has(.dorins-usp-icon) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
 /* Empfehlungen (Topartikel, „mehr aus dieser Kollektion“) unter 768 px als Raster wie im LTS (gemessen 30.10.2026):
    2 Spalten, bis 500 px jede dritte Karte volle Breite; unter 576 px Abzeichen über dem Bild (30 px Streifen),
    Karten 5 px Innenabstand und 30 px Abstand; ab 576 px 10 px Innenabstand, 60 px Abstand, Abzeichen auf dem Bild */
