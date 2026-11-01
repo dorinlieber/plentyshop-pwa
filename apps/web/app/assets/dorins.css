@@ -4423,3 +4423,176 @@ body:not(:has(.dorins-search-filters))
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 }
+
+/* Brotkrumen wie LTS (gemessen 01.11.2026): Links schwarz, Zeilenhöhe 12 px, zwischen den Einträgen der LTS-Pfeil
+   (5,4 × 8,9 px, 10 px Abstand links und rechts) statt „›“; ab 1200 px 20 px vom Rand, Text 75 px unter dem Kopf */
+[data-testid='breadcrumbs'] a {
+  color: #000;
+  line-height: 12px;
+}
+[data-testid='breadcrumbs'] li > span {
+  line-height: 12px;
+}
+[data-testid='breadcrumbs'] li:nth-child(n + 3)::before {
+  content: '' !important;
+  width: 5.379px;
+  height: 8.919px;
+  margin: 0 10px;
+  padding: 0 !important;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5.379' height='8.919'%3E%3Cpath d='m.458.46 4 4-4 4' fill='none' stroke='%23000' stroke-miterlimit='10' stroke-width='1.3'/%3E%3C/svg%3E")
+    no-repeat;
+}
+@media (min-width: 1200px) {
+  [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']) {
+    max-width: 1580px;
+    padding: 22px 20px 14px;
+  }
+  /* Kategorie: Brotkrumen bis Titel 42 px, Titel bis Filterkasten 95 px wie LTS (Text zu Text gemessen) */
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-data']) {
+    padding-top: 13px !important;
+    margin-bottom: 4px !important;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-sort-filter']) {
+    padding-top: 0 !important;
+  }
+}
+
+/* Filterkasten ab 1200 px wie LTS (gemessen 01.11.2026 bei 1280 px): 20 px vom Rand, Grau #ededed, Innenabstand
+   20/30 px; „Filtern nach:“ 14 px fett in der ersten Pillenzeile; Pillen 40 px hoch, 14 px dünn, 15 px links und 40 px
+   rechts (Pfeil), 10 px Abstand; Jahreszeit hinter Marke und Preis wie im LTS; rechts „Sortieren:“ mit Auswahl
+   160 × 40 und Anzahl 80 × 40; Kasten 40 px über dem ersten Artikelbild */
+@media (min-width: 1200px) {
+  [data-testid='category-sort-filter'] aside {
+    width: auto !important;
+    margin: 0 4px 24px;
+    padding: 20px 30px 10px;
+    background: #ededed;
+  }
+  [data-testid='category-sort-filter'] aside > .grid {
+    align-items: center;
+    gap: 0;
+    padding-right: 328px !important;
+  }
+  [data-testid='category-sort-filter'] aside > .grid::before {
+    margin: 0 0 10px;
+    padding-right: 15px;
+    font-size: 14px !important;
+    line-height: 40px;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > div.flex-col {
+    display: contents;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > div.flex-col:has(> div:nth-child(2)) > div:last-child {
+    order: 1;
+  }
+  [data-testid='category-sort-filter'] details > summary > div {
+    height: 40px;
+    margin: 0 10px 10px 0 !important;
+    padding: 0 40px 0 15px !important;
+    background: #fff
+      url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5.625'%3E%3Cpath d='M4.5 3.375 7.875 0 9 1.125 5.625 4.5 4.5 5.625 3.375 4.5 0 1.125 1.125 0Z'/%3E%3C/svg%3E")
+      no-repeat calc(100% - 15px) 50% !important;
+  }
+  [data-testid='category-sort-filter'] details > summary > div > div {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  [data-testid='category-sort-filter'] details > summary svg {
+    display: none;
+  }
+  [data-testid='category-sort-filter'] aside > .grid > [data-testid='category-sorting'] {
+    right: 90px;
+    gap: 0;
+  }
+  [data-testid='category-sorting'] > div:first-child {
+    font-size: 0 !important;
+  }
+  [data-testid='category-sorting'] > div:first-child::after {
+    content: 'Sortieren:';
+    padding-right: 15px;
+    font-size: 14px;
+    line-height: 40px;
+  }
+  [data-testid='category-sort-filter'] select {
+    height: 40px;
+    padding: 0 40px 0 15px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 300;
+    background: #fff
+      url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5.625'%3E%3Cpath d='M4.5 3.375 7.875 0 9 1.125 5.625 4.5 4.5 5.625 3.375 4.5 0 1.125 1.125 0Z'/%3E%3C/svg%3E")
+      no-repeat calc(100% - 15px) 50%;
+  }
+  [data-testid='category-sorting'] select {
+    width: 160px;
+  }
+  [data-testid='category-items-per-page'] select {
+    width: 80px;
+    min-width: 0;
+  }
+  :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) svg {
+    display: none;
+  }
+  :is([data-testid='category-sorting'], [data-testid='category-items-per-page']) :is(span, select) {
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+/* Kategorie-Kopf unter 1200 px wie LTS (gemessen 01.11.2026 bei 390, 700, 992 px) */
+/* Tablet: Brotkrumen 20 px unter der Pillenleiste und 20 px vom Rand, Text bis Titel 42 px (ohne Textzeilen-Versatz) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  [data-testid='narrow-container']:has(> [data-testid='breadcrumbs']) {
+    display: flex;
+    padding: 5px 20px 25px;
+  }
+}
+/* Handy: Titel 21 px dünn (ab 576 px 30 px), Sortierfeld 40 px hoch mit 14 px Schrift und LTS-Pfeil,
+   unter 576 px über die Breite mit 10 px Rand, darüber so breit wie der Text mit 20 px Rand; 40 px bis zu den Artikeln */
+@media (max-width: 767px) {
+  [data-testid='category-name'] {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 23.1px;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-data']) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  [data-testid='category-data'] {
+    padding: 27px 0 23px !important;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-sort-filter']) {
+    padding: 16px 10px 24px !important;
+  }
+  .dorins-mobile-list-controls .dorins-mobile-sort select {
+    height: 40px;
+    min-height: 0;
+    padding: 0 40px 0 15px;
+    font-size: 14px;
+    font-weight: 300;
+    background: #fff
+      url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5.625'%3E%3Cpath d='M4.5 3.375 7.875 0 9 1.125 5.625 4.5 4.5 5.625 3.375 4.5 0 1.125 1.125 0Z'/%3E%3C/svg%3E")
+      no-repeat calc(100% - 15px) 50%;
+  }
+  .dorins-mobile-list-controls .dorins-mobile-sort svg {
+    display: none;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  [data-testid='category-name'] {
+    font-size: 30px;
+    line-height: 33px;
+  }
+  [data-testid='category-data'] {
+    padding: 29px 0 24px !important;
+  }
+  [data-testid='block-wrapper']:has(> * > [data-testid='category-sort-filter']) {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+  .dorins-mobile-list-controls .dorins-mobile-sort {
+    width: auto !important;
+  }
+}
