@@ -337,21 +337,6 @@ body,
   }
 }
 
-/* schmale Rechner (1200-1279 px): Menü kleiner, Suche schmaler, damit nichts überlappt */
-@media (min-width: 1200px) and (max-width: 1279px) {
-  [data-testid='category-button'] {
-    font-size: 17px;
-    padding: 0.25rem 0.4rem;
-  }
-  [data-testid='header-container'] > div:has([data-testid='category-button']) nav > ul {
-    padding-left: 205px !important;
-  }
-  [data-testid='navbar-top-desktop'] > div:nth-child(2) {
-    flex-basis: 200px !important;
-    margin-right: 12px !important;
-  }
-}
-
 /* Beschriftung unter den Kopf-Symbolen („Mein Konto“, „Merkliste“, „Warenkorb“) */
 @media (min-width: 1280px) {
   [data-dorins-label] {
@@ -4594,5 +4579,31 @@ body:not(:has(.dorins-search-filters))
   }
   .dorins-mobile-list-controls .dorins-mobile-sort {
     width: auto !important;
+  }
+}
+
+/* Kopfzeile ab 1200 px nach LTS-Maßen (nachgemessen 01.11.2026 bei 1200, 1280, 1440 px; vorher lag bei 1280 px die
+   Suche über „Marken“): Menü 21 px ab x 215 (auch zwischen 1200 und 1279 px), Suche beginnt 31 px hinter „Marken“
+   (x 579) und wird schmaler statt zu überlappen (LTS: 224 px bei 1200, 304 bei 1280, höchstens 374), bis zu den
+   Symbolen bleibt der LTS-Abstand; 20 px Rand rechts */
+@media (min-width: 1200px) {
+  [data-testid='header-container'] > div:has([data-testid='category-button']) nav > ul {
+    padding-left: 205px !important;
+  }
+  [data-testid='navbar-top-desktop'] {
+    padding-right: 20px !important;
+  }
+  [data-testid='navbar-top-desktop'] > div:nth-child(2) {
+    flex: 0 1 374px !important;
+    min-width: 0;
+    margin-left: 394px !important;
+    margin-right: auto !important;
+  }
+  [data-testid='navbar-top-desktop'] > nav {
+    margin-left: 92px;
+  }
+  /* Menüpunkte 20 px auseinander wie im LTS */
+  [data-testid='category-button'] {
+    padding: 0.25rem 10px;
   }
 }
