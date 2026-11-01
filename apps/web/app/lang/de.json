@@ -1414,6 +1414,9 @@
   },
   "dorins": {
     "showMoreProducts": "Weitere Artikel laden",
+    "sliderPrev": "Zurück",
+    "sliderNext": "Weiter",
+    "sliderPage": "Seite {page}",
     "shippingCountdown": {
       "today": "Innerhalb von {countdown} bestellen - Versand heute!*",
       "later": "{truck} Wenn Sie heute bestellen, erfolgt der Versand {day}*",
@@ -1443,8 +1446,7 @@
     "saleBadge": "% Sparangebot",
     "upToDiscount": "bis zu -{percent}%",
     "categories": "Kategorien",
-    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden"
-,
+    "searchFound": "{n} Artikel gefunden | {n} Artikel gefunden",
     "pageLabel": "Seite:",
     "pageOf": "{page} von {total}",
     "textileSeal": "Textilsiegel",

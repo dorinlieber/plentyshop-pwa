@@ -1235,13 +1235,7 @@ body:has([data-testid='dorins-product-tabs']) [data-testid='block-wrapper']:has(
   background-position: -108px -219px;
 }
 
-/* Empfehlungs-Slider: breitere Karten wie im LTS, Überschrift dünn und linksbündig */
-@media (min-width: 1024px) {
-  [data-testid='product-slider'] [data-testid='product-card'] {
-    width: 260px !important;
-    max-width: 260px !important;
-  }
-}
+/* Empfehlungs-Slider: Überschrift dünn und linksbündig (Kartenbreiten ab 768 px weiter unten wie im LTS) */
 [data-testid='product-slider'] [data-testid='product-card'] .size-48 {
   width: 100%;
   height: auto;
@@ -3679,13 +3673,6 @@ header:has(> [data-testid='navbar-top']) {
     font-weight: 100;
     padding-top: 30px;
   }
-  [data-testid='product-slider'] div.overflow-x-auto:has(> [data-testid='product-card']) {
-    gap: 20px;
-  }
-  [data-testid='product-slider'] [data-testid='product-card'] {
-    width: calc((100% - 60px) / 4) !important;
-    max-width: none !important;
-  }
 }
 /* Unterkategorien ab 1600 px: 8 je Reihe wie im LTS (darunter 6) */
 @media (min-width: 1600px) {
@@ -4088,10 +4075,10 @@ header:has(> [data-testid='navbar-top']) {
 /* Empfehlungen (Topartikel, „mehr aus dieser Kollektion“) unter 768 px als Raster wie im LTS (gemessen 30.10.2026):
    2 Spalten, bis 500 px jede dritte Karte volle Breite; unter 576 px Abzeichen über dem Bild (30 px Streifen),
    Karten 5 px Innenabstand und 30 px Abstand; ab 576 px 10 px Innenabstand, 60 px Abstand, Abzeichen auf dem Bild */
+div:has(> [data-testid='product-slider']) > button {
+  display: none !important;
+}
 @media (max-width: 767px) {
-  div:has(> [data-testid='product-slider']) > button {
-    display: none !important;
-  }
   [data-testid='product-slider'] div.overflow-x-auto:has(> [data-testid='product-card']),
   div.overflow-x-auto[data-testid='product-slider'] {
     flex-wrap: wrap;
@@ -4169,5 +4156,177 @@ header:has(> [data-testid='navbar-top']) {
     font-size: 18px;
     font-weight: 700;
     color: #000;
+  }
+}
+
+/* Empfehlungs-Slider ab 768 px wie der LTS-Slider (slick, gemessen 01.11.2026 bei 768, 992, 1199, 1280, 1920 px):
+   3 Karten je Ansicht, ab 1120 px 4, Karten mit 10 px Innenabstand (Bilder 20 px auseinander, 20 px vom Rand),
+   weiße runde Pfeile 40 px nur mit Maus (LTS blendet sie auf Touch-Geräten aus), oben bündig und 70 % hoch,
+   darunter Punkte 10 px mit schwarzem Rand, aktive Seite schwarz (Seitenlogik in ProductSlider.vue) */
+.dorins-slider-arrow,
+.dorins-slider-dots {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.overflow-x-auto[data-testid='product-slider'] {
+    gap: 0;
+    margin: 0 -6px;
+    padding-bottom: 0;
+    scroll-snap-type: x mandatory;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] {
+    width: calc(100% / 3) !important;
+    max-width: none !important;
+    padding: 0 10px;
+  }
+  /* einrasten nur am Seitenanfang wie slick (Wischen landet nie zwischen zwei Seiten) */
+  [data-testid='product-slider'] [data-testid='product-card']:nth-child(3n + 1) {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .dorins-slider-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 0;
+    padding: 20px 0;
+    list-style: none;
+  }
+  .dorins-slider-dots li {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+  }
+  .dorins-slider-dots button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 1px solid #000;
+    border-radius: 50px;
+    background-color: #fff;
+  }
+  .dorins-slider-dots li.dorins-slider-dots--active button {
+    background-color: #000;
+  }
+}
+@media (min-width: 768px) and (hover: hover) {
+  .dorins-slider-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 30%;
+    z-index: 1;
+    display: block;
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg transform='translate(-14863 -575)'%3E%3Ccircle cx='40' cy='40' r='40' transform='translate(14863 575)' fill='%23fff'/%3E%3Cpath d='m14892 615.001 3.306-3.375 11.388-11.625 3.306 3.375-11.388 11.625 11.388 11.625-3.306 3.375-11.388-11.625Z'/%3E%3C/g%3E%3C/svg%3E")
+      50% 50% / 40px auto no-repeat;
+  }
+  .dorins-slider-arrow--prev {
+    left: 14px;
+  }
+  .dorins-slider-arrow--prev:hover {
+    transform: scale(1.1);
+  }
+  .dorins-slider-arrow--next {
+    right: 14px;
+    transform: rotate(180deg);
+  }
+  .dorins-slider-arrow--next:hover {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+@media (min-width: 1120px) {
+  [data-testid='product-slider'] [data-testid='product-card'] {
+    width: 25% !important;
+  }
+  [data-testid='product-slider'] [data-testid='product-card']:nth-child(3n + 1) {
+    scroll-snap-align: none;
+  }
+  [data-testid='product-slider'] [data-testid='product-card']:nth-child(4n + 1) {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+/* Karten im Slider ab 768 px wie die LTS-Slider-Karten: Text bündig unter dem Bild, Bild bis Name 15 px (ab 1200 px 30),
+   Name 16/18 px dreizeilig (ab 992 px 18/25 px zweizeilig), Preis 10 px darunter (ab 1350 px 20), Lieferzeit 20 px unter dem Preis */
+@media (min-width: 768px) {
+  [data-testid='product-slider'] [data-testid='product-card'] > div.p-2 {
+    padding: 0;
+    border-top: 0;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='productcard-name'] {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    height: 54px;
+    min-height: 0;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+    padding-top: 10px;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-vertical-price'] {
+    padding-bottom: 0;
+    line-height: 18px;
+  }
+  /* UVP in der Preiszeile 14 px hoch wie im LTS, sonst rutscht alles darunter 10 px tiefer */
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-vertical-price'] + span {
+    padding-bottom: 0;
+    line-height: 14px;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-availability'] {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-colors'] {
+    padding-top: 14px;
+  }
+  /* Startseite: Überschrift bis Bild 53 px wie LTS (ab 1200 px 94 px, Überschrift dort 30 px groß); Punkte bis
+     „Starke Marken“ 66 px wie LTS, die Hinweiszeile „* inkl. MwSt.“ steht in diesem Abstand */
+  [data-testid='recommended-block']:has(.dorins-section-title) {
+    padding-bottom: 0;
+  }
+  body:has(.dorins-themes) [data-testid='block-wrapper']:has([data-testid='product-slider']) {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  body:has(.dorins-themes)
+    [data-testid='block-wrapper']
+    div.relative:has(> div > [data-testid='product-slider'])
+    + div {
+    margin-top: 12px;
+  }
+}
+@media (min-width: 992px) {
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='productcard-name'] {
+    -webkit-line-clamp: 2;
+    height: 50px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='productcard-name'] {
+    margin-top: 30px;
+  }
+  [data-testid='recommended-block']:has(.dorins-section-title) {
+    padding-bottom: 50px;
+  }
+  body:has(.dorins-themes)
+    [data-testid='block-wrapper']
+    div.relative:has(> div > [data-testid='product-slider'])
+    + div {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1350px) {
+  [data-testid='product-slider'] [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+    padding-top: 20px;
   }
 }
