@@ -2413,18 +2413,7 @@ body:has([data-testid='purchase-card']) [data-testid='breadcrumbs'] li:last-of-t
     font-size: 13px !important;
   }
 }
-/* Karten: Name hat Platz für zwei Zeilen, Preis darunter auf gleicher Höhe wie im LTS */
-@media (min-width: 768px) {
-  [data-testid='productcard-name'] {
-    min-height: 44.8px;
-    margin-bottom: 0.75rem;
-  }
-}
-@media (min-width: 992px) {
-  [data-testid='productcard-name'] {
-    min-height: 54px;
-  }
-}
+/* Karten: Name ohne Mindesthöhe wie im LTS (einzeiliger Name, Preis rückt hoch; nachgemessen 01.11.2026) */
 /* Lieferwagen vor der Lieferzeit wie im LTS 32 × 15 px, 7 px bis zum Text */
 .dorins-truck-icon {
   width: 32px;
@@ -3144,7 +3133,12 @@ body:has([data-testid='dorins-cart-summary']) [data-testid='page-heading'] {
 @media (min-width: 768px) {
   body:has(.dorins-search-filters) [data-testid='category-grid'] {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 50px 0;
     padding: 0 30px;
+  }
+  /* Karten 10 px Innenabstand: Bilder 40 px vom Rand und 20 px auseinander wie LTS (nachgemessen 01.11.2026) */
+  body:has(.dorins-search-filters) [data-testid='category-grid'] [data-testid='product-card'] {
+    padding: 0 10px;
   }
 }
 @media (min-width: 1200px) {
@@ -3759,27 +3753,23 @@ header:has(> [data-testid='navbar-top']) {
 [data-testid='product-card'] [data-testid='productcard-name'] {
   color: #000;
 }
-/* Kartenabstände nach LTS-Maßen (29.10.2026, 1440 px): Bild bis Name 30 px, Preis bis Lieferzeit 48 px, Lieferzeit 25 px hoch */
-@media (min-width: 768px) {
-  [data-testid='product-card'] [data-testid='productcard-name'] {
-    margin-top: 21px;
-    margin-bottom: 0;
-  }
+/* Kartenabstände nach LTS-Maßen (nachgemessen 01.11.2026 auf Kategorie- und Startseite): Text bündig unter dem Bild
+   ohne Innenabstand, Bild bis Name 15 px (ab 1200 px 30 px); Preis direkt unter dem Namen, nicht an den Kartenboden
+   geschoben (Preis, Lieferzeit, Farbpunkte weiter unten bei „Preis, UVP, Lieferzeit und Farbpunkte“) */
+[data-testid='product-card'] > div.p-2 {
+  padding: 0;
+  border-top: 0;
 }
-/* unter 1200 px nur 15 px vom Bild zum Namen wie im LTS (nachgemessen 29.10.) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  [data-testid='product-card'] [data-testid='productcard-name'] {
-    margin-top: 6px;
-  }
+[data-testid='product-card'] [data-testid='productcard-name'] {
+  margin-top: 15px;
+  margin-bottom: 0;
 }
-@media (min-width: 768px) {
-  /* Preis direkt unter dem zweizeiligen Namen, nicht an den Kartenboden geschoben */
-  [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
-    margin-top: 0;
-  }
-  [data-testid='product-card'] [data-testid='product-card-availability'] {
-    margin-top: 20px;
-    margin-bottom: 9px;
+[data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+  margin-top: 0;
+}
+@media (min-width: 1200px) {
+  [data-testid='product-card'] [data-testid='productcard-name'] {
+    margin-top: 30px;
   }
 }
 
@@ -4107,10 +4097,6 @@ div:has(> [data-testid='product-slider']) > button {
     right: 0;
     margin: 0;
   }
-  [data-testid='product-slider'] [data-testid='product-card'] > div.p-2 {
-    padding: 15px 0 0;
-    border-top: 0;
-  }
 }
 @media (max-width: 500px) {
   [data-testid='product-slider'] [data-testid='product-card']:nth-child(3n + 3) {
@@ -4153,26 +4139,45 @@ div:has(> [data-testid='product-slider']) > button {
   }
 }
 
-/* Preis, UVP, Lieferzeit und Farbpunkte in Slider-/Raster-Karten auf allen Breiten wie die LTS-Karten (Textlage
+/* Preis, UVP, Lieferzeit und Farbpunkte in allen Artikelkarten auf allen Breiten wie die LTS-Karten (Textlage
    gemessen 01.11.2026): Preis 10 px unter dem Namen mit Zeilenhöhe 1, UVP 14 px, Lieferzeit 20 px darunter,
    Farbpunkte 14 px unter der Lieferzeit */
-[data-testid='product-slider'] [data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+[data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
   padding-top: 10px;
 }
-[data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-vertical-price'] {
+[data-testid='product-card'] [data-testid='product-card-vertical-price'] {
   padding-bottom: 0;
   line-height: 1;
 }
 /* UVP in der Preiszeile 14 px hoch wie im LTS, sonst rutscht alles darunter 10 px tiefer */
-[data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-vertical-price'] + span {
+[data-testid='product-card'] [data-testid='product-card-vertical-price'] + span {
   padding-bottom: 0;
   line-height: 14px;
 }
-[data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-availability'] {
+[data-testid='product-card'] [data-testid='product-card-availability'] {
   margin-top: 20px;
   margin-bottom: 0;
 }
-[data-testid='product-slider'] [data-testid='product-card'] [data-testid='product-card-colors'] {
+/* UVP wie im LTS in derselben Zeile rechts neben dem Preis (10 px Abstand, unter 576 px 12 px), nicht darüber */
+[data-testid='product-card'] div:has(> [data-testid='product-card-vertical-price']) {
+  flex-direction: row;
+  align-items: baseline;
+}
+[data-testid='product-card'] [data-testid='product-card-vertical-price'] + span {
+  margin-left: 10px;
+  font-size: 12px;
+}
+@media (min-width: 576px) {
+  [data-testid='product-card'] [data-testid='product-card-vertical-price'] + span {
+    font-size: 14px;
+  }
+}
+/* ohne Lieferzeit steht der Preis im LTS tiefer (Kartenende bleibt gleich): 35 px = Lieferzeit-Zeile */
+[data-testid='product-card']
+  div:has(> [data-testid='product-card-vertical-price']):not(:has(+ [data-testid='product-card-availability'])) {
+  padding-top: 45px;
+}
+[data-testid='product-card'] [data-testid='product-card-colors'] {
   padding-top: 14px;
 }
 /* Empfehlungs-Slider ab 768 px wie der LTS-Slider (slick, gemessen 01.11.2026 bei 768, 992, 1199, 1280, 1920 px):
@@ -4269,10 +4274,6 @@ div:has(> [data-testid='product-slider']) > button {
 /* Karten im Slider ab 768 px wie die LTS-Slider-Karten: Text bündig unter dem Bild, Bild bis Name 15 px (ab 1200 px 30),
    Name 16/18 px dreizeilig (ab 992 px 18/25 px zweizeilig), Preis 10 px darunter (ab 1350 px 20), Lieferzeit 20 px unter dem Preis */
 @media (min-width: 768px) {
-  [data-testid='product-slider'] [data-testid='product-card'] > div.p-2 {
-    padding: 0;
-    border-top: 0;
-  }
   [data-testid='product-slider'] [data-testid='product-card'] [data-testid='productcard-name'] {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -4280,7 +4281,6 @@ div:has(> [data-testid='product-slider']) > button {
     overflow: hidden;
     height: 54px;
     min-height: 0;
-    margin-top: 15px;
     font-size: 16px;
     line-height: 18px;
   }
@@ -4309,9 +4309,6 @@ div:has(> [data-testid='product-slider']) > button {
   }
 }
 @media (min-width: 1200px) {
-  [data-testid='product-slider'] [data-testid='product-card'] [data-testid='productcard-name'] {
-    margin-top: 30px;
-  }
   [data-testid='recommended-block']:has(.dorins-section-title) {
     padding-bottom: 50px;
   }
@@ -4370,5 +4367,59 @@ div:has(> [data-testid='product-slider']) > button {
   }
   [data-testid='product-card']:hover [data-testid='productcard-name'] {
     color: #c482b0;
+  }
+}
+
+/* Kategorie-Raster wie die LTS-Artikelliste (gemessen 01.11.2026, /jungenmode/oberteile/shirts): 2 Spalten, ab 768 px 3,
+   ab 1200 px 4; unter 576 px Bilder 10 px vom Rand und 10 px auseinander, Abzeichen in einem 30-px-Streifen über dem
+   Bild, 30 px Reihenabstand; ab 576 px 20 px Rand und Abstand, ab 768 px 50 px Reihenabstand (Suche hat eigene Regeln) */
+body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 30px 0;
+  margin-right: -11px;
+  margin-left: -11px;
+}
+body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] [data-testid='product-card'] {
+  padding: 30px 5px 0;
+}
+body:not(:has(.dorins-search-filters))
+  [data-testid='category-grid']
+  [data-testid='product-card']
+  > div.relative.overflow-hidden {
+  overflow: visible;
+}
+body:not(:has(.dorins-search-filters))
+  [data-testid='category-grid']
+  [data-testid='product-card']
+  [data-testid='badges'] {
+  top: -30px;
+  right: 0;
+  left: 0;
+  margin: 0;
+}
+@media (min-width: 576px) {
+  body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] {
+    margin-right: -6px;
+    margin-left: -6px;
+  }
+  body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] [data-testid='product-card'] {
+    padding: 0 10px;
+  }
+  body:not(:has(.dorins-search-filters))
+    [data-testid='category-grid']
+    [data-testid='product-card']
+    [data-testid='badges'] {
+    top: 0;
+  }
+}
+@media (min-width: 768px) {
+  body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    row-gap: 50px;
+  }
+}
+@media (min-width: 1200px) {
+  body:not(:has(.dorins-search-filters)) [data-testid='category-grid'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 }
