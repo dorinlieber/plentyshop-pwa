@@ -73,11 +73,7 @@
 
       <template v-if="configuration?.showWishlistButton">
         <slot name="wishlistButton">
-          <WishlistButton
-            square
-            class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
-            :product="product"
-          />
+          <WishlistButton square lts-heart class="absolute dorins-card-wish" :product="product" />
         </slot>
       </template>
     </div>
